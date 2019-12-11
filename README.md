@@ -36,7 +36,7 @@ How it works + link to whitepaper, discord, twitter, github, email, website
 | Contract | JSON | Address |
 | :--- | :--- | :--- |
 | Uniswap Exchange |  |  |
-| Uniswap Factor |  | 0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36 |
+| Uniswap Factory |  | 0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36 |
 | Options Exchange |  |  |
 | Dai |  |  |
 | cDai |  |  |
