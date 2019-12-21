@@ -154,6 +154,9 @@ Consider the case of a Compound user who wants insurance on their Dai locked in 
 | Strike Asset |  |
 | Strike Price |  |
 | putsOutstanding |  |
+| minCollateralizationRatio |  |
+| safe |  |
+| unsafe |  |
 
 
 

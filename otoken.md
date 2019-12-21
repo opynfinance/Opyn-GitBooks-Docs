@@ -40,7 +40,27 @@ uint256 vaultIndex = ocDai.openVault();
 {% endtab %}
 {% endtabs %}
 
-#### 
+### Add Collateral
+
+The add collateral functions serve two purposes. The first is to add collateral to a new vault. A vault needs to meet the minimum collateral requirements before it is safe for the owner to mint oTokens.The second purpose is to top up i.e. turn a vault that is unsafe because it doesn't meet the minimum collateral requirements into a vault that is safe. The add collateral functions can be called at any point before the oToken's expiry. 
+
+#### Add ETH Collateral
+
+The `addETHCollateral()` function is called if the specified collateral for the oToken contract is ETH. This function call will fail if the collateral type is not ETH. The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. 
+
+```javascript
+function addETHCollateral(uint256 vaultIndex) public payable returns (uint256) 
+```
+
+> `vaultIndex` : The index of the vault to add collateral to
+>
+> `msg.sender` : The account from which ETH collateral will be transferred into the oToken contract
+>
+> `msg.value` : The amount of ETH to add
+
+#### Add ERC20 Collateral
+
+The `addERC20Collateral()` function is called if the specified collateral for the oToken contract is any ERC20 asset. The function will only add the specified collateral asset. It will fail if called on any other asset other than the pre specified collateral asset. 
 
 #### Create Options Contract 
 
