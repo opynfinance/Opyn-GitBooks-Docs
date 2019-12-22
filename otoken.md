@@ -135,64 +135,34 @@ ocDai.issueOTokens(1, 1000, 0xFB3...);
 {% endtab %}
 {% endtabs %}
 
-#### Create Options Contract 
+#### Burn oTokens
 
-The create options contract function creates a new options contract \(series\) as per the below parameters. 
+The burn oTokens functionality allows a vault owner to reduce the amount of insurance that they have provided by bringing back oTokens to the insurance smart contract. By burning oTokens, a vault owner increases the ratio of collateral to oTokens Issued i.e. the vault's collateralization ratio, thus making the vault safer. 
+
+A vault owner can burn oTokens any time before expiry of the oToken contract 
 
 ```javascript
-function createOptionsContract(
-        string memory _collateralType,
-        string memory _underlyingType,
-        uint256 _strikePrice,
-        string memory _strikeAsset,
-        string memory _payoutType,
-        uint256 _expiry
-    )
-        public
-        returns (address)
+function burnOTokens(uint256 vaultIndex, uint256 amtToBurn)
 ```
 
-* `string memory _collateralType`: The collateral asset \(eg. ETH, USDC, etc.\) 
-* `string memory _underlyingType`: The asset upon which the option is based. In the insurance use case, the asset that is being protected. \(eg. DAI, cUSDC, etc.\) 
-* `uint256 _strikePrice`: The amount of the strike asset that will be paid out upon exercise \(eg. 1\)
-* `string memory _strikeAsset`: The asset in which the option is denominated. \(eg. DAI option denominated in USDC\)
-* `string memory _payoutType`: The asset in which the option is paid out. \(eg. ETH\)
-* `uint256 _expiry`: The unix time at which the option expires \(eg. 1574457816\)
-* `RETURN address:` The address of the options contract on success; otherwise TODO: Error Code
+> `vaultIndex` : The index of the vault that will be affected by burning oTokens 
+>
+> `amtToBurn` : The amount of oTokens to burn
+>
+> `msg.sender` : The owner of the vault and the account from which oTokens will be burned
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
-OptionsFactory factory = OptionsFactory(0xABCD...);
-address optionContract = factory.createOptionsContract(
-                                "ETH",
-                                "DAI",
-                                "USDC", 
-                                1,
-                                "USDC", 
-                                "ETH",  
-                                1574457816
-)
+oToken ocDai = oToken(0x3BA...);
+ocDai.burnOTokens(1, 100);
 ```
 {% endtab %}
 
-{% tab title="web3" %}
-```javascript
-const factory = OptionsFactory.at(0xABCD...);
-const optionContract = await factory.methods.createOptionsContract(
-                                "ETH",
-                                "DAI",
-                                "USDC", 
-                                1,
-                                "USDC", 
-                                "ETH",  
-                                1574457816
-).call();
-```
+{% tab title="Second Tab" %}
+
 {% endtab %}
 {% endtabs %}
-
-#### 
 
 ## Events 
 
