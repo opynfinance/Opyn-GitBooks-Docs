@@ -18,7 +18,7 @@ The main functionality offered by the convexity protocol is as below:
 The open vault function creates an empty vault and sets the owner of the vault to be the msg.sender. The collateral and the outstanding puts issued of the vault are set to 0. 
 
 ```javascript
-function openVault() public returns (uint)
+function openVault() returns (uint)
 ```
 
 > `msg.sender`: The account that shall be the owner of the vault
@@ -49,7 +49,7 @@ The add collateral functions serve two purposes. The first is to add collateral 
 The `addETHCollateral()` function is called if the specified collateral for the oToken contract is ETH. This function call will fail if the collateral type is not ETH. The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. 
 
 ```javascript
-function addETHCollateral(uint256 vaultIndex) public payable returns (uint256) 
+function addETHCollateral(uint256 vaultIndex) payable returns (uint256) 
 ```
 
 > `vaultIndex` : The index of the vault to add collateral to
@@ -57,10 +57,83 @@ function addETHCollateral(uint256 vaultIndex) public payable returns (uint256)
 > `msg.sender` : The account from which ETH collateral will be transferred into the oToken contract
 >
 > `msg.value` : The amount of ETH to add
+>
+> `RETURN` :
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+uint256 vaultCollateralBalance = ocDai.addETHCollateral(1)(1000000);
+```
+{% endtab %}
+
+{% tab title="Web3" %}
+```javascript
+
+```
+{% endtab %}
+{% endtabs %}
 
 #### Add ERC20 Collateral
 
 The `addERC20Collateral()` function is called if the specified collateral for the oToken contract is any ERC20 asset. The function will only add the specified collateral asset. It will fail if called on any other asset other than the pre specified collateral asset. 
+
+```javascript
+function addERC20Collateral(uint256 vaultIndex, uint256 amt) returns (uint256)
+```
+
+> `vaultIndex` : The index of the vault to add collateral to
+>
+> `amt` : The amount of collateral tokens to add
+>
+> `msg.sender` : The account from which the ERC20 collateral asset will be transferred into the oToken contract
+>
+> `RETURN` :
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+uint256 vaultCollateralBalance = ocDai.addERC20Collateral(1, 100000000);
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+### Issue oTokens
+
+The issue oTokens functionality allows the vault owner to mint new options in the form of oTokens. These oTokens are ERC-20 tokens and are fungible within a specific series. Different series of oTokens are not fungible with each other. 
+
+To mint oTokens, the vault that the tokens are being minted from must meet the `minCollateralizationRatio` requirements \(TODO: Link explanation\). Further, only the owner of a vault can mint oTokens. 
+
+```javascript
+function issueOTokens (uint256 vaultIndex, uint256 oTokensToIssue, address receiver)
+```
+
+> `vaultIndex`: The index of the vault to issue oTokens from
+>
+> `oTokensToIssue`: The amount of oTokens to issue
+>
+> `receiver`: The address that the newly minted oTokens will be sent to
+>
+> `msg.sender` : The account that is the owner of the vault that is issuing the oTokens
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+ocDai.issueOTokens(1, 1000, 0xFB3...);
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 #### Create Options Contract 
 
