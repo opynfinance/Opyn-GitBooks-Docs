@@ -16,6 +16,7 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 * Twitter
 * Discord
 * Email
+* [Beginner Resources](examples-tutorial.md#beginner-resources)
 
 ## Networks 
 

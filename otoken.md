@@ -1,8 +1,8 @@
-# oToken: Integrate with existing options markets
+# oToken: Integrate with existing insurance markets
 
 ## Introduction
 
-Every option supported by the Convexity Protocol is integrated through an oToken smart contract which is an [EIP-20](https://eips.ethereum.org/EIPS/eip-20) compliant representation of options issued by the protocol. Options sellers create options by locking up collateral for some period of time and minting oTokens. Each oToken protects a unit of the specified underlying ERC20 asset. The Options seller can sell these oTokens on an exchange to earn premiums. The oToken marketplaces deployed for the purpose of insurance are oDai, ocDai and ocUSDC. 
+Opyn uses options to provide insurance. Every option supported by the Convexity Protocol is integrated through an oToken smart contract which is an [EIP-20](https://eips.ethereum.org/EIPS/eip-20) compliant representation of options issued by the protocol. Options sellers create options by locking up collateral for some period of time and minting oTokens. Each oToken protects a unit of the specified underlying ERC20 asset. The Options seller can sell these oTokens on an exchange to earn premiums. The oToken marketplaces deployed for the purpose of insurance are oDai, ocDai and ocUSDC. 
 
 The main functionality offered by the convexity protocol is as below:
 
@@ -79,8 +79,6 @@ uint256 vaultCollateralBalance = ocDai.addETHCollateral(1)(1000000);
 
 The `addERC20Collateral()` function is called if the specified collateral for the oToken contract is any ERC20 asset. The function will only add the specified collateral asset. It will fail if called on any other asset other than the pre specified collateral asset. 
 
-Users must first approve the oToken contract before they can add the ERC20 collateral because they are transferring in ERC20 collateral tokens into the contract. 
-
 ```javascript
 function addERC20Collateral(uint256 vaultIndex, uint256 amt) returns (uint256)
 ```
@@ -147,7 +145,7 @@ ocDai.issueOTokens(1, 1000, 0xFB3...);
 
 The burn oTokens functionality allows a vault owner to reduce the amount of insurance that they have provided by bringing back oTokens to the oTokens smart contract. By burning oTokens, a vault owner increases the ratio of collateral to oTokens Issued i.e. the vault's collateralization ratio, thus making the vault safer. 
 
-A vault owner can burn oTokens any time before expiry of the oToken contract. Users first need to approve the oToken contract before they burn their oTokens because they are transferring in the ERC20 oTokens into the oToken contract. 
+A vault owner can burn oTokens any time before expiry of the oToken contract. 
 
 ```javascript
 function burnOTokens(uint256 vaultIndex, uint256 amtToBurn)
@@ -184,7 +182,7 @@ A vault that fails to meet the minimum collateralization requirement is subject 
 
 When a liquidation occurs, a liquidator may return some or all of the outstanding oTokens issued on behalf of a vault owner and in return receive a discounted amount of collateral held by the vault owner; this discount is defined as the liquidation incentive. 
 
-A liquidator may close up to a certain fixed percentage \(i.e. liquidation factor\) of the outstanding oTokens issued by the unsafe vault. Users first need to approve the oToken contract before they can liquidate a vault because they are transferring in the ERC20 oTokens into the oToken contract. 
+A liquidator may close up to a certain fixed percentage \(i.e. liquidation factor\) of the outstanding oTokens issued by the unsafe vault. 
 
 ```javascript
 function liquidate(uint256 vaultIndex, uint256 oTokensToLiquidate)
@@ -226,7 +224,13 @@ The amount of underlying tokens to be transferred can be calculated by calling t
 
 While exercise can be called at anytime during the exercise window, it may be unprofitable to exercise unless there was an actual crash in the price of the underlying asset. The function `isProfitableToExercise()` will return true if the price of the underlying asset has crashed below the strike price of the smart contract. We recommend using this function only as a proxy to provide context to users rather than as a necessary pre-condition to exercising because it relies on on-chain oracles which may not be reflective of actual prices. Furthermore, there might be times when the price of the underlying asset may not have moved, but there might be a liquidity crisis on other platforms which prevents users from accessing their funds on the other platforms, and hence an exercise would be beneficial. For a higher degree of accuracy, we recommend using a combination of off-chain price feeds to determine if it is profitable to exercise. 
 
+```javascript
+function exercise(uint256 oTokensToExercise) payable
+```
 
+> `oTokensToExercise` : The amount of oTokens being exercised
+>
+> `msg.sender` : The amount of
 
 ## Events 
 

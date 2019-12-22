@@ -2,7 +2,7 @@
 
 * [Getting Started](README.md)
 * [Protocol Overview](protocol-overview.md)
-* [oToken: Integrate with existing options markets](otoken.md)
+* [oToken: Integrate with existing insurance markets](otoken.md)
 * [OptionsFactory: Create new options markets](options-factory.md)
 * [Security](security.md)
 * [Examples / Tutorial](examples-tutorial.md)
