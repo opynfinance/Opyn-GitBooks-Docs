@@ -180,6 +180,8 @@ ocDai.burnOTokens(1, 100);
 
 A vault that fails to meet the minimum collateralization requirement is subject to liquidation by other users of the protocol, to return the vault back to a safe state. 
 
+Only an unsafe vault can be liquidated. You can check if a vault is unsafe by calling the function `isUnsafe(uint256 vaultIndex).` 
+
 When a liquidation occurs, a liquidator may return some or all of the outstanding oTokens issued on behalf of a vault owner and in return receive a discounted amount of collateral held by the vault owner; this discount is defined as the liquidation incentive. 
 
 A liquidator may close up to a certain fixed percentage \(i.e. liquidation factor\) of the outstanding oTokens issued by the unsafe vault. 
@@ -205,7 +207,10 @@ oToken ocDai = oToken(0x3BA...);
  * to the oToken contract. 
  */
 ocDai.approve(ocDai, 1000000000000000000000000000000);
-ocDai.liquidate(1, 10);
+
+uint256 vaultIndex = 1; 
+require(ocDai.isUnsafe(vaultIndex), "Vault is safe");
+ocDai.liquidate(vaultIndex, 10);
 ```
 {% endtab %}
 
@@ -230,7 +235,43 @@ function exercise(uint256 oTokensToExercise) payable
 
 > `oTokensToExercise` : The amount of oTokens being exercised
 >
-> `msg.sender` : The amount of
+> `msg.sender` : The account from which oTokens and underlying assets will be transferred into the oToke contract. This account will also get paid out the claims made. 
+>
+> `msg.value` : If the underlying protected is ETH, then the msg.value is the amount of ETH transferred. If not, it should be set to 0.
+
+{% tabs %}
+{% tab title="Solidiy" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+
+/** 
+ * the spender needs to approve the oToken contract to spend 
+ * their oTokens and underlying because they are transferring 
+ * oTokens and underlying tokens to the oToken contract. 
+ */
+ocDai.approve(ocDai, 1000000000000000000000000000000);
+cDai.approve(ocDai, 1000000000000000000000000000000);
+
+require(ocDai.isExerciseWindow() == true, "Can only exercise during the exericse window");
+
+uint2566 amtToExercise = 1000;
+uint256 underlyingToTransfer = ocDai.underlyingToTransfer(amtToExercise);
+require(cDai.balanceOf(address(this) >= underlyingToTransfer, "Insufficient underlying to exercise");
+
+ocDai.exercise(amtToExercise);
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+### Claim Collateral
+
+Once the oToken contract has expired, any vault owner can redeem their share of collateral. The amount of collateral that they get back is proportional to their collateral share in the total remaining collateral pool after all the exercise calls have been made. 
+
+
 
 ## Events 
 
