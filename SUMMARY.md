@@ -1,9 +1,9 @@
 # Table of contents
 
 * [Getting Started](README.md)
-* [oToken](otoken.md)
-* [Options Factory](options-factory.md)
-* [API](api.md)
-* [Examples / Tutorial](examples-tutorial.md)
+* [Protocol Overview](protocol-overview.md)
+* [oToken: Integrate with existing options markets](otoken.md)
+* [OptionsFactory: Create new options markets](options-factory.md)
 * [Security](security.md)
+* [Examples / Tutorial](examples-tutorial.md)
 

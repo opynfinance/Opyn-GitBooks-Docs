@@ -1,4 +1,4 @@
-# oToken
+# oToken: Integrate with existing options markets
 
 ## Introduction
 
@@ -79,6 +79,8 @@ uint256 vaultCollateralBalance = ocDai.addETHCollateral(1)(1000000);
 
 The `addERC20Collateral()` function is called if the specified collateral for the oToken contract is any ERC20 asset. The function will only add the specified collateral asset. It will fail if called on any other asset other than the pre specified collateral asset. 
 
+Users must first approve the oToken contract before they can add the ERC20 collateral because they are transferring in ERC20 collateral tokens into the contract. 
+
 ```javascript
 function addERC20Collateral(uint256 vaultIndex, uint256 amt) returns (uint256)
 ```
@@ -95,6 +97,12 @@ function addERC20Collateral(uint256 vaultIndex, uint256 amt) returns (uint256)
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+/** 
+ * the spender needs to approve the oToken contract to spend 
+ * their ERC20Collateral because they are transferring collateral 
+ * tokens to the oToken contract. 
+ */
+ERC20Collateral.approve(ocDai, 1000000000000000000000000000000);
 uint256 vaultCollateralBalance = ocDai.addERC20Collateral(1, 100000000);
 ```
 {% endtab %}
@@ -135,11 +143,11 @@ ocDai.issueOTokens(1, 1000, 0xFB3...);
 {% endtab %}
 {% endtabs %}
 
-#### Burn oTokens
+### Burn oTokens
 
-The burn oTokens functionality allows a vault owner to reduce the amount of insurance that they have provided by bringing back oTokens to the insurance smart contract. By burning oTokens, a vault owner increases the ratio of collateral to oTokens Issued i.e. the vault's collateralization ratio, thus making the vault safer. 
+The burn oTokens functionality allows a vault owner to reduce the amount of insurance that they have provided by bringing back oTokens to the oTokens smart contract. By burning oTokens, a vault owner increases the ratio of collateral to oTokens Issued i.e. the vault's collateralization ratio, thus making the vault safer. 
 
-A vault owner can burn oTokens any time before expiry of the oToken contract 
+A vault owner can burn oTokens any time before expiry of the oToken contract. Users first need to approve the oToken contract before they burn their oTokens because they are transferring in the ERC20 oTokens into the oToken contract. 
 
 ```javascript
 function burnOTokens(uint256 vaultIndex, uint256 amtToBurn)
@@ -155,6 +163,12 @@ function burnOTokens(uint256 vaultIndex, uint256 amtToBurn)
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+/** 
+ * the spender needs to approve the oToken contract to spend 
+ * their oTokens because they are transferring oTokens 
+ * to the oToken contract. 
+ */
+ocDai.approve(ocDai, 1000000000000000000000000000000);
 ocDai.burnOTokens(1, 100);
 ```
 {% endtab %}
@@ -163,6 +177,56 @@ ocDai.burnOTokens(1, 100);
 
 {% endtab %}
 {% endtabs %}
+
+### Liquidate
+
+A vault that fails to meet the minimum collateralization requirement is subject to liquidation by other users of the protocol, to return the vault back to a safe state. 
+
+When a liquidation occurs, a liquidator may return some or all of the outstanding oTokens issued on behalf of a vault owner and in return receive a discounted amount of collateral held by the vault owner; this discount is defined as the liquidation incentive. 
+
+A liquidator may close up to a certain fixed percentage \(i.e. liquidation factor\) of the outstanding oTokens issued by the unsafe vault. Users first need to approve the oToken contract before they can liquidate a vault because they are transferring in the ERC20 oTokens into the oToken contract. 
+
+```javascript
+function liquidate(uint256 vaultIndex, uint256 oTokensToLiquidate)
+```
+
+> `vaultIndex` : The index of the vault that is unsafe and is to be liquidated
+>
+> `oTokensToLiqudate` : The amount of oTokens that the liquidator brings back to the oToken contract
+>
+> `msg.sender` : The account from which oTokens will be transferred into the oToken contract. The collateral along with a liquidation incentive will also be paid out to this account.
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+
+/** 
+ * the spender needs to approve the oToken contract to spend 
+ * their oTokens because they are transferring oTokens 
+ * to the oToken contract. 
+ */
+ocDai.approve(ocDai, 1000000000000000000000000000000);
+ocDai.liquidate(1, 10);
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+### Exercise
+
+During the exercise window, any oToken holders can transfer their oTokens and corresponding amount of underlying tokens and in return get out strike price amount of the collateral asset per unit of oToken exercised. 
+
+To determine if it is the exercise window, call `isExerciseWindow()`. Exercise can only be called during the exercise window. 
+
+The amount of underlying tokens to be transferred can be calculated by calling the `underlyingToTransfer(uint256 oTokensToExercise)` function. Users first need to approve the oToken contract before they can liquidate a vault because they are transferring in the ERC20 oTokens and underlying tokens into the oToken contract. 
+
+While exercise can be called at anytime during the exercise window, it may be unprofitable to exercise unless there was an actual crash in the price of the underlying asset. The function `isProfitableToExercise()` will return true if the price of the underlying asset has crashed below the strike price of the smart contract. We recommend using this function only as a proxy to provide context to users rather than as a necessary pre-condition to exercising because it relies on on-chain oracles which may not be reflective of actual prices. Furthermore, there might be times when the price of the underlying asset may not have moved, but there might be a liquidity crisis on other platforms which prevents users from accessing their funds on the other platforms, and hence an exercise would be beneficial. For a higher degree of accuracy, we recommend using a combination of off-chain price feeds to determine if it is profitable to exercise. 
+
+
 
 ## Events 
 
