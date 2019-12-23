@@ -520,11 +520,11 @@ TODO: Revisit The contract through which the buy and sell options happens.
 
 ### oToken Exchange Rate
 
-### Expiry
+### Expiry Date
 
-### Collateral
+### Collateral Asset
 
-### Underlying
+### Underlying Asset
 
 ### Strike Asset 
 
