@@ -13,6 +13,66 @@ The main functionality offered by the convexity protocol is as below:
 
 ## State Changing Functions 
 
+### Create ETH Collateral Option
+
+This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
+
+```javascript
+function createETHCollateralOption(uint256 amtToCreate, address receiver)
+```
+
+> `amtToCreate` : number of oTokens to create
+>
+> `receiver` : The account to send the newly minted oTokens to
+>
+> `msg.value` : The collateral to be added to the newly created vault
+>
+> `msg.sender` : The account that will be the owner of the vault
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+ocDai.createETHCollateralOption.value(100000)(10, 0xFDA...);
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+### Add ETH Collateral Options
+
+This function[ ](otoken.md#open-vault)[adds ETH collateral](otoken.md#add-eth-collateral-options) to an existing vault and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
+
+```javascript
+function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, uint256 vaultIndex, address receiver)
+```
+
+> `amtToCreate` : number of oTokens to create
+>
+> `vaultIndex` : The index of the vault to add oTokens to
+>
+> `receiver` : The account to send the newly minted oTokens to
+>
+> `msg.value` : The collateral to be added to the existing vault
+>
+> `msg.sender` : The account that is the owner of the vault
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+ocDai.createETHCollateralOption.value(100000)(10, 0xFDA...);
+```
+{% endtab %}
+{% endtabs %}
+
+### Create and Sell ETH Collateral Options
+
+### Add and Sell ETH Collateral Options
+
 ### **Open Vault**
 
 The open vault function creates an empty vault and sets the owner of the vault to be the msg.sender. The collateral and the outstanding puts issued of the vault are set to 0. 
