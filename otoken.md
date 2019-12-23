@@ -524,7 +524,21 @@ TODO: Revisit The contract through which the buy and sell options happens.
 
 ### Collateral
 
-Underlying
+### Underlying
+
+### Strike Asset 
+
+### Underlying To Transfer Calculations
+
+### Has the contract Expired
+
+### Is it the Exercise Window 
+
+### Get Vaults by Owner
+
+### Get Vault by Index
+
+### Is the given vault Unsafe
 
 ### Number of Vaults
 
