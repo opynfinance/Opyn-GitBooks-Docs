@@ -269,13 +269,178 @@ ocDai.exercise(amtToExercise);
 
 ### Claim Collateral
 
-Once the oToken contract has expired, any vault owner can redeem their share of collateral. The amount of collateral that they get back is proportional to their collateral share in the total remaining collateral pool after all the exercise calls have been made. 
+Once the oToken contract has expired, any vault owner can redeem their share of collateral. The amount of collateral that the owner gets back is determined by the proportion of their collateral in the original unexercised collateral pool. The vault owner is paid the same proportion from the total remaining collateral pool after all the exercise calls have been made. If no exercise calls have been made, they get all of their collateral back. 
 
+You can call the `hasExpired()` function to check if the oToken contract has expired. 
 
+```javascript
+function claimCollateral (uint256 vaultIndex)
+```
 
-## Events 
+> `vaultIndex` : The index of the vault to claim collateral from
+>
+> `msg.sender` : The account that owns the vault. The collateral claimed from the vault will be sent to this account
 
-## Error Table
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+require(ocDai.hasExpired() == true, "Can only claim collateral back after the exericse window");
+ocDai.claimCollateral(1);
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+## Key Events 
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Event</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p><code>VaultOpened(</code>
+        </p>
+        <p><code>uint256 vaultIndex,</code>
+        </p>
+        <p><code>address vaultOwner)</code>
+        </p>
+      </td>
+      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#open-vault">Open Vault</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>ETHCollateralAdded(</code>
+        </p>
+        <p><code>uint256 vaultIndex,</code>
+        </p>
+        <p><code>uint256 amount, </code>
+        </p>
+        <p><code>address payer)</code>
+        </p>
+      </td>
+      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#add-eth-collateral">Add ETH Collateral</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>ERC20CollateralAdded(</code>
+        </p>
+        <p><code>uint256 vaultIndex,</code>
+        </p>
+        <p><code>uint256 amount,</code>
+        </p>
+        <p><code>address payer)</code>
+        </p>
+      </td>
+      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#add-erc20-collateral">Add ERC20 Collateral</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>IssuedOTokens(</code>
+        </p>
+        <p><code>address issuedTo, </code>
+        </p>
+        <p><code>uint256 oTokensIssued, </code>
+        </p>
+        <p><code>uint256 vaultIndex)</code>
+        </p>
+      </td>
+      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#issue-otokens">Issue oTokens</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>Liquidate (</code>
+        </p>
+        <p><code>uint256 amtCollateralToPay,</code>
+        </p>
+        <p><code>uint256 vaultIndex,</code>
+        </p>
+        <p><code>address liquidator)</code>
+        </p>
+      </td>
+      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#liquidate">Liquidate</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>Exercise (</code>
+        </p>
+        <p><code>uint256 amtUnderlyingToPay, </code>
+        </p>
+        <p><code>uint256 amtCollateralToPay,</code>
+        </p>
+        <p><code>address exerciser)</code>
+        </p>
+      </td>
+      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#exercise">Exercise</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>ClaimedCollateral(</code>
+        </p>
+        <p><code>uint256 amtCollateralClaimed, </code>
+        </p>
+        <p><code>uint256 amtUnderlyingClaimed, uint256 vaultIndex, </code>
+        </p>
+        <p><code>address vaultOwner)</code>
+        </p>
+      </td>
+      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#claim-collateral">Claim Collateral</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>BurnOTokens (</code>
+        </p>
+        <p><code>uint256 vaultIndex, </code>
+        </p>
+        <p><code>uint256 oTokensBurned)</code>
+        </p>
+      </td>
+      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#burn-otokens">Burn oTokens</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>TransferVaultOwnership (</code>
+        </p>
+        <p><code>uint256 VaultIndex, </code>
+        </p>
+        <p><code>address oldOwner, </code>
+        </p>
+        <p><code>address payable newOwner)</code>
+        </p>
+      </td>
+      <td style="text-align:left">Emitted upon a successful Transfer Vault Ownership</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>RemoveCollateral (</code>
+        </p>
+        <p><code>uint256 vaultIndex, </code>
+        </p>
+        <p><code>uint256 amtRemoved, </code>
+        </p>
+        <p><code>address vaultOwner)</code>
+        </p>
+      </td>
+      <td style="text-align:left">Emitted upon a successful Remove Collateral</td>
+    </tr>
+  </tbody>
+</table>## Error Table
 
 
 
