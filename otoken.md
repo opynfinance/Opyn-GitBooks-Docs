@@ -17,6 +17,8 @@ The main functionality offered by the convexity protocol is as below:
 
 The open vault function creates an empty vault and sets the owner of the vault to be the msg.sender. The collateral and the outstanding puts issued of the vault are set to 0. 
 
+A vault can only be opened before expiry. You can check if a contract has expired by calling `hasExpired()`. 
+
 ```javascript
 function openVault() returns (uint)
 ```
@@ -29,6 +31,7 @@ function openVault() returns (uint)
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+require(ocDai.hasExpired() == false, "Can only open vault before expiry");
 uint256 vaultIndex = ocDai.openVault();
 ```
 {% endtab %}
@@ -42,7 +45,9 @@ uint256 vaultIndex = ocDai.openVault();
 
 ### Add Collateral
 
-The add collateral functions serve two purposes. The first is to add collateral to a new vault. A vault needs to meet the minimum collateral requirements before it is safe for the owner to mint oTokens.The second purpose is to top up i.e. turn a vault that is unsafe because it doesn't meet the minimum collateral requirements into a vault that is safe. The add collateral functions can be called at any point before the oToken's expiry. 
+The add collateral functions serve two purposes. The first is to add collateral to a new vault. A vault needs to meet the minimum collateral requirements before it is safe for the owner to mint oTokens.The second purpose is to top up i.e. turn a vault that is unsafe because it doesn't meet the minimum collateral requirements into a vault that is safe. 
+
+The add collateral functions can be called at any point before the oToken's expiry. You can check if a contract has expired by calling `hasExpired()`. 
 
 #### Add ETH Collateral
 
@@ -64,6 +69,7 @@ function addETHCollateral(uint256 vaultIndex) payable returns (uint256)
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+require(ocDai.hasExpired() == false, "Can only add collateral before expiry");
 uint256 vaultCollateralBalance = ocDai.addETHCollateral(1)(1000000);
 ```
 {% endtab %}
@@ -101,6 +107,7 @@ oToken ocDai = oToken(0x3BA...);
  * tokens to the oToken contract. 
  */
 ERC20Collateral.approve(ocDai, 1000000000000000000000000000000);
+require(ocDai.hasExpired() == false, "Can only add collateral before expiry");
 uint256 vaultCollateralBalance = ocDai.addERC20Collateral(1, 100000000);
 ```
 {% endtab %}
@@ -112,7 +119,7 @@ uint256 vaultCollateralBalance = ocDai.addERC20Collateral(1, 100000000);
 
 ### Issue oTokens
 
-The issue oTokens functionality allows the vault owner to mint new options in the form of oTokens. These oTokens are ERC-20 tokens and are fungible within a specific series. Different series of oTokens are not fungible with each other. 
+The issue oTokens functionality allows the vault owner to mint new options in the form of oTokens before expiry of the oToken contract. These oTokens are ERC-20 tokens and are fungible within a specific series. Different series of oTokens are not fungible with each other. 
 
 To mint oTokens, the vault that the tokens are being minted from must meet the `minCollateralizationRatio` requirements \(TODO: Link explanation\). Further, only the owner of a vault can mint oTokens. 
 
@@ -132,6 +139,7 @@ function issueOTokens (uint256 vaultIndex, uint256 oTokensToIssue, address recei
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+require(ocDai.hasExpired() == false, "Can only issue oTokens before expiry");
 ocDai.issueOTokens(1, 1000, 0xFB3...);
 ```
 {% endtab %}
@@ -161,6 +169,7 @@ function removeCollateral(uint256 vaultIndex, uint256 amtToRemove)
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+require(ocDai.hasExpired() == false, "Can only remove collateral before expiry");
 ocDai.removeCollateral(1, 1000000);
 ```
 {% endtab %}
@@ -174,7 +183,7 @@ ocDai.removeCollateral(1, 1000000);
 
 The burn oTokens functionality allows a vault owner to reduce the amount of insurance that they have provided by bringing back oTokens to the oTokens smart contract. By burning oTokens, a vault owner increases the ratio of collateral to oTokens Issued i.e. the vault's collateralization ratio, thus making the vault safer. 
 
-A vault owner can burn oTokens any time before expiry of the oToken contract. 
+A vault owner can burn oTokens any time before expiry of the oToken contract. You can check if a contract has expired by calling `hasExpired()`. 
 
 ```javascript
 function burnOTokens(uint256 vaultIndex, uint256 amtToBurn)
@@ -196,6 +205,7 @@ oToken ocDai = oToken(0x3BA...);
  * to the oToken contract. 
  */
 ocDai.approve(ocDai, 1000000000000000000000000000000);
+require(ocDai.hasExpired() == false, "Can only burn oTokens before expiry");
 ocDai.burnOTokens(1, 100);
 ```
 {% endtab %}
@@ -207,7 +217,7 @@ ocDai.burnOTokens(1, 100);
 
 ### Liquidate
 
-A vault that fails to meet the minimum collateralization requirement is subject to liquidation by other users of the protocol, to return the vault back to a safe state. 
+A vault that fails to meet the minimum collateralization requirement is subject to liquidation by other users of the protocol, to return the vault back to a safe state. Liquidate can only be called before expiry. 
 
 Only an unsafe vault can be liquidated. You can check if a vault is unsafe by calling the function `isUnsafe(uint256 vaultIndex).` 
 
@@ -238,6 +248,7 @@ oToken ocDai = oToken(0x3BA...);
 ocDai.approve(ocDai, 1000000000000000000000000000000);
 
 uint256 vaultIndex = 1; 
+require(ocDai.hasExpired() == false, "Can only liquidate before expiry");
 require(ocDai.isUnsafe(vaultIndex), "Vault is safe");
 ocDai.liquidate(vaultIndex, 10);
 ```
@@ -316,6 +327,33 @@ function claimCollateral (uint256 vaultIndex)
 oToken ocDai = oToken(0x3BA...);
 require(ocDai.hasExpired() == true, "Can only claim collateral back after the exericse window");
 ocDai.claimCollateral(1);
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+### Transfer Vault Ownership
+
+The transfer ownership function allows the owner of the vault to set someone else to be the owner of the vault. This function can be called at any time. 
+
+```javascript
+function transferVaultOwnership(uint256 vaultIndex, address payable newOwner)
+```
+
+> `vaultIndex` : The index of the vault to transfer ownership of
+>
+> `newOwner` : The account that will be the next owner of the vault
+>
+> `msg.sender` : The current owner of the vault
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+ocDai.transferVaultOwnership(1, 0xFDA...);
 ```
 {% endtab %}
 
@@ -473,6 +511,20 @@ ocDai.claimCollateral(1);
 </table>## Error Table
 
 ## Read Only Functions 
+
+### Options Exchange
+
+TODO: Revisit The contract through which the buy and sell options happens.
+
+### Strike Price 
+
+### oToken Exchange Rate
+
+### Expiry
+
+### Collateral
+
+Underlying
 
 ### Number of Vaults
 
