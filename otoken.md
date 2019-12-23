@@ -11,7 +11,7 @@ The main functionality offered by the convexity protocol is as below:
 3. Liquidate the undercollateralized repos
 4. Exercise the oTokens during the expiry window
 
-## Functions 
+## State Changing Functions 
 
 ### **Open Vault**
 
@@ -133,6 +133,35 @@ function issueOTokens (uint256 vaultIndex, uint256 oTokensToIssue, address recei
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 ocDai.issueOTokens(1, 1000, 0xFB3...);
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+### Remove Collateral
+
+The remove collateral function allows a vault owner to remove excess collateral in their vault. By removing collateral, a vault owner reduces the ratio of collateral to oTokens issued i.e. the vault's collateralization ratio, thus making the vault less safe. 
+
+A vault owner can remove collateral before expiry of the oToken contract. The vault needs to remain safe after the collateral has been removed. 
+
+```javascript
+function removeCollateral(uint256 vaultIndex, uint256 amtToRemove) 
+```
+
+> `vaultIndex` : The index of the vault to remove collateral from
+>
+> `amtToRemove` : The amount of collateral to remove
+>
+> `msg.sender` : The account of the owner of the vault. The collateral will be sent to this account.
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+ocDai.removeCollateral(1, 1000000);
 ```
 {% endtab %}
 
@@ -391,7 +420,7 @@ ocDai.claimCollateral(1);
       <td style="text-align:left">
         <p><code>ClaimedCollateral(</code>
         </p>
-        <p><code>uint256 amtCollateralClaimed, </code>
+        <p><code>uint256 amtCollateralClaimed,</code>
         </p>
         <p><code>uint256 amtUnderlyingClaimed, uint256 vaultIndex, </code>
         </p>
@@ -437,10 +466,21 @@ ocDai.claimCollateral(1);
         <p><code>address vaultOwner)</code>
         </p>
       </td>
-      <td style="text-align:left">Emitted upon a successful Remove Collateral</td>
+      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#remove-collateral">Remove Collateral</a>
+      </td>
     </tr>
   </tbody>
 </table>## Error Table
+
+## Read Only Functions 
+
+### Number of Vaults
+
+
+
+
+
+
 
 
 
