@@ -15,6 +15,8 @@ The main functionality offered by the convexity protocol is as below:
 
 ### Create Options
 
+#### ETH Collateralized Options
+
 This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
 
 ```javascript
@@ -42,7 +44,34 @@ ocDai.createETHCollateralOption.value(100000)(10, 0xFDA...);
 {% endtab %}
 {% endtabs %}
 
+#### ERC20 Collateralized Options
+
+This function[ opens a new vault](otoken.md#open-vault), [adds ERC20 collatera](otoken.md#erc20-collateralized-options)[l](otoken.md#erc20-collateralized-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
+
+```javascript
+function createERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, address receiver) 
+```
+
+> `amtToCreate` : number of oTokens to create
+>
+> `amtCollateral` : The collateral to be added to the newly created vault
+>
+> `receiver` : The account to send the newly minted oTokens to
+>
+> `msg.sender` : The account that will be the owner of the vault
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+ocDai.createERC20CollateralOption(10, 100000, 0xFDA...);
+```
+{% endtab %}
+{% endtabs %}
+
 ### Add Options
+
+#### ETH Collateralized Options
 
 This function[ ](otoken.md#open-vault)[adds ETH collateral](otoken.md#add-eth-collateral-options) to an existing vault and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
 
@@ -69,7 +98,38 @@ ocDai.addETHCollateralOption.value(100000)(10, 1, 0xFDA...);
 {% endtab %}
 {% endtabs %}
 
+#### ERC20 Collateralized Options
+
+This function [adds ERC20 collatera](otoken.md#erc20-collateralized-options)[l](otoken.md#erc20-collateralized-options) to an existing vault and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
+
+```javascript
+function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, uint256 vaultIndex, address receiver)
+```
+
+> `amtToCreate` : number of oTokens to create
+>
+> `amtCollateral` : The collateral to be added to the newly created vault
+>
+> `receiver` : The account to send the newly minted oTokens to
+>
+> `vaultIndex` : The index of the vault to add oTokens to
+>
+> `msg.sender` : The account that will be the owner of the vault
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+ocDai.addERC20CollateralOption(10, 100000, 1, 0xFDA...);
+```
+{% endtab %}
+{% endtabs %}
+
+### 
+
 ### Create and Sell Options
+
+#### ETH Collateralized Options
 
 This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the oTokens for premiums on Uniswap.
 
@@ -95,6 +155,8 @@ ocDai.createAndSellETHCollateralOption.value(100000)(10, 0xFDA...);
 {% endtabs %}
 
 ### Add and Sell Options
+
+#### ETH Collateralized Options
 
 This function[ ](otoken.md#open-vault)[adds ETH collateral](otoken.md#add-eth-collateral-options) to an existing vault and [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the issued oTokens on Uniswap.
 
