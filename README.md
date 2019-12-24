@@ -16,16 +16,7 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 * Twitter
 * Discord
 * Email
-
-### Additional Beginner Resources
-
-* [Connect a JS app to a smart contract on the Ethereum Blockchain](https://medium.com/coinmonks/tutorial-how-to-connect-a-javascript-front-end-to-a-smart-contract-6af4bdf45f7a)
-* [Web3](https://github.com/ethereum/wiki/wiki/JavaScript-API)
-* Faucets for testnet ETH
-  * Rinkeby
-  * Goreili
-  * Kovan
-* Faucet for oTokens
+* [Beginner Resources](examples-tutorial.md#beginner-resources)
 
 ## Networks 
 
@@ -118,20 +109,6 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
   </tbody>
 </table>### Mainnet
 
-
-
-## Smart Contract Architecture 
-
-### Options Factory
-
-The OptionsFactory contract is used to create and keep track of options marketplaces. Each options marketplace is a new instantiation of the oToken contract. 
-
-![Factory contract keeps track of all the oToken contracts.](.gitbook/assets/screen-shot-2019-12-19-at-6.54.00-pm.png)
-
-### oToken
-
-Every option supported by the Convexity Protocol is integrated through an oToken smart contract. Options sellers create options by locking up collateral for some period of time and minting oTokens. Each oToken protects a unit of the specified underlying asset. The Options seller can sell these oTokens on an exchange to earn premiums. The oToken marketplaces deployed for the purpose of insurance are oDai, ocDai and ocUSDC. 
-
 ## Example Use Case: Insurance on Compound
 
 Consider the case of a Compound user who wants insurance on their Dai locked in Compound. They fear Compound getting hacked or having a bank run. The insurance buyer pays the insurance provider some premium ahead of time to get access to oTokens. An example of an oToken is the ocDai token which protects the holder of the token from Jan 1 2020 to Jan 1 2021 against any technical or financial risks that Compound's cDai faces. In the case of a disaster, the holder of the ocDai can turn in their oToken and their cDai and in exchange take the collateral locked in the Convexity Protocol by insurance providers. If there is no disaster, it is strictly worse for the holder of cDai to give up their cDai in exchange for collateral locked on the Convexity protocol. In such a case, the insurance providers keep their collateral and earn a premium on it. 
@@ -146,14 +123,20 @@ Consider the case of a Compound user who wants insurance on their Dai locked in 
 
 | Term | Description |
 | :--- | :--- |
-| Put Option |  |
-| Premium |  |
-| Option Seller |  |
-| Option Buyer |  |
-| Underlying |  |
-| Strike Asset |  |
-| Strike Price |  |
+| Put Option | A put option gives the owner/buyer the right to sell an asset, at a specified price, by a predetermined date to the seller of the put option. |
+| Premium | The money paid upfront by the option buyers to the option sellers in return |
+| Option Seller | The person who sells an **option** in return for a premium and is obligated to perform when the buyer exercises his right under the **option** contract.  |
+| Option Buyer | The person who buys an **option** by paying a premium. This person has right but not obligation to exercise the option. |
+| Underlying | The asset that is being protected by the option contract is called the underlying asset. The asset that the owner/buyer of the put option has the right to sell is called the underlying asset.  |
+| Strike Asset | The asset that the holder/buyer of the put option will receive their payment in if they sell the underlying asset is called the strike asset.  |
+| Strike Price | The strike price is the specified price at which the buyer/owner of the option can sell the underlying asset. |
 | putsOutstanding |  |
+| minCollateralizationRatio |  |
+| Safe |  |
+| Unsafe |  |
+| Liquidation factor |  |
+| Exercise |  |
+| Exercise Window |  |
 
 
 
