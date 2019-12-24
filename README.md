@@ -111,7 +111,9 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 
 ## Example Use Case: Insurance on Compound
 
-Consider the case of a Compound user - person A, who wants insurance on their Dai locked in Compound. They fear Compound getting hacked or having a bank run. The insurance buyer, person A, pays the insurance provider, person B,  0.01 ETH premium ahead of time to get access to oTokens. In return, person B, locks up 1 USDC of collateral on the insurance platform. An example of an oToken is the ocDai token which protects the holder of the token from Jan 1 2020 to Jan 1 2021 against any technical or financial risks that Compound's cDai faces. In the case of a disaster, the holder of the ocDai, person A, can turn in their oTokens and their cDai and in exchange take the collateral locked in the Convexity Protocol by insurance providers. If there is no disaster, it is strictly worse for the holder of cDai to give up their cDai in exchange for collateral locked on the Convexity protocol. In such a case, the insurance provider, person B, keeps their collateral and earns a premium on it. 
+Consider the case of a Compound user, person A, who wants insurance on their Dai locked in Compound. They fear Compound getting hacked or having a bank run. The insurance buyer, person A, pays the insurance provider, person B,  0.01 ETH premium ahead of time to get access to ocDai tokens. In return, person B, locks up 1 ETH of collateral on the insurance platform. 
+
+The ocDai token protects the holder of the token from Jan 1 2020 to Jan 1 2021 against any technical or financial risks that Compound's cDai faces. In the case of a disaster, the holder of the ocDai, person A, can turn in their oTokens and their cDai and in exchange take out $1 worth of collateral locked in the Convexity Protocol by insurance providers. If there is no disaster, it is strictly worse for the holder of cDai to give up their cDai in exchange for collateral locked on the Convexity protocol. In such a case, the insurance provider, person B, keeps their collateral and earns a premium on it. 
 
 ## Gas Costs 
 
@@ -185,7 +187,7 @@ Consider the case of a Compound user - person A, who wants insurance on their Da
           in if they sell the underlying asset is called the strike asset.</p>
         <p><a href="./#example-use-case-insurance-on-compound">In the Example Insurance Use Case:</a>
         </p>
-        <p>The strike asset is USDC.</p>
+        <p>The strike asset is USD.</p>
       </td>
     </tr>
     <tr>
@@ -196,39 +198,63 @@ Consider the case of a Compound user - person A, who wants insurance on their Da
         <p></p>
         <p><a href="./#example-use-case-insurance-on-compound">In the Example Insurance Use Case:</a>
         </p>
-        <p>The strike price is 1 USDC.</p>
+        <p>The strike price is 1 USD.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Collateral Asset</td>
+      <td style="text-align:left">
+        <p>The asset that the insurance provider puts down as collateral is called
+          the collateral asset.</p>
+        <p></p>
+        <p><a href="./#example-use-case-insurance-on-compound">In the Example Insurance Use Case:</a>
+        </p>
+        <p>The collateral asset is ETH.</p>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">putsOutstanding</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">The number of oTokens issued by a vault.</td>
     </tr>
     <tr>
       <td style="text-align:left">minCollateralizationRatio</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">The ratio of collateral to the amount of insurance payout that a vault
+        would have to make is called the collateralization ratio. The minCollateralizationRatio
+        is the lower bound that a vault&apos;s collateralization ratio is allowed
+        to be at.</td>
     </tr>
     <tr>
       <td style="text-align:left">Safe</td>
-      <td style="text-align:left"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Unsafe</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p>A vault that meets the minCollateralization condition is considered safe.
+          i.e.</p>
+        <p></p>
+        <p></p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">Liquidation factor</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">The maximum percentage of collateral that can be liquidated in one call
+        of the liquidation function.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Liquidation Incentive</td>
+      <td style="text-align:left">
+        <p>The reward that is paid out to the liquidator. The liquidator is paid
+          out</p>
+        <p></p>
+        <p>for every oToken that they bring back to the insurance contract to liquidate.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">Exercise</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">To exercise means to put into effect the right to sell the underlying
+        asset at the specified price.</td>
     </tr>
     <tr>
       <td style="text-align:left">Exercise Window</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">The time period during which the option buyer/ owner can exercise their
+        option.</td>
     </tr>
   </tbody>
 </table>
-
-
-
