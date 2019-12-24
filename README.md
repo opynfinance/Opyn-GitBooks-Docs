@@ -111,7 +111,7 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 
 ## Example Use Case: Insurance on Compound
 
-Consider the case of a Compound user who wants insurance on their Dai locked in Compound. They fear Compound getting hacked or having a bank run. The insurance buyer pays the insurance provider some premium ahead of time to get access to oTokens. An example of an oToken is the ocDai token which protects the holder of the token from Jan 1 2020 to Jan 1 2021 against any technical or financial risks that Compound's cDai faces. In the case of a disaster, the holder of the ocDai can turn in their oToken and their cDai and in exchange take the collateral locked in the Convexity Protocol by insurance providers. If there is no disaster, it is strictly worse for the holder of cDai to give up their cDai in exchange for collateral locked on the Convexity protocol. In such a case, the insurance providers keep their collateral and earn a premium on it. 
+Consider the case of a Compound user - person A, who wants insurance on their Dai locked in Compound. They fear Compound getting hacked or having a bank run. The insurance buyer, person A, pays the insurance provider, person B,  0.01 ETH premium ahead of time to get access to oTokens. In return, person B, locks up 1 USDC of collateral on the insurance platform. An example of an oToken is the ocDai token which protects the holder of the token from Jan 1 2020 to Jan 1 2021 against any technical or financial risks that Compound's cDai faces. In the case of a disaster, the holder of the ocDai, person A, can turn in their oTokens and their cDai and in exchange take the collateral locked in the Convexity Protocol by insurance providers. If there is no disaster, it is strictly worse for the holder of cDai to give up their cDai in exchange for collateral locked on the Convexity protocol. In such a case, the insurance provider, person B, keeps their collateral and earns a premium on it. 
 
 ## Gas Costs 
 
@@ -121,22 +121,114 @@ Consider the case of a Compound user who wants insurance on their Dai locked in 
 
 ## Glossary of Terms 
 
-| Term | Description |
-| :--- | :--- |
-| Put Option | A put option gives the owner/buyer the right to sell an asset, at a specified price, by a predetermined date to the seller of the put option. |
-| Premium | The money paid upfront by the option buyers to the option sellers in return |
-| Option Seller | The person who sells an **option** in return for a premium and is obligated to perform when the buyer exercises his right under the **option** contract.  |
-| Option Buyer | The person who buys an **option** by paying a premium. This person has right but not obligation to exercise the option. |
-| Underlying | The asset that is being protected by the option contract is called the underlying asset. The asset that the owner/buyer of the put option has the right to sell is called the underlying asset.  |
-| Strike Asset | The asset that the holder/buyer of the put option will receive their payment in if they sell the underlying asset is called the strike asset.  |
-| Strike Price | The strike price is the specified price at which the buyer/owner of the option can sell the underlying asset. |
-| putsOutstanding |  |
-| minCollateralizationRatio |  |
-| Safe |  |
-| Unsafe |  |
-| Liquidation factor |  |
-| Exercise |  |
-| Exercise Window |  |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Term</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Put Option</td>
+      <td style="text-align:left">A put option gives the owner/buyer the right to sell an asset, at a specified
+        price, by a predetermined date to the seller of the put option.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Premium</td>
+      <td style="text-align:left">
+        <p>The money paid upfront by the option buyers to the option sellers in return.</p>
+        <p></p>
+        <p><a href="./#example-use-case-insurance-on-compound">In the Example Insurance Use Case:</a>
+        </p>
+        <p>0.01 ETH is the premium paid by person A to person B.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Option Seller</td>
+      <td style="text-align:left">
+        <p>The person who sells an <b>option</b> in return for a premium and is obligated
+          to perform when the buyer exercises his right under the <b>option</b> contract.</p>
+        <p></p>
+        <p><a href="./#example-use-case-insurance-on-compound">In the Example Insurance Use Case:</a>
+        </p>
+        <p>Person B is the option seller.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Option Buyer</td>
+      <td style="text-align:left">
+        <p>The person who buys an <b>option</b> by paying a premium. This person has
+          right but not obligation to exercise the option.</p>
+        <p></p>
+        <p><a href="./#example-use-case-insurance-on-compound">In the Example Insurance Use Case:</a>
+        </p>
+        <p>Person A is the option buyer/ owner.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Underlying</td>
+      <td style="text-align:left">
+        <p>The asset that is being protected by the option contract is called the
+          underlying asset. The asset that the owner/buyer of the put option has
+          the right to sell is called the underlying asset.</p>
+        <p></p>
+        <p><a href="./#example-use-case-insurance-on-compound">In the Example Insurance Use Case:</a>
+        </p>
+        <p>The underlying asset is cDai.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Strike Asset</td>
+      <td style="text-align:left">
+        <p>The asset that the holder/buyer of the put option will receive their payment
+          in if they sell the underlying asset is called the strike asset.</p>
+        <p><a href="./#example-use-case-insurance-on-compound">In the Example Insurance Use Case:</a>
+        </p>
+        <p>The strike asset is USDC.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Strike Price</td>
+      <td style="text-align:left">
+        <p>The strike price is the specified price at which the buyer/owner of the
+          option can sell the underlying asset.</p>
+        <p></p>
+        <p><a href="./#example-use-case-insurance-on-compound">In the Example Insurance Use Case:</a>
+        </p>
+        <p>The strike price is 1 USDC.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">putsOutstanding</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">minCollateralizationRatio</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Safe</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Unsafe</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Liquidation factor</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Exercise</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Exercise Window</td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
+</table>
 
 
 
