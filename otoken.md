@@ -108,13 +108,13 @@ function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, ui
 
 > `amtToCreate` : number of oTokens to create
 >
-> `amtCollateral` : The collateral to be added to the newly created vault
+> `amtCollateral` : The collateral to be added to the existing vault
 >
 > `receiver` : The account to send the newly minted oTokens to
 >
 > `vaultIndex` : The index of the vault to add oTokens to
 >
-> `msg.sender` : The account that will be the owner of the vault
+> `msg.sender` : The account that is the owner of the vault
 
 {% tabs %}
 {% tab title="Solidity" %}
@@ -124,8 +124,6 @@ ocDai.addERC20CollateralOption(10, 100000, 1, 0xFDA...);
 ```
 {% endtab %}
 {% endtabs %}
-
-### 
 
 ### Create and Sell Options
 
@@ -149,7 +147,32 @@ function createAndSellETHCollateralOption(uint256 amtToCreate, address payable r
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-ocDai.createAndSellETHCollateralOption.value(100000)(10, 0xFDA...);
+ocDai.createAndSellETHCollateralOption.value(100000)(10, 0xFDA...
+```
+{% endtab %}
+{% endtabs %}
+
+#### ERC20 Collateralized Options
+
+This function[ opens a new vault](otoken.md#open-vault), [adds ERC20 collateral](otoken.md#erc20-collateralized-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the oTokens for premiums on Uniswap.
+
+```javascript
+function createAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, address payable receiver)
+```
+
+> `amtToCreate` : number of oTokens to create
+>
+> `amtCollateral` : The collateral to be added to the newly created vault
+>
+> `receiver` : The account to send the newly minted oTokens to
+>
+> `msg.sender` : The account that will be the owner of the vault
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+ocDai.createAndSellERC20CollateralOption(10, 1000000, 0xFDA...);
 ```
 {% endtab %}
 {% endtabs %}
@@ -179,6 +202,33 @@ function addAndSellETHCollateralOption(uint256 amtToCreate, uint256 vaultIndex, 
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 ocDai.addAndSellETHCollateralOption.value(100000)(10, 1, 0xFDA...);
+```
+{% endtab %}
+{% endtabs %}
+
+#### ERC20 Collateralized Options
+
+This function [adds ERC20 collateral](otoken.md#erc20-collateralized-options) to an existing vault, [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the oTokens for premiums on Uniswap.
+
+```javascript
+function addAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, uint256 vaultIndex, address payable receiver)
+```
+
+> `amtToCreate` : number of oTokens to create
+>
+> `amtCollateral` : The collateral to be added to the existing vault
+>
+> `vaultIndex` : The index of the vault to add oTokens to
+>
+> `receiver` : The account to send the newly minted oTokens to
+>
+> `msg.sender` : The account that is the owner of the vault
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+ocDai.addAndSellERC20CollateralOption(10, 1000000, 1, 0xFDA...);
 ```
 {% endtab %}
 {% endtabs %}
