@@ -343,6 +343,8 @@ The issue oTokens functionality allows the vault owner to mint new options in th
 
 To mint oTokens, the vault that the tokens are being minted from must meet the `minCollateralizationRatio` requirements \(TODO: Link explanation\). Further, only the owner of a vault can mint oTokens. 
 
+Once oTokens have been minted, they can be sold on an exchange like Uniswap.
+
 ```javascript
 function issueOTokens (uint256 vaultIndex, uint256 oTokensToIssue, address receiver)
 ```
