@@ -129,7 +129,7 @@ ocDai.addERC20CollateralOption(10, 100000, 1, 0xFDA...);
 
 #### ETH Collateralized Options
 
-This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the oTokens for premiums on Uniswap.
+This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the oTokens for ETH premiums on Uniswap.
 
 ```javascript
 function createAndSellETHCollateralOption(uint256 amtToCreate, address payable receiver) payable
@@ -154,7 +154,7 @@ ocDai.createAndSellETHCollateralOption.value(100000)(10, 0xFDA...
 
 #### ERC20 Collateralized Options
 
-This function[ opens a new vault](otoken.md#open-vault), [adds ERC20 collateral](otoken.md#erc20-collateralized-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the oTokens for premiums on Uniswap.
+This function[ opens a new vault](otoken.md#open-vault), [adds ERC20 collateral](otoken.md#erc20-collateralized-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the oTokens for ETH premiums on Uniswap.
 
 ```javascript
 function createAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, address payable receiver)
@@ -181,7 +181,7 @@ ocDai.createAndSellERC20CollateralOption(10, 1000000, 0xFDA...);
 
 #### ETH Collateralized Options
 
-This function[ ](otoken.md#open-vault)[adds ETH collateral](otoken.md#add-eth-collateral-options) to an existing vault and [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the issued oTokens on Uniswap.
+This function[ ](otoken.md#open-vault)[adds ETH collateral](otoken.md#add-eth-collateral-options) to an existing vault and [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the issued oTokens on Uniswap for ETH premiums.
 
 ```javascript
 function addAndSellETHCollateralOption(uint256 amtToCreate, uint256 vaultIndex, address payable receiver) payable
@@ -208,7 +208,7 @@ ocDai.addAndSellETHCollateralOption.value(100000)(10, 1, 0xFDA...);
 
 #### ERC20 Collateralized Options
 
-This function [adds ERC20 collateral](otoken.md#erc20-collateralized-options) to an existing vault, [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the oTokens for premiums on Uniswap.
+This function [adds ERC20 collateral](otoken.md#erc20-collateralized-options) to an existing vault, [issues oTokens ](otoken.md#issue-otokens)from the vault and sells the oTokens for premiums on Uniswap for ETH premiums.
 
 ```javascript
 function addAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, uint256 vaultIndex, address payable receiver)
