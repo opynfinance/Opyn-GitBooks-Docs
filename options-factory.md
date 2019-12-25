@@ -1,6 +1,4 @@
-# Options Factory
-
-## Intro 
+# OptionsFactory: Create new options markets
 
 ## Functions 
 
