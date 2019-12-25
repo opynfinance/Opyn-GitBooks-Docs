@@ -2,8 +2,8 @@
 
 * [Getting Started](README.md)
 * [Protocol Overview](protocol-overview.md)
-* [oToken: Integrate with existing insurance markets](otoken.md)
-* [optionsExchange: Buy and Sell oTokens](optionsexchange-buy-and-sell-otokens.md)
-* [OptionsFactory: Create new options markets](options-factory.md)
+* [oToken: Create + Manage Options in existing markets](otoken.md)
+* [optionsExchange: Buy and Sell Options](optionsexchange-buy-and-sell-otokens.md)
+* [OptionsFactory: Bootstrap new Options Markets](options-factory.md)
 * [Examples / Tutorial](examples-tutorial.md)
 

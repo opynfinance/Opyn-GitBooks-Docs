@@ -1,4 +1,4 @@
-# optionsExchange: Buy and Sell oTokens
+# optionsExchange: Buy and Sell Options
 
 ## Introduction
 

@@ -1,4 +1,4 @@
-# oToken: Integrate with existing insurance markets
+# oToken: Create + Manage Options in existing markets
 
 ## Introduction
 
