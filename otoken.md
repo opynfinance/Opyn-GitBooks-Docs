@@ -4,11 +4,11 @@
 
 Opyn uses options to provide insurance. Every option supported by the Convexity Protocol is integrated through an oToken smart contract which is an [EIP-20](https://eips.ethereum.org/EIPS/eip-20) compliant representation of options issued by the protocol. Options sellers create options by locking up collateral for some period of time and minting oTokens. Each oToken protects a unit of the specified underlying ERC20 asset. The Options seller can sell these oTokens on an exchange to earn [premiums](./#glossary-of-terms). The oToken marketplaces deployed for the purpose of insurance are oDai, ocDai and ocUSDC. 
 
-The main functionality offered by the convexity protocol is as below:
+The main functionality offered by this section is as below:
 
-1. Create oTokens
-2. Keep the oToken repos sufficiently collateralized
-3. Liquidate the undercollateralized repos
+1. Create Options \(oTokens\)
+2. Keep the oToken vaults sufficiently collateralized
+3. Liquidate the undercollateralized vaults
 4. Exercise the oTokens during the expiry window
 
 ## State Changing Functions 
@@ -753,7 +753,7 @@ ocDai.transferVaultOwnership(1, 0xFDA...);
 
 ### Strike Price 
 
-The strike price is the specified price that the buyer/owner of 1 oToken gets if they make a claim and give up their underlying asset.
+The strike price is the specified price that the buyer/owner of 1 oToken gets if they make a claim and give up their underlying asset. A return value of \(100, -15\) corresponds to 100 \* 10^-15. 
 
 ```javascript
 function strikePrice() returns (uint256, int32)
@@ -776,7 +776,7 @@ oToken ocDai = oToken(0x3BA...);
 
 ### oToken Exchange Rate
 
-The oTokenExchangeRate is the smallest amount of underlying that 1 oToken protects.
+The oTokenExchangeRate is the smallest amount of underlying that 1 oToken protects. A return value of \(1, -14\) corresponds to 1 \* 10^-14. 
 
 | oToken | Amount Underlying Protected |
 | :--- | :--- |
@@ -801,7 +801,26 @@ oToken ocDai = oToken(0x3BA...);
 
 ### Expiry Date
 
+The date on which the oToken contract expires is the day when the options stop having value. After this date, the option buyer/ owner can't exercise their options. 
+
+```javascript
+function expiry() returns (uint256)
+```
+
+> `RETURN` : returns a UNIX timestamp
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+expiryTimestamp = ocDai.expiry();
+```
+{% endtab %}
+{% endtabs %}
+
 ### Collateral Asset
+
+
 
 ### Underlying Asset
 
