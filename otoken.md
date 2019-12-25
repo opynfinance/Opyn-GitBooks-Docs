@@ -759,7 +759,7 @@ The strike price is the specified price that the buyer/owner of 1 oToken gets if
 function strikePrice() returns (uint256, int32)
 ```
 
-> `RETURN` : Tuple of values \(value, exponent\).
+> `RETURN` : returns a Number which is a tuple - \(value, exponent\)
 
 {% tabs %}
 {% tab title="Solidity" %}
@@ -783,6 +783,21 @@ The oTokenExchangeRate is the smallest amount of underlying that 1 oToken protec
 | 1 ocDai | 10 ^-5 cDai |
 | 1 ocUSDC | 10^-5 cUSDC |
 | 1 oDai | 10^-14 Dai |
+
+```javascript
+function oTokenExchangeRate() returns (uint256, int32)
+```
+
+> `RETURN` : returns a Number which is a tuple \(value, exponent\)
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+(uint256 value, int32 exponent) = ocDai.oTokenExchangeRate();
+```
+{% endtab %}
+{% endtabs %}
 
 ### Expiry Date
 

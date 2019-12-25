@@ -1,4 +1,6 @@
-# OptionsFactory: Bootstrap new Options Markets
+# Options Factory
+
+## Intro 
 
 ## Functions 
 
