@@ -422,7 +422,7 @@ oToken ocDai = oToken(0x3BA...);
  * their ERC20Collateral because they are transferring collateral 
  * tokens to the oToken contract. 
  */
-ERC20Collateral.approve(ocDai, 1000000000000000000000000000000);
+ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
 require(ocDai.hasExpired() == false, "Can only add collateral before expiry");
 uint256 vaultCollateralBalance = ocDai.addERC20Collateral(1, 100000000);
 ```
@@ -432,7 +432,14 @@ uint256 vaultCollateralBalance = ocDai.addERC20Collateral(1, 100000000);
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
 const hasExpired = await ocDai.methods.hasExpired().call();
+
 if(!hasExpired) {
+
+    await collateral.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+    
     await ocDai.methods.addERC20Collateral(1, 1000000).send();
 }
 ```
@@ -540,7 +547,7 @@ oToken ocDai = oToken(0x3BA...);
  * their oTokens because they are transferring oTokens 
  * to the oToken contract. 
  */
-ocDai.approve(ocDai, 1000000000000000000000000000000);
+ocDai.approve(address(ocDai), 1000000000000000000000000000000);
 require(ocDai.hasExpired() == false, "Can only burn oTokens before expiry");
 ocDai.burnOTokens(1, 100);
 ```
@@ -592,7 +599,7 @@ oToken ocDai = oToken(0x3BA...);
  * their oTokens because they are transferring oTokens 
  * to the oToken contract. 
  */
-ocDai.approve(ocDai, 1000000000000000000000000000000);
+ocDai.approve(address(ocDai), 1000000000000000000000000000000);
 
 uint256 vaultIndex = 1; 
 require(ocDai.hasExpired() == false, "Can only liquidate before expiry");
@@ -651,12 +658,12 @@ oToken ocDai = oToken(0x3BA...);
  * their oTokens and underlying because they are transferring 
  * oTokens and underlying tokens to the oToken contract. 
  */
-ocDai.approve(ocDai, 1000000000000000000000000000000);
-cDai.approve(ocDai, 1000000000000000000000000000000);
+ocDai.approve(address(ocDai), 1000000000000000000000000000000);
+cDai.approve(address(ocDai), 1000000000000000000000000000000);
 
 require(ocDai.isExerciseWindow() == true, "Can only exercise during the exericse window");
 
-uint2566 amtToExercise = 1000;
+uint256 amtToExercise = 1000;
 uint256 underlyingToTransfer = ocDai.underlyingToTransfer(amtToExercise);
 require(cDai.balanceOf(address(this) >= underlyingToTransfer, "Insufficient underlying to exercise");
 
@@ -664,8 +671,35 @@ ocDai.exercise(amtToExercise);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at('0x3BA...');
 
+const vaultIndex = '1'; 
+const isExerciseWindow = await ocDai.methods.isExerciseWindow().call();
+
+if(isExerciseWindow) {
+    // Approve the underlying and oTokens to be transferred
+    await ocDai.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+    
+    await cDai.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();   
+    
+    const amtToExercise = '1000';
+    
+    // need to have sufficient underlying to make a claim
+    const underlyingToTransfer = await ocDai.methods.underlyingToTransfer(amtToExercise).call();
+    
+    if ((await cDai.balanceOf(myAccount)) >= underlyingToTransfer) {
+        await ocDai.exercise(amtToExercise).send();
+    }
+}
+```
 {% endtab %}
 {% endtabs %}
 
