@@ -17,12 +17,12 @@ function buyOTokens(address payable receiver, address oTokenAddress, address pay
 > `receiver` : The account that will receive the oTokens
 >
 > `oTokenAddress` :  The address of the oToken that is being bought
-
-> `paymentTokenAddress` : The address of the token you are paying premiums in to buy the option tokens. Is it is set to 0, you can pay with ETH. 
+>
+> `paymentTokenAddress` : The address of the token you are paying for oTokens with. If it is set to 0, it means ETH. 
 >
 > `oTokensToBuy` : The number of oTokens to buy
 >
-> `msg.value` : If the payment Token is ETH, then the msg.value is the amount of ETH paid, else it is 0. 
+> `msg.value` : If the payment token is ETH, then the msg.value is the amount of ETH paid, else it is 0.
 >
 > `msg.sender` : The account that is paying the premiums
 
@@ -47,7 +47,7 @@ optionsExchange.buyOTokens(msg.sender, 0x3BF..., address(paymentToken), 100);
 
 ### Sell oTokens
 
-oTokens can be sold by calling the sell function. Premiums are paid in any token of the seller's choice. oTokens can be sold at anytime before expiry on an Exchange like Uniswap. 
+oTokens can be sold by calling the sell function. Premiums are received in any token of the seller's choice. oTokens can be sold at anytime before expiry on an Exchange like Uniswap. 
 
 ```javascript
 function sellOTokens(address payable receiver, address oTokenAddress, address payoutTokenAddress, uint256 oTokensToSell) 

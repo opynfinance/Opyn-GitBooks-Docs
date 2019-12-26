@@ -8,8 +8,8 @@ The main functionality offered by this section is as below:
 
 1. Create Options \(oTokens\)
 2. Keep the oToken vaults sufficiently collateralized
-3. Liquidate the undercollateralized vaults
-4. Exercise the oTokens during the expiry window
+3. Liquidate undercollateralized vaults
+4. Exercise oTokens during the expiry window
 
 ## State Changing Functions 
 
@@ -513,12 +513,12 @@ function exercise(uint256 oTokensToExercise) payable
 
 > `oTokensToExercise` : The amount of oTokens being exercised
 >
-> `msg.sender` : The account from which oTokens and underlying assets will be transferred into the oToke contract. This account will also get paid out the claims made. 
+> `msg.sender` : The account from which oTokens and underlying assets will be transferred into the oToken contract. This account will also get paid out the claims made. 
 >
 > `msg.value` : If the underlying protected is ETH, then the msg.value is the amount of ETH transferred. If not, it should be set to 0.
 
 {% tabs %}
-{% tab title="Solidiy" %}
+{% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 
