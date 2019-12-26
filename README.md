@@ -56,81 +56,77 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
   <tbody>
     <tr>
       <td style="text-align:left">Uniswap Exchange</td>
-      <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/UniswapExchange.json">JSON</a>
+      <td style="text-align:left"><a href="https://docs.uniswap.io/smart-contract-integration/interface">JSON</a>
       </td>
-      <td style="text-align:left"><a href="https://docs.uniswap.io/smart-contract-integration/interface">Interface</a>
-      </td>
-      <td style="text-align:left">(Depends on oToken)</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">Uniswap Factory</td>
-      <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/UniswapExchange.json">JSON</a>
+      <td style="text-align:left"><a href="https://docs.uniswap.io/smart-contract-integration/interface">JSON</a>
       </td>
-      <td style="text-align:left"><a href="https://docs.uniswap.io/smart-contract-integration/interface">Interface</a>
-      </td>
+      <td style="text-align:left"></td>
       <td style="text-align:left">0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36</td>
     </tr>
     <tr>
       <td style="text-align:left">Options Exchange</td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/OptionsExchange.json">JSON</a>
       </td>
-      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"></td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">Dai</td>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f#code">JSON</a>
-      </td>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f#code">Interface</a>
-      </td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">cDai</td>
       <td style="text-align:left"><a href="https://compound.finance/developers/abi/mainnet/cDAI">JSON</a>
       </td>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e#code">Interface</a>
-      </td>
+      <td style="text-align:left"></td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">cUSDC</td>
       <td style="text-align:left"><a href="https://compound.finance/developers/abi/mainnet/cUSDC">JSON</a>
       </td>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e#code">Interface</a>
-      </td>
+      <td style="text-align:left"></td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">ocDai</td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/oToken.json">JSON</a>
       </td>
-      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"></td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">oDai</td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/oToken.json">JSON</a>
       </td>
-      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"></td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">ocUSDC</td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/oToken.json">JSON</a>
       </td>
-      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"></td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">Options Factory</td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/OptionsFactory.json">JSON</a>
       </td>
-      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"></td>
       <td style="text-align:left"></td>
     </tr>
   </tbody>
-</table>## Example Use Case: Insurance on Compound
+</table>### Mainnet
+
+## Example Use Case: Insurance on Compound
 
 Consider the case of a Compound user, person A, who wants insurance on their Dai locked in Compound. They fear Compound getting hacked or having a bank run. The insurance buyer, person A, pays the insurance provider, person B,  0.01 ETH premium ahead of time to get access to ocDai tokens. In return, person B, locks up 1 ETH of collateral on the insurance platform. 
 
@@ -140,10 +136,7 @@ The ocDai token protects the holder of the token from Jan 1 2020 to Jan 1 2021 a
 
 ## web3 version + solidity compiler version  
 
-| Dependency | Version |
-| :--- | :--- |
-| Solidity | [0.5.10](https://solidity.readthedocs.io/en/v0.5.10/contracts.html) |
-| Web 3 | [1.0](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html) |
+
 
 ## Glossary of Terms 
 

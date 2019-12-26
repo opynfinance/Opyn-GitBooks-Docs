@@ -44,11 +44,9 @@ ocDai.createETHCollateralOption.value(100000)(10, 0xFDA...);
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
-await ocDai.methods.createETHCollateralOption.send(
+await ocDai.methods.createETHCollateralOption(
     10, 
-    0xFDA...,
-    {from: myAccount, value: 100000}
-);
+    0xFDA...).send({from: myAccount, value: 100000});
 ```
 {% endtab %}
 {% endtabs %}
@@ -80,11 +78,10 @@ ocDai.createERC20CollateralOption(10, 100000, 0xFDA...);
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
-await ocDai.methods.createERC20CollateralOption.send(
+await ocDai.methods.createERC20CollateralOption(
     10, 
     100000,
-    0xFDA...
-);
+    0xFDA...).send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -122,12 +119,11 @@ ocDai.addETHCollateralOption.value(100000)(10, 1, 0xFDA...);
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
-await ocDai.methods.addETHCollateralOption.send(
+await ocDai.methods.addETHCollateralOption(
     10, 
     1,
-    0xFDA...,
-    {from: myAccount, value: 100000}
-);
+    0xFDA...
+    ).send({from: myAccount, value: 100000});
 ```
 {% endtab %}
 {% endtabs %}
@@ -161,12 +157,12 @@ ocDai.addERC20CollateralOption(10, 100000, 1, 0xFDA...);
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
-await ocDai.methods.addERC20CollateralOption.send(
+await ocDai.methods.addERC20CollateralOption(
     10, 
     100000,
     1,
     0xFDA...
-);
+).send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -195,13 +191,17 @@ function createAndSellETHCollateralOption(uint256 amtToCreate, address payable r
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-ocDai.createAndSellETHCollateralOption.value(100000)(10, 0xFDA...
+ocDai.createAndSellETHCollateralOption.value(100000)(10, 0xFDA...);
 ```
 {% endtab %}
 
 {% tab title="Web3" %}
-```
-
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.createAndSellETHCollateralOption(
+    10, 
+    0xFDA...
+    ).send({from: myAccount, value: 100000});
 ```
 {% endtab %}
 {% endtabs %}
@@ -227,6 +227,17 @@ function createAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtColl
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 ocDai.createAndSellERC20CollateralOption(10, 1000000, 0xFDA...);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.createAndSellERC20CollateralOption(
+    10, 
+    100000,
+    0xFDA...
+).send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -260,6 +271,17 @@ oToken ocDai = oToken(0x3BA...);
 ocDai.addAndSellETHCollateralOption.value(100000)(10, 1, 0xFDA...);
 ```
 {% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.addAndSellETHCollateralOption(
+    10, 
+    1,
+    0xFDA...
+    ).send({from: myAccount, value: 100000});
+```
+{% endtab %}
 {% endtabs %}
 
 #### ERC20 Collateralized Options
@@ -287,6 +309,18 @@ oToken ocDai = oToken(0x3BA...);
 ocDai.addAndSellERC20CollateralOption(10, 1000000, 1, 0xFDA...);
 ```
 {% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.addAndSellERC20CollateralOption(
+    10,
+    100000,
+    1,
+    0xFDA...
+    ).send();
+```
+{% endtab %}
 {% endtabs %}
 
 ### **Open Vault**
@@ -312,9 +346,13 @@ uint256 vaultIndex = ocDai.openVault();
 ```
 {% endtab %}
 
-{% tab title="Web3" %}
+{% tab title="Web3 1.0" %}
 ```javascript
-
+const ocDai = oToken.at(0x3FDB...);
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.methods.openVault().send();
+}
 ```
 {% endtab %}
 {% endtabs %}
@@ -340,21 +378,23 @@ function addETHCollateral(uint256 vaultIndex) payable returns (uint256)
 > `msg.sender` : The account from which ETH collateral will be transferred into the oToken contract
 >
 > `msg.value` : The amount of ETH to add
->
-> `RETURN` :
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 require(ocDai.hasExpired() == false, "Can only add collateral before expiry");
-uint256 vaultCollateralBalance = ocDai.addETHCollateral.value(1)(1000000);
+uint256 vaultCollateralBalance = ocDai.addETHCollateral.value(1000000)(1);
 ```
 {% endtab %}
 
-{% tab title="Web3" %}
+{% tab title="Web3 1.0" %}
 ```javascript
-
+const ocDai = oToken.at(0x3FDB...);
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.methods.addETHCollateral(1).send({from: myAccount, value:1000000});
+}
 ```
 {% endtab %}
 {% endtabs %}
@@ -372,8 +412,6 @@ function addERC20Collateral(uint256 vaultIndex, uint256 amt) returns (uint256)
 > `amt` : The amount of collateral tokens to add
 >
 > `msg.sender` : The account from which the ERC20 collateral asset will be transferred into the oToken contract
->
-> `RETURN` :
 
 {% tabs %}
 {% tab title="Solidity" %}
@@ -390,8 +428,14 @@ uint256 vaultCollateralBalance = ocDai.addERC20Collateral(1, 100000000);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.methods.addERC20Collateral(1, 1000000).send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
