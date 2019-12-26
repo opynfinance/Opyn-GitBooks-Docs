@@ -468,8 +468,14 @@ ocDai.issueOTokens(1, 1000, 0xFB3...);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.issueOTokens(1, 1000, 0xFB3...).send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
@@ -498,8 +504,14 @@ ocDai.removeCollateral(1, 1000000);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.removeCollateral(1, 1000000).send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
@@ -534,8 +546,19 @@ ocDai.burnOTokens(1, 100);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at('0x3BA...');
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+    
+    await ocDai.burnOTokens('1', '1000000').send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
@@ -578,8 +601,23 @@ ocDai.liquidate(vaultIndex, 10);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at('0x3BA...');
 
+const vaultIndex = '1'; 
+const hasExpired = await ocDai.methods.hasExpired().call();
+const isUnsafe = await ocDai.methods.isUnsafe(vaultIndex).call();
+
+if((!hasExpired) && isUnsafe) {
+    await ocDai.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+    
+    await ocDai.liquidate(vaultIndex, '10').send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
