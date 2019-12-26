@@ -130,9 +130,7 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
       <td style="text-align:left"></td>
     </tr>
   </tbody>
-</table>### Mainnet
-
-## Example Use Case: Insurance on Compound
+</table>## Example Use Case: Insurance on Compound
 
 Consider the case of a Compound user, person A, who wants insurance on their Dai locked in Compound. They fear Compound getting hacked or having a bank run. The insurance buyer, person A, pays the insurance provider, person B,  0.01 ETH premium ahead of time to get access to ocDai tokens. In return, person B, locks up 1 ETH of collateral on the insurance platform. 
 

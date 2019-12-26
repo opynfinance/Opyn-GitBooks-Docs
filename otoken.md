@@ -41,8 +41,15 @@ ocDai.createETHCollateralOption.value(100000)(10, 0xFDA...);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.createETHCollateralOption.send(
+    10, 
+    0xFDA...,
+    {from: myAccount, value: 100000}
+);
+```
 {% endtab %}
 {% endtabs %}
 
@@ -67,6 +74,17 @@ function createERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral,
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 ocDai.createERC20CollateralOption(10, 100000, 0xFDA...);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.createERC20CollateralOption.send(
+    10, 
+    100000,
+    0xFDA...
+);
 ```
 {% endtab %}
 {% endtabs %}
@@ -100,6 +118,18 @@ oToken ocDai = oToken(0x3BA...);
 ocDai.addETHCollateralOption.value(100000)(10, 1, 0xFDA...);
 ```
 {% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.addETHCollateralOption.send(
+    10, 
+    1,
+    0xFDA...,
+    {from: myAccount, value: 100000}
+);
+```
+{% endtab %}
 {% endtabs %}
 
 #### ERC20 Collateralized Options
@@ -125,6 +155,18 @@ function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, ui
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 ocDai.addERC20CollateralOption(10, 100000, 1, 0xFDA...);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.addERC20CollateralOption.send(
+    10, 
+    100000,
+    1,
+    0xFDA...
+);
 ```
 {% endtab %}
 {% endtabs %}
