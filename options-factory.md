@@ -1,6 +1,4 @@
-# Options Factory
-
-## Intro 
+# OptionsFactory: Bootstrap new Options Markets
 
 ## Functions 
 
@@ -88,94 +86,6 @@ const numContracts = await factory.methods.getNumberOfOptionsContracts().call();
 ```
 {% endtab %}
 {% endtabs %}
-
-
-
-#### Add Asset 
-
-Allows for adding assets to the set of supported assets that can be used as collateral, strike, or underlying. Do not add ETH \(ETH is set to 0x0\).
-
-```javascript
-function addAsset(string memory _asset, address _addr) public onlyOwner
-```
-
-* `string memory _asset`: The asset to add to the set of supported assets
-* `address _addr`: The address of the asset to add
-
-{% tabs %}
-{% tab title="Solidity" %}
-```javascript
-OptionsFactory factory = OptionsFactory(0xABCD...);
-factory.addAsset("TKN", 0xEF...);
-```
-{% endtab %}
-
-{% tab title="web3" %}
-```javascript
-const factory = OptionsFactory.at(0xABCD...);
-await factory.methods.addAsset("TKN", 0xEF...).call();
-```
-{% endtab %}
-{% endtabs %}
-
-
-
-#### Change Asset 
-
-Allows for changing assets in the set of supported assets that can be used as collateral, strike, or underlying. 
-
-```javascript
-function changeAsset(string memory _asset, address _addr) public onlyOwner
-```
-
-* `string memory _asset`: The asset to change in the set of supported assets
-* `address _addr`: The address of the asset to change
-
-{% tabs %}
-{% tab title="Solidity" %}
-```javascript
-OptionsFactory factory = OptionsFactory(0xABCD...);
-factory.changeAsset("NKT", 0xFE...);
-```
-{% endtab %}
-
-{% tab title="web3" %}
-```javascript
-const factory = OptionsFactory.at(0xABCD...);
-await factory.methods.changeAsset("NKT", 0xFE...).call();
-```
-{% endtab %}
-{% endtabs %}
-
-
-
-#### Delete Asset 
-
-Allows for deleting assets from the set of supported assets that can be used as collateral, strike, or underlying.
-
-```javascript
-function deleteAsset(string memory _asset) public onlyOwner
-```
-
-* `string memory _asset`: The asset to delete from the set of supported assets
-
-{% tabs %}
-{% tab title="Solidity" %}
-```javascript
-OptionsFactory factory = OptionsFactory(0xABCD...);
-factory.deleteAsset("NKT");
-```
-{% endtab %}
-
-{% tab title="web3" %}
-```javascript
-const factory = OptionsFactory.at(0xABCD...);
-await factory.methods.deleteAsset("NKT").call();
-```
-{% endtab %}
-{% endtabs %}
-
-
 
 #### Supports Asset 
 
