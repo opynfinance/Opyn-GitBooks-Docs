@@ -13,10 +13,9 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 * [Website](http://www.opyn.co/)
 * [Whitepaper](https://drive.google.com/file/d/1YsrGBUpZoPvFLtcwkEYkxNhogWCU772D/view)
 * [Github](https://github.com/aparnakr/OptionsProtocol)
-* Twitter
-* Discord
+* [Twitter](https://twitter.com/opyn_)
+* [Discord](https://discordapp.com/invite/2NFdXaE)
 * Email
-* [Beginner Resources](examples-tutorial.md#beginner-resources)
 
 ### Integrating for Insurance Buyers
 
@@ -104,28 +103,32 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
       <td style="text-align:left">0x5B281A6DdA0B271e91ae35DE655Ad301C976edb1</td>
     </tr>
     <tr>
-      <td style="text-align:left">ocDai</td>
+      <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol">ocDai</a>
+      </td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/oToken.json">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
       <td style="text-align:left">0x57cC8708eFEB7f7D42E4d73ab9120BC275f1DB59</td>
     </tr>
     <tr>
-      <td style="text-align:left">oDai</td>
+      <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol">oDai</a>
+      </td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/oToken.json">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
       <td style="text-align:left">0xE8Cd37379BF7739E5ca0D8E5a7a118cF89f439fD</td>
     </tr>
     <tr>
-      <td style="text-align:left">ocUSDC</td>
+      <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol">ocUSDC</a>
+      </td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/oToken.json">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
       <td style="text-align:left">0x59D5652Ac7aE3008f59AE7b71eD66C98edA317d6</td>
     </tr>
     <tr>
-      <td style="text-align:left">Options Factory</td>
+      <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol">Options Factory</a>
+      </td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/OptionsFactory.json">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>

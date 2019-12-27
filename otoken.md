@@ -41,8 +41,13 @@ ocDai.createETHCollateralOption.value(100000)(10, 0xFDA...);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.createETHCollateralOption(
+    10, 
+    0xFDA...).send({from: myAccount, value: 100000});
+```
 {% endtab %}
 {% endtabs %}
 
@@ -66,7 +71,24 @@ function createERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral,
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
 ocDai.createERC20CollateralOption(10, 100000, 0xFDA...);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+
+await collateral.methods.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+
+await ocDai.methods.createERC20CollateralOption(
+    10, 
+    100000,
+    0xFDA...).send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -100,6 +122,17 @@ oToken ocDai = oToken(0x3BA...);
 ocDai.addETHCollateralOption.value(100000)(10, 1, 0xFDA...);
 ```
 {% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.addETHCollateralOption(
+    10, 
+    1,
+    0xFDA...
+    ).send({from: myAccount, value: 100000});
+```
+{% endtab %}
 {% endtabs %}
 
 #### ERC20 Collateralized Options
@@ -124,7 +157,26 @@ function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, ui
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
 ocDai.addERC20CollateralOption(10, 100000, 1, 0xFDA...);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+
+await collateral.methods.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+
+await ocDai.methods.addERC20CollateralOption(
+    10, 
+    100000,
+    1,
+    0xFDA...
+    ).send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -153,13 +205,17 @@ function createAndSellETHCollateralOption(uint256 amtToCreate, address payable r
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-ocDai.createAndSellETHCollateralOption.value(100000)(10, 0xFDA...
+ocDai.createAndSellETHCollateralOption.value(100000)(10, 0xFDA...);
 ```
 {% endtab %}
 
 {% tab title="Web3" %}
-```
-
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.createAndSellETHCollateralOption(
+    10, 
+    0xFDA...
+    ).send({from: myAccount, value: 100000});
 ```
 {% endtab %}
 {% endtabs %}
@@ -184,7 +240,24 @@ function createAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtColl
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
 ocDai.createAndSellERC20CollateralOption(10, 1000000, 0xFDA...);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+
+await collateral.methods.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+await ocDai.methods.createAndSellERC20CollateralOption(
+    10, 
+    100000,
+    0xFDA...
+).send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -218,6 +291,17 @@ oToken ocDai = oToken(0x3BA...);
 ocDai.addAndSellETHCollateralOption.value(100000)(10, 1, 0xFDA...);
 ```
 {% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await ocDai.methods.addAndSellETHCollateralOption(
+    10, 
+    1,
+    0xFDA...
+    ).send({from: myAccount, value: 100000});
+```
+{% endtab %}
 {% endtabs %}
 
 #### ERC20 Collateralized Options
@@ -242,7 +326,25 @@ function addAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtCollate
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
 ocDai.addAndSellERC20CollateralOption(10, 1000000, 1, 0xFDA...);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+await collateral.methods.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+    
+await ocDai.methods.addAndSellERC20CollateralOption(
+    10,
+    100000,
+    1,
+    0xFDA...
+    ).send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -270,9 +372,13 @@ uint256 vaultIndex = ocDai.openVault();
 ```
 {% endtab %}
 
-{% tab title="Web3" %}
+{% tab title="Web3 1.0" %}
 ```javascript
-
+const ocDai = oToken.at(0x3FDB...);
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.methods.openVault().send();
+}
 ```
 {% endtab %}
 {% endtabs %}
@@ -298,21 +404,23 @@ function addETHCollateral(uint256 vaultIndex) payable returns (uint256)
 > `msg.sender` : The account from which ETH collateral will be transferred into the oToken contract
 >
 > `msg.value` : The amount of ETH to add
->
-> `RETURN` :
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 require(ocDai.hasExpired() == false, "Can only add collateral before expiry");
-uint256 vaultCollateralBalance = ocDai.addETHCollateral.value(1)(1000000);
+uint256 vaultCollateralBalance = ocDai.addETHCollateral.value(1000000)(1);
 ```
 {% endtab %}
 
-{% tab title="Web3" %}
+{% tab title="Web3 1.0" %}
 ```javascript
-
+const ocDai = oToken.at(0x3FDB...);
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.methods.addETHCollateral(1).send({from: myAccount, value:1000000});
+}
 ```
 {% endtab %}
 {% endtabs %}
@@ -330,8 +438,6 @@ function addERC20Collateral(uint256 vaultIndex, uint256 amt) returns (uint256)
 > `amt` : The amount of collateral tokens to add
 >
 > `msg.sender` : The account from which the ERC20 collateral asset will be transferred into the oToken contract
->
-> `RETURN` :
 
 {% tabs %}
 {% tab title="Solidity" %}
@@ -342,14 +448,27 @@ oToken ocDai = oToken(0x3BA...);
  * their ERC20Collateral because they are transferring collateral 
  * tokens to the oToken contract. 
  */
-ERC20Collateral.approve(ocDai, 1000000000000000000000000000000);
+ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
 require(ocDai.hasExpired() == false, "Can only add collateral before expiry");
 uint256 vaultCollateralBalance = ocDai.addERC20Collateral(1, 100000000);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+const hasExpired = await ocDai.methods.hasExpired().call();
 
+if(!hasExpired) {
+
+    await collateral.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+    
+    await ocDai.methods.addERC20Collateral(1, 1000000).send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
@@ -382,8 +501,14 @@ ocDai.issueOTokens(1, 1000, 0xFB3...);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.methods.issueOTokens(1, 1000, 0xFB3...).send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
@@ -412,8 +537,14 @@ ocDai.removeCollateral(1, 1000000);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.methods.removeCollateral(1, 1000000).send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
@@ -442,14 +573,25 @@ oToken ocDai = oToken(0x3BA...);
  * their oTokens because they are transferring oTokens 
  * to the oToken contract. 
  */
-ocDai.approve(ocDai, 1000000000000000000000000000000);
+ocDai.approve(address(ocDai), 1000000000000000000000000000000);
 require(ocDai.hasExpired() == false, "Can only burn oTokens before expiry");
 ocDai.burnOTokens(1, 100);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at('0x3BA...');
+const hasExpired = await ocDai.methods.hasExpired().call();
+if(!hasExpired) {
+    await ocDai.methods.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+    
+    await ocDai.methods.burnOTokens('1', '1000000').send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
@@ -483,7 +625,7 @@ oToken ocDai = oToken(0x3BA...);
  * their oTokens because they are transferring oTokens 
  * to the oToken contract. 
  */
-ocDai.approve(ocDai, 1000000000000000000000000000000);
+ocDai.approve(address(ocDai), 1000000000000000000000000000000);
 
 uint256 vaultIndex = 1; 
 require(ocDai.hasExpired() == false, "Can only liquidate before expiry");
@@ -492,8 +634,23 @@ ocDai.liquidate(vaultIndex, 10);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at('0x3BA...');
 
+const vaultIndex = '1'; 
+const hasExpired = await ocDai.methods.hasExpired().call();
+const isUnsafe = await ocDai.methods.isUnsafe(vaultIndex).call();
+
+if((!hasExpired) && isUnsafe) {
+    await ocDai.methods.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+    
+    await ocDai.methods.liquidate(vaultIndex, '10').send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
@@ -527,12 +684,14 @@ oToken ocDai = oToken(0x3BA...);
  * their oTokens and underlying because they are transferring 
  * oTokens and underlying tokens to the oToken contract. 
  */
-ocDai.approve(ocDai, 1000000000000000000000000000000);
-cDai.approve(ocDai, 1000000000000000000000000000000);
+ocDai.approve(address(ocDai), 1000000000000000000000000000000);
+cDai.approve(address(ocDai), 1000000000000000000000000000000);
 
 require(ocDai.isExerciseWindow() == true, "Can only exercise during the exericse window");
 
-uint2566 amtToExercise = 1000;
+uint256 amtToExercise = 1000;
+
+// need to have sufficient underlying to make a claim
 uint256 underlyingToTransfer = ocDai.underlyingToTransfer(amtToExercise);
 require(cDai.balanceOf(address(this) >= underlyingToTransfer, "Insufficient underlying to exercise");
 
@@ -540,8 +699,35 @@ ocDai.exercise(amtToExercise);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at('0x3BA...');
 
+const vaultIndex = '1'; 
+const isExerciseWindow = await ocDai.methods.isExerciseWindow().call();
+
+if(isExerciseWindow) {
+    // Approve the underlying and oTokens to be transferred
+    await ocDai.methods.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();
+    
+    await cDai.methods.approve(
+    ocDai.options.address,
+    '1000000000000000000000000000000'
+    ).send();   
+    
+    const amtToExercise = '1000';
+    
+    // need to have sufficient underlying to make a claim
+    const underlyingToTransfer = await ocDai.methods.underlyingToTransfer(amtToExercise).call();
+    
+    if ((await cDai.methods.balanceOf(myAccount).call()) >= underlyingToTransfer) {
+        await ocDai.methods.exercise(amtToExercise).send();
+    }
+}
+```
 {% endtab %}
 {% endtabs %}
 
@@ -568,8 +754,17 @@ ocDai.claimCollateral(1);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at('0x3BA...');
 
+const vaultIndex = '1'; 
+const hasExpired = await ocDai.methods.hasExpired().call();
+
+if(hasExpired) {    
+    await ocDai.methods.claimCollateral(vaultIndex).send();
+}
+```
 {% endtab %}
 {% endtabs %}
 
@@ -595,8 +790,14 @@ ocDai.transferVaultOwnership(1, 0xFDA...);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at('0x3BA...');
 
+const vaultIndex = '1'; 
+const newOwnerAddress = '0xBF4...';
+await ocDai.methods.transferVaultOwnership(vaultIndex, newOwnerAddress).send();
+```
 {% endtab %}
 {% endtabs %}
 
@@ -769,8 +970,11 @@ oToken ocDai = oToken(0x3BA...);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let val, exp = ocDai.methods.strikePrice().call();
+```
 {% endtab %}
 {% endtabs %}
 
@@ -797,6 +1001,13 @@ oToken ocDai = oToken(0x3BA...);
 (uint256 value, int32 exponent) = ocDai.oTokenExchangeRate();
 ```
 {% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let val, exp = ocDai.methods.oTokenExchangeRate().call();
+```
+{% endtab %}
 {% endtabs %}
 
 ### Expiry Date
@@ -813,36 +1024,179 @@ function expiry() returns (uint256)
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-expiryTimestamp = ocDai.expiry();
+uint256 expiryTimestamp = ocDai.expiry();
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let expiryTime = ocDai.methods.expiry().call();
 ```
 {% endtab %}
 {% endtabs %}
 
-### Collateral Asset
-
-
-
-### Underlying Asset
-
-### Strike Asset 
-
 ### Underlying To Transfer Calculations
+
+This function calculates the amount of underlying tokens to be transferred based on how many oTokens are being exercised. 
+
+```javascript
+function underlyingToTransfer(uint256 oTokensToExercise) view returns (uint256)
+```
+
+> `RETURN` : The number of underlying tokens to transfer
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+expiryTimestamp = ocDai.underlyingToTransfer(10);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let underlyingToTransfer = ocDai.methods.underlyingToTransfer(10).call();
+```
+{% endtab %}
+{% endtabs %}
 
 ### Has the contract Expired
 
+This function checks if an existing oToken contract has expired. 
+
+```javascript
+function hasExpired() view returns (bool)
+```
+
+> `RETURN` : If the existing oToken contract has expired
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+bool hasExpired = ocDai.hasExpired();
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let hasExpired = ocDai.methods.hasExpired().call();
+```
+{% endtab %}
+{% endtabs %}
+
 ### Is it the Exercise Window 
+
+This function checks if it is the[ exercise window](./#glossary-of-terms) for an existing oToken contract. 
+
+```javascript
+function isExerciseWindow() view returns (bool)
+```
+
+> `RETURN` : If the existing oToken contract has expired
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+bool isExerciseWindow = ocDai.isExerciseWindow();
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let isExerciseWindow = ocDai.methods.isExerciseWindow().call();
+```
+{% endtab %}
+{% endtabs %}
 
 ### Get Vaults by Owner
 
+This function gets the indices of the vaults that the account passed in is the owner of. 
+
+```javascript
+function getVaultsByOwner(address _owner) view returns (uint[] memory)
+```
+
+> `_owner` : Find the vaults that this account owns. 
+>
+> `RETURN` : Indices of the vaults that the account passed in is the owner of
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+uint[] memory vaultIndices = ocDai.getVaultsByOwner(0xFBA...);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let vaultIndices = ocDai.methods.getVaultsByOwner(0xFBA...).call();
+```
+{% endtab %}
+{% endtabs %}
+
 ### Get Vault by Index
 
-### Is the given vault Unsafe
+This function gets the vault at the passed in index. 
 
-### Number of Vaults
+```javascript
+function getVaultByIndex(uint256 vaultIndex) public view returns (uint256, uint256, address)
+```
 
+> vaultIndex : The index of the vault to get
 
+> `RETURN` : tuple of values \(collateral, oTokensIssued, owner\)
 
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+(uint256 collateral, uint256 oTokensIssued, address owner)  = ocDai.getVaultsByIndex(1);
+```
+{% endtab %}
 
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let result = ocDai.methods.getVaultByIndex(1).call();
+```
+{% endtab %}
+{% endtabs %}
+
+### Is the given vault unsafe
+
+This function checks if the vault at the given index is safe
+
+```javascript
+function isUnsafe(uint256 vaultIndex) view returns (bool)
+```
+
+> vaultIndex : The index of the vault to get
+
+> `RETURN` : true if the vault is unsafe
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+bool isUnsafe  = ocDai.isUnsafe(1);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let isUnsafe = ocDai.methods.isUnsafe(1).call();
+```
+{% endtab %}
+{% endtabs %}
 
 
 
