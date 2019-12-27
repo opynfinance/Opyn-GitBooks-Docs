@@ -61,7 +61,8 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
       </td>
       <td style="text-align:left"><a href="https://docs.uniswap.io/smart-contract-integration/interface">Interface</a>
       </td>
-      <td style="text-align:left">(Depends on oToken)</td>
+      <td style="text-align:left">(<a href="https://docs.uniswap.io/smart-contract-api/factory#getexchange">getExchange</a> from
+        uniswap factory)</td>
     </tr>
     <tr>
       <td style="text-align:left">Uniswap Factory</td>
@@ -76,7 +77,7 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/OptionsExchange.json">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">0x40c471C6B31E752F39Fd0232Ad5daE42240eeD67</td>
     </tr>
     <tr>
       <td style="text-align:left">Dai</td>
@@ -107,28 +108,28 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/oToken.json">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">0x57cC8708eFEB7f7D42E4d73ab9120BC275f1DB59</td>
     </tr>
     <tr>
       <td style="text-align:left">oDai</td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/oToken.json">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">0xE8Cd37379BF7739E5ca0D8E5a7a118cF89f439fD</td>
     </tr>
     <tr>
       <td style="text-align:left">ocUSDC</td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/oToken.json">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">0x59D5652Ac7aE3008f59AE7b71eD66C98edA317d6</td>
     </tr>
     <tr>
       <td style="text-align:left">Options Factory</td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/OptionsFactory.json">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">0x34Da8b34c82988e7FF8F98CA35963057fC0ec9bb</td>
     </tr>
   </tbody>
 </table>## Example Use Case: Insurance on Compound
