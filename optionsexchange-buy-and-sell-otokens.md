@@ -168,7 +168,7 @@ uint256 ethReceived = optionsExchange.premiumReceived(0x3BF..., address(0), 100)
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Web3 1.0" %}
 ```javascript
 const optionsExchange = OptionsExchange.at('0x6B3...');
 const ethToPay = optionsExchange.methods.premiumReceived('0x3BF...', '0x0', '100').call();
