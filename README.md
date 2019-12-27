@@ -2,7 +2,7 @@
 
 ## Introduction to Convexity
 
-Convexity is a Decentralized Put Options Protocol built on the Ethereum Blockchain. Convexity provides an easy interface to buy and sell put options. 
+Convexity is a a generalized options protocol built on the Ethereum Blockchain that allows DeFi users to create call as well as put options. Convexity provides an easy interface to buy and sell options. 
 
 Put options work as insurance in traditional finance. Convexity allows options sellers to earn premiums on their collateral and options buyers to protect themselves against technical, financial and systemic risks that various DeFi projects face. These risks include hacks, bank runs, a DeFi crisis etc. 
 
