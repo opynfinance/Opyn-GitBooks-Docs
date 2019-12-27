@@ -38,23 +38,9 @@ optionsExchange.buyOTokens(msg.sender, 0x3BF..., address(paymentToken), 100);
 ```
 {% endtab %}
 
-{% tab title="Web3 1.0" %}
-```javascript
-const optionsExchange = OptionsExchange.at(0x6B3...);
+{% tab title="Web3" %}
+```
 
-/**
- * Need to approve any ERC20 before spending it
- */
-await paymentToken.methods.approve(
-    optionsExchange.options.address,
-    '1000000000000000000000000000000'
-    ).send();
-
-await optionsExchange.methods.buyOTokens(
-    myAccount, 
-    oToken.options.address, 
-    paymentToken.options.address, 
-    '100').send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -84,28 +70,14 @@ OptionsExchange optionsExchange = OptionsExchange(0x6B3...);
 /**
  * Need to approve any ERC20 before spending it
  */
-oToken.approve(address(optionsExchange), 1000000000);
-optionsExchange.sellOTokens(0xFB4..., address(oToken), address(0), 100);
+address(this).approve(address(optionsExchange), 1000000000);
+optionsExchange.sellOTokens(0xFB4..., 0x3BF..., address(0), 100);
 ```
 {% endtab %}
 
-{% tab title="Web3 1.0" %}
-```javascript
-const optionsExchange = OptionsExchange.at(0x6B3...);
+{% tab title="Web3" %}
+```
 
-/**
- * Need to approve any ERC20 before spending it
- */
-await oToken.methods.approve(
-    optionsExchange.options.address,
-    '1000000000000000000000000000000'
-    ).send();
-
-await optionsExchange.methods.sellOTokens(
-    myAccount, 
-    oToken.options.address, 
-    '0X0', 
-    '100').send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -136,11 +108,8 @@ uint256 ethToPay = optionsExchange.premiumToPay(0x3BF..., address(0), 100);
 ```
 {% endtab %}
 
-{% tab title="Web3 1.0" %}
-```javascript
-const optionsExchange = OptionsExchange.at('0x6B3...');
-const ethToPay = optionsExchange.methods.premiumToPay('0x3BF...', '0x0', '100').call();
-```
+{% tab title="Second Tab" %}
+
 {% endtab %}
 {% endtabs %}
 
@@ -168,11 +137,8 @@ uint256 ethReceived = optionsExchange.premiumReceived(0x3BF..., address(0), 100)
 ```
 {% endtab %}
 
-{% tab title="Web3 1.0" %}
-```javascript
-const optionsExchange = OptionsExchange.at('0x6B3...');
-const ethToPay = optionsExchange.methods.premiumReceived('0x3BF...', '0x0', '100').call();
-```
+{% tab title="Second Tab" %}
+
 {% endtab %}
 {% endtabs %}
 

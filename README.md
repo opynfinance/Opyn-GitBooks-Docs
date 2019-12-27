@@ -72,7 +72,8 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
       <td style="text-align:left">0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36</td>
     </tr>
     <tr>
-      <td style="text-align:left">Options Exchange</td>
+      <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol">Options Exchange</a>
+      </td>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/OptionsExchange.json">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
