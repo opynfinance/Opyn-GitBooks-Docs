@@ -139,6 +139,8 @@ The ocDai token protects the holder of the token from Jan 1 2020 to Jan 1 2021 a
 
 ## Gas Costs 
 
+Coming Soon.
+
 ## web3 version + solidity compiler version  
 
 | Dependency | Version |

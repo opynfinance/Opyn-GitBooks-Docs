@@ -1144,7 +1144,7 @@ let vaultIndices = ocDai.methods.getVaultsByOwner(0xFBA...).call();
 
 ### Get Vault by Index
 
-This function gets the vault at the passed in Index. 
+This function gets the vault at the passed in index. 
 
 ```javascript
 function getVaultByIndex(uint256 vaultIndex) public view returns (uint256, uint256, address)
@@ -1172,9 +1172,31 @@ let result = ocDai.methods.getVaultByIndex(1).call();
 
 ### Is the given vault unsafe
 
+This function checks if the vault at the given index is safe
 
+```javascript
+function isUnsafe(uint256 vaultIndex) view returns (bool)
+```
 
+> vaultIndex : The index of the vault to get
 
+> `RETURN` : true if the vault is unsafe
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+bool isUnsafe  = ocDai.isUnsafe(1);
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let isUnsafe = ocDai.methods.isUnsafe(1).call();
+```
+{% endtab %}
+{% endtabs %}
 
 
 
