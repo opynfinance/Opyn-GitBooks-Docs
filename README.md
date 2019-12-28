@@ -4,7 +4,7 @@
 
 Convexity is a a generalized options protocol built on the Ethereum Blockchain that allows DeFi users to create call as well as put options. Convexity provides an easy interface to buy and sell options. 
 
-Put options work as insurance in traditional finance. A put option gives the buyer the right to sell a set stock at a specified price on or before a set date. This means that no matter how low a stock goes, the investor has the right to sell the stock for the agreed upon price. Convexity follows the same principles to allows option buyers to have insurance on their Dai and their assets on Compound \(Dai and USDC\). 
+Put options work as insurance in traditional finance. A put option gives the buyer the right to sell a set stock at a specified price on or before a set date. This means that no matter how low a stock goes, the investor has the right to sell the stock for the agreed upon price. Convexity uses put options to allows option buyers to have insurance on their Dai and their assets on Compound \(Dai and USDC\). 
 
 Convexity allows options sellers to earn premiums on their collateral and options buyers to protect themselves against technical, financial and systemic risks that various DeFi projects face. These risks include hacks, bank runs, a DeFi crisis etc. 
 
