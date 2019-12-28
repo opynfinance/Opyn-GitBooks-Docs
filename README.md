@@ -39,7 +39,7 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 
 ## Networks 
 
- The Opyn Protocol is currently deployed on the following networks:
+ The Convexity Protocol is currently deployed on the following Ethereum test networks:
 
 ### Rinkeby
 
