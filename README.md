@@ -17,7 +17,7 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 * [Github](https://github.com/aparnakr/OptionsProtocol)
 * [Twitter](https://twitter.com/opyn_)
 * [Discord](https://discordapp.com/invite/2NFdXaE)
-* Email
+* [Email](mailto:hello@opyn.co)
 
 ### Integrating for Insurance Buyers
 
