@@ -6,7 +6,7 @@
 
 The OptionsFactory contract is used to create and keep track of options marketplaces. Each options marketplace is a new instantiation of the oToken contract. 
 
-![Factory contract keeps track of all the oToken contracts.](.gitbook/assets/screen-shot-2019-12-19-at-6.54.00-pm.png)
+![Factory contract keeps track of all the oToken contracts.](../.gitbook/assets/screen-shot-2019-12-19-at-6.54.00-pm.png)
 
 ### oToken
 

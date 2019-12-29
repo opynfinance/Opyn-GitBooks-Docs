@@ -2,7 +2,7 @@
 
 ## Functions 
 
-#### Create Options Contract 
+### Create Options Contract 
 
 The create options contract function creates a new options contract \(series\) as per the below parameters. 
 
@@ -19,13 +19,19 @@ function createOptionsContract(
         returns (address)
 ```
 
-* `string memory _collateralType`: The collateral asset \(eg. ETH, USDC, etc.\) 
-* `string memory _underlyingType`: The asset upon which the option is based. In the insurance use case, the asset that is being protected. \(eg. DAI, cUSDC, etc.\) 
-* `uint256 _strikePrice`: The amount of the strike asset that will be paid out upon exercise \(eg. 1\)
-* `string memory _strikeAsset`: The asset in which the option is denominated. \(eg. DAI option denominated in USDC\)
-* `string memory _payoutType`: The asset in which the option is paid out. \(eg. ETH\)
-* `uint256 _expiry`: The unix time at which the option expires \(eg. 1574457816\)
-* `RETURN address:` The address of the options contract on success; otherwise TODO: Error Code
+> `string memory _collateralType`: The collateral asset \(eg. ETH, USDC, etc.\) 
+>
+> `string memory _underlyingType`: The asset upon which the option is based. In the insurance use case, the asset that is being protected. \(eg. DAI, cUSDC, etc.\) 
+>
+> `uint256 _strikePrice`: The amount of the strike asset that will be paid out upon exercise \(eg. 1\)
+>
+> `string memory _strikeAsset`: The asset in which the option is denominated. \(eg. DAI option denominated in USDC\)
+>
+> `string memory _payoutType`: The asset in which the option is paid out. \(eg. ETH\)
+>
+> `uint256 _expiry`: The unix time at which the option expires \(eg. 1574457816\)
+>
+> `RETURN` : The address of the options contract on success
 
 {% tabs %}
 {% tab title="Solidity" %}
@@ -43,25 +49,23 @@ address optionContract = factory.createOptionsContract(
 ```
 {% endtab %}
 
-{% tab title="web3" %}
+{% tab title="Web3 1.0" %}
 ```javascript
-const factory = OptionsFactory.at(0xABCD...);
+const factory = await OptionsFactory.at('0xABCD...');
 const optionContract = await factory.methods.createOptionsContract(
                                 "ETH",
                                 "DAI",
                                 "USDC", 
-                                1,
+                                '1',
                                 "USDC", 
                                 "ETH",  
-                                1574457816
-).call();
+                                '1574457816'
+).send();
 ```
 {% endtab %}
 {% endtabs %}
 
-#### 
-
-#### Get Number of Options Contracts
+### Get Number of Options Contracts
 
 Provides the number of options contracts created
 
@@ -69,7 +73,7 @@ Provides the number of options contracts created
 function getNumberOfOptionsContracts() public view returns (uint256)
 ```
 
-* `RETURN uint256:` The number of options contracts created on success; otherwise TODO: Error Code
+> `RETURN:` The number of options contracts created on success
 
 {% tabs %}
 {% tab title="Solidity" %}
@@ -79,15 +83,15 @@ uint256 numContracts = factory.getNumberOfOptionsContracts();
 ```
 {% endtab %}
 
-{% tab title="web3" %}
+{% tab title="Web3 1.0" %}
 ```javascript
-const factory = OptionsFactory.at(0xABCD...);
+const factory = await OptionsFactory.at('0xABCD...');
 const numContracts = await factory.methods.getNumberOfOptionsContracts().call();
 ```
 {% endtab %}
 {% endtabs %}
 
-#### Supports Asset 
+### Supports Asset 
 
 Checks whether an asset is in the set of supported assets that can be used as collateral, strike, or underlying.
 
@@ -95,8 +99,9 @@ Checks whether an asset is in the set of supported assets that can be used as co
 function supportsAsset(string memory _asset) public view returns (bool)
 ```
 
-* `string memory _asset`: The asset to check
-* `RETURN bool:` True if the asset is in the set of supported assets; otherwise false
+> `string memory _asset`: The asset to check
+>
+> `RETURN:` True if the asset is in the set of supported assets; otherwise false
 
 {% tabs %}
 {% tab title="Solidity" %}
@@ -106,20 +111,15 @@ bool isSupported = factory.supportsAsset("TKN");
 ```
 {% endtab %}
 
-{% tab title="web3" %}
+{% tab title="Web3 1.0" %}
 ```javascript
-const factory = OptionsFactory.at(0xABCD...);
+const factory = OptionsFactory.at('0xABCD...');
 const isSupported = await factory.methods.supportsAsset("TKN").call();
 ```
 {% endtab %}
 {% endtabs %}
 
-## Events 
-
-* Are events supposed to be in the context of the individual contract or the whole system? 
-* Review compound events 
-
-## Error Table
+## Events
 
 
 
