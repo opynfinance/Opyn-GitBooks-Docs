@@ -2,6 +2,22 @@
 
 ## Introduction
 
+{% hint style="info" %}
+**Insurance Buyers Quickstart:**
+
+* [Buy oTokens](optionsexchange-buy-and-sell-otokens.md#buy-otokens)
+* [Calculate premiums to pay](optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay)
+* [Exercise ](otoken.md#exercise)
+* [oTokenExchangeRate](otoken.md#otoken-exchange-rate)\*\*\*\*
+
+**Insurance Sellers Quickstart:** 
+
+* [Create and Sell oToken](otoken.md#eth-collateralized-options-2)
+* [Calculate premiums received](optionsexchange-buy-and-sell-otokens.md#calculate-premiums-received)
+* [Add Collateral](otoken.md#add-eth-collateral)
+* [Claim Collateral](otoken.md#claim-collateral)
+{% endhint %}
+
 Opyn uses options to provide insurance. Every option supported by the Convexity Protocol is integrated through an oToken smart contract which is an [EIP-20](https://eips.ethereum.org/EIPS/eip-20) compliant representation of options issued by the protocol. Options sellers create options by locking up collateral for some period of time and minting oTokens. Each oToken protects a unit of the specified underlying ERC20 asset. The Options seller can sell these oTokens on an exchange to earn [premiums](./#glossary-of-terms). The oToken marketplaces deployed for the purpose of insurance are oDai, ocDai and ocUSDC. 
 
 The main functionality offered by this section is as below:
