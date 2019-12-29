@@ -28,7 +28,7 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 * [Exercise ](otoken.md#exercise)
 * [oTokenExchangeRate](otoken.md#otoken-exchange-rate)
 
-### Integrating for Insurance Providers 
+### Integrating as an Insurance Provider 
 
 **Quickstart relevant sections:**
 
@@ -37,35 +37,9 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 * [Add Collateral](otoken.md#add-eth-collateral)
 * [Claim Collateral](otoken.md#claim-collateral)
 
-## Insurance Markets:
+## Example Use Case: Insurance on Compound
 
-**The main use case of the options markets seeded on the convexity protocol is to provide insurance.**
+Consider the case of a Compound user, person A, who wants insurance on their Dai locked in Compound. They fear Compound getting hacked or having a bank run. The insurance buyer, person A, pays the insurance provider, person B,  0.01 ETH premium ahead of time to get access to ocDai tokens. In return, person B, locks up 1 ETH of collateral on the insurance platform. 
 
-Every option supported by the Convexity Protocol is integrated through an oToken smart contract which is an [EIP-20](https://eips.ethereum.org/EIPS/eip-20) compliant representation of options issued by the protocol. The insurance markets that exist are as below:
-
-| oToken | Underlying Protected |
-| :--- | :--- |
-| ocDai | cDai |
-| ocUSDC | cUSDC |
-| oDai | Dai |
-
-## Example Use Case 1: Insurance on Compound
-
-Consider the case of a Compound user, _Afraid_, who wants insurance on his $1 worth of Dai locked in Compound. He fears Compound getting hacked or having a liquidity crisis where the reserves left on Compound are insufficient to pay out all the suppliers if they all tried to withdraw their money. The insurance buyer, _Afraid,_ pays the insurance provider, _Brave_,  0.02 ETH premium ahead of time to get access to ocDai tokens. In return, _Brave_, locks up 1 ETH of collateral on the insurance platform for 1 year. 
-
-The ocDai token protects _Afraid_ from Jan 1 2020 to Jan 1 2021 against any technical or financial risks that Compound's cDai faces. The ocDai token gives _Afraid_ the right but not the obligation to sell his cDai for $1 worth of collateral at any time during the next 1 year. 
-
-In the case of a disaster _Afraid_ can turn in his ocDai and his cDai and in exchange take out $1 worth of collateral locked in the Convexity Protocol by all the insurance providers. There is no need for claim assessors to determine if a disaster happened because if the price of cDai ever falls below $1, _Afraid_ can immediately[ exercise](protocol-overview/glossary-of-terms.md) his right to sell his cDai for $1. 
-
-If there is no disaster, it is strictly worse for _Afraid_ to give up his cDai \(worth slightly &gt; $1 because of interest earned\) in exchange for \($1 worth\) collateral locked on the Convexity protocol. When there is no disaster, the insurance provider, _Brave_, keeps her collateral and earns a premium on it. 
-
-## Example Use Case 2: Insurance on Dai
-
-Consider the case of a Dai holder, _Afraid_, who wants insurance on his $1 worth of Dai. He fears Dai losing its peg or getting hacked. The insurance buyer, _Afraid,_ pays the insurance provider, _Brave_,  0.02 ETH premium ahead of time to get access to oDai tokens. In return, _Brave_, locks up 1 ETH of collateral on the insurance platform for 1 year. 
-
-The oDai token protects _Afraid_ from Jan 1 2020 to Jan 1 2021 against any technical or financial risks that Compound's cDai faces. The oDai token gives _Afraid_ the right but not the obligation to sell his Dai for $0.9 worth of collateral at any time during the next 1 year. 
-
-In the case of a disaster _Afraid_ can turn in his oDai and his Dai and in exchange take out $0.9 worth of collateral locked in the Convexity Protocol by all the insurance providers. There is no need for claim assessors to determine if a disaster happened because if the price of Dai ever falls below $0.9, _Afraid_ can immediately[ exercise](protocol-overview/glossary-of-terms.md) his right to sell his Dai for $0.9. 
-
-If there is no disaster, it is strictly worse for _Afraid_ to give up his Dai \(worth $1\) in exchange for \($0.9 worth\) collateral locked on the Convexity protocol. When there is no disaster, the insurance provider, _Brave_, keeps her collateral and earns a premium on it. 
+The ocDai token protects the holder of the token from Jan 1 2020 to Jan 1 2021 against any technical or financial risks that Compound's cDai faces. In the case of a disaster, the holder of the ocDai, person A, can turn in their oTokens and their cDai and in exchange take out $1 worth of collateral locked in the Convexity Protocol by insurance providers. If there is no disaster, it is strictly worse for the holder of cDai to give up their cDai in exchange for collateral locked on the Convexity protocol. In such a case, the insurance provider, person B, keeps their collateral and earns a premium on it. 
 
