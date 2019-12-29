@@ -1,14 +1,14 @@
 # Protocol Overview
 
 {% hint style="info" %}
-**Insurance Buyers Quickstart:**
+**Insurance Buyer Integrations Quickstart:**
 
 * [Buy oTokens](../optionsexchange-buy-and-sell-otokens.md#buy-otokens)
 * [Calculate premiums to pay](../optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay)
 * [Exercise ](../otoken.md#exercise)
 * [oTokenExchangeRate](../otoken.md#otoken-exchange-rate)\*\*\*\*
 
-**Insurance Sellers Quickstart:** 
+**Insurance Seller Integrations Quickstart:** 
 
 * [Create and Sell oToken](../otoken.md#eth-collateralized-options-2)
 * [Calculate premiums received](../optionsexchange-buy-and-sell-otokens.md#calculate-premiums-received)
