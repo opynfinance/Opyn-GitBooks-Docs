@@ -28,7 +28,7 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 * [Exercise ](otoken.md#exercise)
 * [oTokenExchangeRate](otoken.md#otoken-exchange-rate)
 
-### Integrating as an Insurance Provider 
+### Integrating for Insurance Providers 
 
 **Quickstart relevant sections:**
 
