@@ -11,7 +11,9 @@
     <tr>
       <td style="text-align:left">Put Option</td>
       <td style="text-align:left">A put option gives the owner/buyer the right to sell an asset, at a specified
-        price, by a predetermined date to the seller of the put option.</td>
+        price, by a predetermined date to the seller of the put option.This means
+        that no matter how low the price of an asset goes, the investor has the
+        right to sell the asset for the agreed upon price</td>
     </tr>
     <tr>
       <td style="text-align:left">Premium</td>
