@@ -54,13 +54,20 @@ optionsExchange.buyOTokens(msg.sender, 0x3BF..., address(paymentToken), 100);
 const optionsExchange = OptionsExchange.at(0x6B3...);
 
 /**
- * Need to approve any ERC20 before spending it
+ * Need to approve any ERC20 before spending it.
+ * If paying in ETH, comment out lines 7 - 10.
  */
 await paymentToken.methods.approve(
     optionsExchange.options.address,
     '1000000000000000000000000000000'
     ).send();
 
+/**
+ * receiver is myAccount
+ * oTokenAddress is the oToken contract's address
+ * paymentToken is an ERC20
+ * 100 oDai protects 100 * 10^-14 Dai i.e. 10^-12 Dai. 
+ */
 await optionsExchange.methods.buyOTokens(
     myAccount, 
     oToken.options.address, 
