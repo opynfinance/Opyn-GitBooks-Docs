@@ -10,11 +10,13 @@ The oTokens minted can be bought and sold through the optionsExchange contract.
 
 oTokens can be bought by calling the buy function. Before buying, you need to approve the optionsExchange contract to spend your money. oTokens can be bought and sold on an exchange like Uniswap at anytime before expiry.
 
+The `buyOTokens` function is `payable` because it needs to be able to receive ETH as a `paymentToken`. 
+
 ```javascript
 function buyOTokens(address payable receiver, address oTokenAddress, address paymentTokenAddress, uint256 oTokensToBuy) payable
 ```
 
-> `receiver` : The account that will receive the oTokens
+> `receiver` : The account that will receive the oTokens. The receiver needs to be payable because if the holder of the oToken calls [exercise](otoken.md#exercise), then the claim payout may be in ETH. 
 >
 > `oTokenAddress` :  The [address of the oToken](abis-smart-contract-addresses.md#networks) that is being bought
 >
@@ -22,9 +24,9 @@ function buyOTokens(address payable receiver, address oTokenAddress, address pay
 >
 > `oTokensToBuy` : The number of oTokens to buy. See [oTokenExchangeRate](otoken.md#otoken-exchange-rate) for amount of underlying protected by 1 oToken.
 >
-> `msg.value` : If the payment token is ETH, then the msg.value is the amount of ETH paid, else it is 0.
+> `msg.sender` : The account that is paying the premiums.
 >
-> `msg.sender` : The account that is paying the premiums
+> `msg.value` \(optional\) : If the payment token is ETH, then the msg.value is the amount of ETH paid, else it is 0.
 
 {% tabs %}
 {% tab title="Solidity" %}
