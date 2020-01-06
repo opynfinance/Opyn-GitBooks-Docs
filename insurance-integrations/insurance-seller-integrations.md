@@ -1,6 +1,6 @@
 # Insurance Seller Integrations
 
-## [Create and Sell oTokens](../otoken.md#eth-collateralized-options-2)
+## [Create](../otoken.md#create-and-sell-options)[ and Sell oTokens](../otoken.md#create-and-sell-options)
 
 The[`createAndSellETHCollateralOption`](../otoken.md#create-and-sell-options) function allows the seller to create new oTokens \(the holder of the oTokens has insurance\), and sell those oTokens. 
 
