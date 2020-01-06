@@ -2,13 +2,13 @@
 
 ## Introduction
 
-The oTokens minted can be bought and sold through the optionsExchange contract. 
+The oTokens minted can be bought and sold through the OptionsExchange contract. 
 
 ## State Changing Functions
 
 ### Buy oTokens
 
-oTokens can be bought by calling the buy function. Before buying, you need to approve the optionsExchange contract to spend your money. oTokens can be bought and sold on an exchange like Uniswap at anytime before expiry.
+oTokens can be bought by calling the buy function. Before buying, you need to approve the OptionsExchange contract to spend your money. oTokens can be bought and sold on an exchange like Uniswap at anytime before expiry.
 
 The `buyOTokens` function is `payable` because it needs to be able to receive ETH as a `paymentToken`. 
 
