@@ -1,4 +1,4 @@
-# oToken: Create + Manage Options in existing markets
+# OToken: Create + Manage Options in existing markets
 
 ## Introduction
 

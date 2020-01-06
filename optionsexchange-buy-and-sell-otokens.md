@@ -1,4 +1,4 @@
-# optionsExchange: Buy and Sell Options
+# OptionsExchange: Buy and Sell Options
 
 ## Introduction
 
