@@ -44,6 +44,7 @@ paymentToken.approve(address(optionsExchange), 1000000000);
  * oTokenAddress is the oDai rinkeby address
  * paymentToken is an ERC20
  * 100 oDai protects 100 * 10^-14 Dai i.e. 10^-12 Dai. 
+ * msg.sender is set automatically in solidity. 
  */
 optionsExchange.buyOTokens(msg.sender, 0x3BF..., address(paymentToken), 100);
 ```
@@ -60,7 +61,9 @@ const optionsExchange = OptionsExchange.at(0x6B3...);
 await paymentToken.methods.approve(
     optionsExchange.options.address,
     '1000000000000000000000000000000'
-    ).send();
+    ).send({
+     from: myAccount
+     });
 
 /**
  * receiver is myAccount
@@ -72,7 +75,14 @@ await optionsExchange.methods.buyOTokens(
     myAccount, 
     oToken.options.address, 
     paymentToken.options.address, 
-    '100').send();
+    '100').send({
+    
+     // set the msg.sender
+     from: myAccount,
+     
+     // msg.value is 0 because paymentToken is ETH
+     value: 0
+     });
 ```
 {% endtab %}
 {% endtabs %}
