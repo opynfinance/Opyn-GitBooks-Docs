@@ -15,7 +15,7 @@ The main functionality offered by this section is as below:
 
 ### Create Options
 
-The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options) section.
+_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options) section.
 
 Create is a specific action which opens a vault, adds collateral, and issue oTokens. oTokens can only be issued once a vault exists and has sufficient collateral. Create does all these steps in 1 function call. \([See here for difference between create, mint and issue](protocol-overview/glossary-of-terms.md)\)
 
@@ -97,7 +97,7 @@ await ocDai.methods.createERC20CollateralOption(
 
 ### Add Options
 
-The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-1) section.
+_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-1) section.
 
 #### ETH Collateralized Options
 
@@ -185,7 +185,7 @@ await ocDai.methods.addERC20CollateralOption(
 
 ### Create and Sell Options
 
-The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-2) section.
+_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-2) section.
 
 Create is a specific action which opens a vault, adds collateral, and issue oTokens. oTokens can only be issued once a vault exists and has sufficient collateral. Create does all these steps in 1 function call. \([See here for difference between create, mint and issue](protocol-overview/glossary-of-terms.md)\)
 
@@ -268,7 +268,7 @@ await ocDai.methods.createAndSellERC20CollateralOption(
 
 ### Add and Sell Options
 
-The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-3) section.
+_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-3) section.
 
 #### ETH Collateralized Options
 
