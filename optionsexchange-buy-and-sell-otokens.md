@@ -174,6 +174,12 @@ uint256 ethToPay = optionsExchange.premiumToPay(0x3BF..., address(0), 100);
 {% tab title="Web3 1.0" %}
 ```javascript
 const optionsExchange = OptionsExchange.at('0x6B3...');
+
+/** 
+ * oTokenAddress is oToken contract's address
+ * paymentTokenAddress is 0 because paying with ETH 
+ * 100 oDai protects 100 * 10^-14 Dai i.e. 10^-12 Dai.
+ */
 const ethToPay = optionsExchange.methods.premiumToPay('0x3BF...', '0x0', '100').call();
 ```
 {% endtab %}
