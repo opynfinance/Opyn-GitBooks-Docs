@@ -20,7 +20,7 @@ function buyOTokens(address payable receiver, address oTokenAddress, address pay
 >
 > `oTokenAddress` :  The [address of the oToken](abis-smart-contract-addresses.md#networks) that is being bought
 >
-> `paymentTokenAddress` : The address of the token you are paying for oTokens with. If it is set to 0, it means ETH. 
+> `paymentTokenAddress` : The address of the token you are paying for oTokens with. If it is set to 0, it means ETH. Ensure that the [msg.sender has sufficient paymentTokens](optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay) before calling this function.
 >
 > `oTokensToBuy` : The number of oTokens to buy. See [oTokenExchangeRate](otoken.md#otoken-exchange-rate) for amount of underlying protected by 1 oToken.
 >
@@ -153,14 +153,20 @@ function premiumToPay(address oTokenAddress, address paymentTokenAddress, uint25
 >
 > `paymentTokenAddress` : The address of the token you are paying premiums in to buy the option tokens. Is it is set to 0, you can pay with ETH. 
 >
-> `oTokensToBuy` : The number of oTokens to buy
->
+> `oTokensToBuy` : The number of oTokens to buy. See [oTokenExchangeRate](otoken.md#otoken-exchange-rate) for amount of underlying protected by 1 oToken.
+
 > `RETURN` : The amount of paymentToken to pay as premiums
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 OptionsExchange optionsExchange = OptionsExchange(0x6B3...);
+
+/** 
+ * oTokenAddress is oToken contract's address
+ * paymentTokenAddress is 0 because paying with ETH 
+ * 100 oDai protects 100 * 10^-14 Dai i.e. 10^-12 Dai.
+ */
 uint256 ethToPay = optionsExchange.premiumToPay(0x3BF..., address(0), 100);
 ```
 {% endtab %}
