@@ -19,7 +19,7 @@ The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. If in
 
 #### ETH Collateralized Options
 
-This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
+This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it, and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
 
 ```javascript
 function createETHCollateralOption(uint256 amtToCreate, address receiver) payable
@@ -53,7 +53,7 @@ await ocDai.methods.createETHCollateralOption(
 
 #### ERC20 Collateralized Options
 
-This function[ opens a new vault](otoken.md#open-vault), [adds ERC20 collatera](otoken.md#erc20-collateralized-options)[l](otoken.md#erc20-collateralized-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
+This function[ opens a new vault](otoken.md#open-vault), [adds ERC20 collatera](otoken.md#erc20-collateralized-options)[l](otoken.md#erc20-collateralized-options) to it, and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
 
 ```javascript
 function createERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, address receiver) 
