@@ -91,7 +91,7 @@ await optionsExchange.methods.buyOTokens(
 {% hint style="danger" %}
 **Common Errors:**
 
-1. Ensure that the msg.sender has approved sufficient amount before calling the buyOTokens function.
+1. Ensure that the msg.sender has [approved](https://ethereum.stackexchange.com/questions/12852/could-somebody-please-explain-in-detail-what-this-ethereum-contract-is-doing) sufficient amount before calling the buyOTokens function.
 2. Ensure the msg.sender has [sufficient paymentToken balance ](optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay)to pay for the oTokens bought.
 3. The uniswap pool may not have sufficient liquidity. You can call [getExchange](https://docs.uniswap.io/smart-contract-api/factory#getexchange) on the [oTokenAddress](abis-smart-contract-addresses.md#networks) to then see if the exchange has sufficient liquidity. 
 {% endhint %}
