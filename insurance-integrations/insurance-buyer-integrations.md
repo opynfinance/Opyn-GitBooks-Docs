@@ -14,7 +14,7 @@ The amount of underlying that 1 oToken protects can be determined by calling the
 
 ## [Calculate premiums to pay](../optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay)
 
-To buy insurance, the insurance buyer needs to pay some amount of premium upfront. The amount of payment tokens to be paid to buy the insurance can be calculated by calling the [calcPremiumsToPay](../optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay) function in the OptionsExchange smart contract. 
+To buy insurance, the insurance buyer needs to pay some amount of premium upfront. The amount of payment tokens to be paid to buy the insurance can be calculated by calling the [premiumToPay](../optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay) function in the OptionsExchange smart contract. 
 
 ## [Exercise ](../otoken.md#exercise)
 
