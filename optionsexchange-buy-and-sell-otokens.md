@@ -16,7 +16,7 @@ function buyOTokens(address payable receiver, address oTokenAddress, address pay
 
 > `receiver` : The account that will receive the oTokens
 >
-> `oTokenAddress` :  The address of the oToken that is being bought
+> `oTokenAddress` :  The [address of the oToken](abis-smart-contract-addresses.md#networks) that is being bought
 >
 > `paymentTokenAddress` : The address of the token you are paying for oTokens with. If it is set to 0, it means ETH. 
 >
@@ -69,7 +69,7 @@ function sellOTokens(address payable receiver, address oTokenAddress, address pa
 
 > `receiver` : The account that will receive the premiums
 >
-> `oTokenAddress` :  The address of the oToken that is being sold
+> `oTokenAddress` :  The [address of the oToken ](abis-smart-contract-addresses.md)that is being sold
 >
 > `payoutTokenAddress` : The address of the token to receive premiums in. address\(0\) for ETH. 
 >
@@ -120,7 +120,7 @@ This function calculates the premiums to be paid if a buyer wants to buy oTokens
 function premiumToPay(address oTokenAddress, address paymentTokenAddress, uint256 oTokensToBuy) view returns (uint256)
 ```
 
-> `oTokenAddress` :  The address of the oToken that is being bought
+> `oTokenAddress` :  The [address of the oToken](abis-smart-contract-addresses.md#networks) that is being bought
 >
 > `paymentTokenAddress` : The address of the token you are paying premiums in to buy the option tokens. Is it is set to 0, you can pay with ETH. 
 >
@@ -152,7 +152,7 @@ This function calculates the amount of premiums that the seller will receive if 
 function premiumReceived(address oTokenAddress, address payoutTokenAddress, uint256 oTokensToSell) view returns (uint256) 
 ```
 
-> `oTokenAddress` :  The address of the oToken that is being sold
+> `oTokenAddress` :  The [address of the oToken](abis-smart-contract-addresses.md#networks) that is being sold
 >
 > `payoutTokenAddress` : The address of the token to receive premiums in. address\(0\) for ETH. 
 >
