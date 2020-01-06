@@ -13,7 +13,7 @@ Buying and selling insurance happens through oTokens which are ERC20 tokens whic
 * [Exercise ](../otoken.md#exercise)
 * [oTokenExchangeRate](../otoken.md#otoken-exchange-rate)
 
-## Integrating for Insurance Providers 
+## Integrating for Insurance Sellers
 
 **Quickstart relevant sections:**
 
