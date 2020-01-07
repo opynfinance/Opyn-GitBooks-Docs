@@ -1,22 +1,6 @@
-# oToken: Create + Manage Options in existing markets
+# OToken: Create + Manage Options in existing markets
 
 ## Introduction
-
-{% hint style="info" %}
-**Insurance Buyer Integrations Quickstart:**
-
-* [Buy oTokens](optionsexchange-buy-and-sell-otokens.md#buy-otokens)
-* [Calculate premiums to pay](optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay)
-* [Exercise ](otoken.md#exercise)
-* [oTokenExchangeRate](otoken.md#otoken-exchange-rate)\*\*\*\*
-
-**Insurance Seller Integrations Quickstart:** 
-
-* [Create and Sell oToken](otoken.md#eth-collateralized-options-2)
-* [Calculate premiums received](optionsexchange-buy-and-sell-otokens.md#calculate-premiums-received)
-* [Add Collateral](otoken.md#add-eth-collateral)
-* [Claim Collateral](otoken.md#claim-collateral)
-{% endhint %}
 
 Opyn uses options to provide insurance. Every option supported by the Convexity Protocol is integrated through an oToken smart contract which is an [EIP-20](https://eips.ethereum.org/EIPS/eip-20) compliant representation of options issued by the protocol. Options sellers create options by locking up collateral for some period of time and minting oTokens. Each oToken protects a unit of the specified underlying ERC20 asset. The Options seller can sell these oTokens on an exchange to earn [premiums](./#glossary-of-terms). The oToken marketplaces deployed for the purpose of insurance are oDai, ocDai and ocUSDC. 
 
@@ -31,17 +15,19 @@ The main functionality offered by this section is as below:
 
 ### Create Options
 
-The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options) section.
+_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options) section.
+
+Create is a specific action which opens a vault, adds collateral, and issue oTokens. oTokens can only be issued once a vault exists and has sufficient collateral. Create does all these steps in 1 function call. \([See here for difference between create, mint and issue](protocol-overview/glossary-of-terms.md)\)
 
 #### ETH Collateralized Options
 
-This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
+This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it, and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
 
 ```javascript
 function createETHCollateralOption(uint256 amtToCreate, address receiver) payable
 ```
 
-> `amtToCreate` : number of oTokens to create
+> `amtToCreate` : The number of oTokens to create
 >
 > `receiver` : The account to send the newly minted oTokens to
 >
@@ -69,13 +55,13 @@ await ocDai.methods.createETHCollateralOption(
 
 #### ERC20 Collateralized Options
 
-This function[ opens a new vault](otoken.md#open-vault), [adds ERC20 collatera](otoken.md#erc20-collateralized-options)[l](otoken.md#erc20-collateralized-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
+This function[ opens a new vault](otoken.md#open-vault), [adds ERC20 collatera](otoken.md#erc20-collateralized-options)[l](otoken.md#erc20-collateralized-options) to it, and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
 
 ```javascript
 function createERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, address receiver) 
 ```
 
-> `amtToCreate` : number of oTokens to create
+> `amtToCreate` : The number of oTokens to create
 >
 > `amtCollateral` : The collateral to be added to the newly created vault
 >
@@ -111,7 +97,7 @@ await ocDai.methods.createERC20CollateralOption(
 
 ### Add Options
 
-The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-1) section.
+_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-1) section.
 
 #### ETH Collateralized Options
 
@@ -121,7 +107,7 @@ This function[ ](otoken.md#open-vault)[adds ETH collateral](otoken.md#add-eth-co
 function addETHCollateralOption(uint256 amtToCreate, uint256 vaultIndex, address receiver) payable
 ```
 
-> `amtToCreate` : number of oTokens to create
+> `amtToCreate` : The number of oTokens to create
 >
 > `vaultIndex` : The index of the vault to add oTokens to
 >
@@ -159,7 +145,7 @@ This function [adds ERC20 collatera](otoken.md#erc20-collateralized-options)[l](
 function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, uint256 vaultIndex, address receiver)
 ```
 
-> `amtToCreate` : number of oTokens to create
+> `amtToCreate` : The number of oTokens to create
 >
 > `amtCollateral` : The collateral to be added to the existing vault
 >
@@ -199,17 +185,19 @@ await ocDai.methods.addERC20CollateralOption(
 
 ### Create and Sell Options
 
-The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-2) section.
+_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-2) section.
+
+Create is a specific action which opens a vault, adds collateral, and issue oTokens. oTokens can only be issued once a vault exists and has sufficient collateral. Create does all these steps in 1 function call. \([See here for difference between create, mint and issue](protocol-overview/glossary-of-terms.md)\)
 
 #### ETH Collateralized Options
 
-This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault and [sells the oTokens](optionsexchange-buy-and-sell-otokens.md#sell-otokens) for ETH premiums on Uniswap.
+This function[ opens a new vault](otoken.md#open-vault), [adds ETH collateral](otoken.md#add-eth-collateral-options) to it, [issues oTokens ](otoken.md#issue-otokens)from the vault, and [sells the oTokens](optionsexchange-buy-and-sell-otokens.md#sell-otokens) for ETH on Uniswap. This function is sufficient for a new option seller to go be fully integrated and start earning premiums. 
 
 ```javascript
 function createAndSellETHCollateralOption(uint256 amtToCreate, address payable receiver) payable
 ```
 
-> `amtToCreate` : number of oTokens to create
+> `amtToCreate` : The number of oTokens to create
 >
 > `receiver` : The account to send the newly minted oTokens to
 >
@@ -238,13 +226,13 @@ await ocDai.methods.createAndSellETHCollateralOption(
 
 #### ERC20 Collateralized Options
 
-This function[ opens a new vault](otoken.md#open-vault), [adds ERC20 collateral](otoken.md#erc20-collateralized-options) to it and [issues oTokens ](otoken.md#issue-otokens)from the vault and [sells the oTokens](optionsexchange-buy-and-sell-otokens.md#sell-otokens) for ETH premiums on Uniswap.
+This function[ opens a new vault](otoken.md#open-vault), [adds ERC20 collateral](otoken.md#erc20-collateralized-options) to it, [issues oTokens ](otoken.md#issue-otokens)from the vault, and [sells the oTokens](optionsexchange-buy-and-sell-otokens.md#sell-otokens) for ETH on Uniswap.
 
 ```javascript
 function createAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, address payable receiver)
 ```
 
-> `amtToCreate` : number of oTokens to create
+> `amtToCreate` : The number of oTokens to create
 >
 > `amtCollateral` : The collateral to be added to the newly created vault
 >
@@ -280,17 +268,17 @@ await ocDai.methods.createAndSellERC20CollateralOption(
 
 ### Add and Sell Options
 
-The collateral for the oDai, ocDai and ocUSDC options markets are all ETH. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-3) section.
+_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-3) section.
 
 #### ETH Collateralized Options
 
-This function[ ](otoken.md#open-vault)[adds ETH collateral](otoken.md#add-eth-collateral-options) to an existing vault and [issues oTokens ](otoken.md#issue-otokens)from the vault and [sells the oTokens](optionsexchange-buy-and-sell-otokens.md#sell-otokens) on Uniswap for ETH premiums.
+This function[ ](otoken.md#open-vault)[adds ETH collateral](otoken.md#add-eth-collateral-options) to an existing vault, [issues oTokens ](otoken.md#issue-otokens)from the vault, and [sells the oTokens](optionsexchange-buy-and-sell-otokens.md#sell-otokens) on Uniswap for ETH.
 
 ```javascript
 function addAndSellETHCollateralOption(uint256 amtToCreate, uint256 vaultIndex, address payable receiver) payable
 ```
 
-> `amtToCreate` : number of oTokens to create
+> `amtToCreate` : The number of oTokens to create
 >
 > `vaultIndex` : The index of the vault to add oTokens to
 >
@@ -322,13 +310,13 @@ await ocDai.methods.addAndSellETHCollateralOption(
 
 #### ERC20 Collateralized Options
 
-This function [adds ERC20 collateral](otoken.md#erc20-collateralized-options) to an existing vault, [issues oTokens ](otoken.md#issue-otokens)from the vault and [sells the oTokens](optionsexchange-buy-and-sell-otokens.md#sell-otokens) for ETH premiums on Uniswap.
+This function [adds ERC20 collateral](otoken.md#erc20-collateralized-options) to an existing vault, [issues oTokens ](otoken.md#issue-otokens)from the vault, and [sells the oTokens](optionsexchange-buy-and-sell-otokens.md#sell-otokens) for ETH on Uniswap.
 
 ```javascript
 function addAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, uint256 vaultIndex, address payable receiver)
 ```
 
-> `amtToCreate` : number of oTokens to create
+> `amtToCreate` : The number of oTokens to create
 >
 > `amtCollateral` : The collateral to be added to the existing vault
 >
@@ -1000,8 +988,8 @@ The oTokenExchangeRate is the smallest amount of underlying that 1 oToken protec
 
 | oToken | Amount Underlying Protected |
 | :--- | :--- |
-| 1 ocDai | 10 ^-5 cDai |
-| 1 ocUSDC | 10^-5 cUSDC |
+| 1 ocDai | 10 ^- cDai |
+| 1 ocUSDC | 10^-8 cUSDC |
 | 1 oDai | 10^-14 Dai |
 
 ```javascript
