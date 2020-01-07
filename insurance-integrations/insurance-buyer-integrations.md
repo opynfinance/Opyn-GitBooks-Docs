@@ -8,8 +8,8 @@ The amount of underlying that 1 oToken protects can be determined by calling the
 
 | oToken | Amount Underlying Protected |
 | :--- | :--- |
-| 1 ocDai | 10 ^-5 cDai |
-| 1 ocUSDC | 10^-5 cUSDC |
+| 1 ocDai | 10 ^-8 cDai |
+| 1 ocUSDC | 10^-8 cUSDC |
 | 1 oDai | 10^-14 Dai |
 
 ## [Calculate premiums to pay](../optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay)

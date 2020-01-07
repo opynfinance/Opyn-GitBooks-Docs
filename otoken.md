@@ -988,8 +988,8 @@ The oTokenExchangeRate is the smallest amount of underlying that 1 oToken protec
 
 | oToken | Amount Underlying Protected |
 | :--- | :--- |
-| 1 ocDai | 10 ^-5 cDai |
-| 1 ocUSDC | 10^-5 cUSDC |
+| 1 ocDai | 10 ^- cDai |
+| 1 ocUSDC | 10^-8 cUSDC |
 | 1 oDai | 10^-14 Dai |
 
 ```javascript
