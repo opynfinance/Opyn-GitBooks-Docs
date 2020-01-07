@@ -666,7 +666,7 @@ To determine if it is the exercise window, call [`isExerciseWindow()`](otoken.md
 
 The amount of underlying tokens to be transferred can be calculated by calling the [`underlyingToTransfer(..)`](otoken.md#underlying-to-transfer-calculations) function. Users first need to [`approve(..)`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol) the oToken contract to spend their underlying and oTokens before they can call `exercise(..)` on a vault. This is because the exercise function transfers in the ERC20 oTokens and underlying tokens into the oToken contract \([Sec 5.1 Physical Settlement](https://drive.google.com/file/d/1YsrGBUpZoPvFLtcwkEYkxNhogWCU772D/view)\). 
 
-While exercise can be called at anytime during the exercise window, it may be unprofitable to exercise unless there was an actual crash in the price of the underlying asset.
+While exercise can be called at anytime during the exercise window, it may be unprofitable to exercise unless there was an actual crash in the price of the underlying asset relative to the price of the strike asset. 
 
 ```javascript
 function exercise(uint256 oTokensToExercise) payable
