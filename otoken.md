@@ -662,9 +662,9 @@ if((!hasExpired) && isUnsafe) {
 
 During the [exercise window](./#glossary-of-terms), any oToken holders can transfer their oTokens and corresponding amount of underlying tokens and in return get out strike price amount of the collateral asset per unit of oToken exercised. 
 
-To determine if it is the exercise window, call `isExerciseWindow()`. [Exercise](./#glossary-of-terms) can only be called during the exercise window. 
+To determine if it is the exercise window, call [`isExerciseWindow(..)`](otoken.md#is-it-the-exercise-window). The [exercise](./#glossary-of-terms) function can only be called during the exercise window. 
 
-The amount of underlying tokens to be transferred can be calculated by calling the `underlyingToTransfer(uint256 oTokensToExercise)` function. Users first need to approve the oToken contract before they can liquidate a vault because they are transferring in the ERC20 oTokens and underlying tokens into the oToken contract. 
+The amount of underlying tokens to be transferred can be calculated by calling the [`underlyingToTransfer(..)`](otoken.md#underlying-to-transfer-calculations) function. Users first need to approve the oToken contract before they can call `exercise(..)` on a vault because they are transferring in the ERC20 oTokens and underlying tokens into the oToken contract. 
 
 While exercise can be called at anytime during the exercise window, it may be unprofitable to exercise unless there was an actual crash in the price of the underlying asset.
 
