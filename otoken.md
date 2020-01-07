@@ -1176,7 +1176,7 @@ let result = ocDai.methods.getVaultByIndex(1).call();
 
 ### Is the given vault unsafe
 
-This function checks if the vault at the given index is safe
+This function checks if the vault at the given index is safe.
 
 ```javascript
 function isUnsafe(uint256 vaultIndex) view returns (bool)
@@ -1202,9 +1202,33 @@ let isUnsafe = ocDai.methods.isUnsafe(1).call();
 {% endtab %}
 {% endtabs %}
 
+## Get Number of Vaults 
+
+This function returns the number of vaults in the oToken contract.
+
+```javascript
+function numVaults() public view returns (uint256)
+```
+
+> `RETURN` : The total number of vaults that exist in the oToken contract
 
 
 
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+unit256 totalVaults = ocDai.numVaults();
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3BA...);
+let totalVaults = ocDai.methods.numVaults().call();
+```
+{% endtab %}
+{% endtabs %}
 
 
 
