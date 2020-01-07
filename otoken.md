@@ -613,7 +613,7 @@ A liquidator may close up to a certain fixed percentage \([i.e. liquidation fact
 function liquidate(uint256 vaultIndex, uint256 oTokensToLiquidate)
 ```
 
-> `vaultIndex` : The index of the vault that is unsafe and is to be liquidated
+> `vaultIndex` : The index of the vault that is unsafe and is to be liquidated. \(See [`numVaults()`](otoken.md#get-number-of-vaults) to get the total number of vaults in the oToken contract\)
 >
 > `oTokensToLiqudate` : The amount of oTokens that the liquidator brings back to the oToken contract
 >
