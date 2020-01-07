@@ -672,7 +672,7 @@ While exercise can be called at anytime during the exercise window, it may be un
 function exercise(uint256 oTokensToExercise) payable
 ```
 
-> `oTokensToExercise` : The amount of oTokens being exercised
+> `oTokensToExercise` : The amount of oTokens being exercised. \(See here to get the [oToken balance of the msg.sender](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol#L50)\)
 >
 > `msg.sender` : The account from which oTokens and underlying assets will be transferred into the oToken contract. This account will also get paid out the claims made. 
 >
