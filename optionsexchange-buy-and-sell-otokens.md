@@ -20,7 +20,7 @@ function buyOTokens(address payable receiver, address oTokenAddress, address pay
 >
 > `oTokenAddress` :  The [address of the oToken](abis-smart-contract-addresses.md#networks) that is being bought
 >
-> `paymentTokenAddress` : The address of the token you are paying for oTokens with. If it is set to 0, it means ETH. Ensure that the [msg.sender has sufficient paymentTokens](optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay) before calling this function.
+> `paymentTokenAddress` : The address of the token you are paying for oTokens with. If it is set to address\(0\), it means ETH. Ensure that the [msg.sender has sufficient paymentTokens](optionsexchange-buy-and-sell-otokens.md#calculate-premiums-to-pay) before calling this function.
 >
 > `oTokensToBuy` : The number of oTokens to buy. See [oTokenExchangeRate](otoken.md#otoken-exchange-rate) for amount of underlying protected by 1 oToken.
 >
@@ -159,7 +159,7 @@ function premiumToPay(address oTokenAddress, address paymentTokenAddress, uint25
 
 > `oTokenAddress` :  The [address of the oToken](abis-smart-contract-addresses.md#networks) that is being bought
 >
-> `paymentTokenAddress` : The address of the token you are paying premiums in to buy the option tokens. Is it is set to 0, you can pay with ETH. 
+> `paymentTokenAddress` : The address of the token you are paying premiums in to buy the option tokens. If it is set to address\(0\), you can pay with ETH. 
 >
 > `oTokensToBuy` : The number of oTokens to buy. See [oTokenExchangeRate](otoken.md#otoken-exchange-rate) for amount of underlying protected by 1 oToken.
 
