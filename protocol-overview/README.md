@@ -8,7 +8,7 @@
 * [Exercise ](../otoken.md#exercise)
 * [oTokenExchangeRate](../otoken.md#otoken-exchange-rate)\*\*\*\*
 
-**Insurance Seller Integrations Quickstart:** 
+**Insurance Provider Integrations Quickstart:** 
 
 * [Create and Sell oToken](../otoken.md#eth-collateralized-options-2)
 * [Calculate premiums received](../optionsexchange-buy-and-sell-otokens.md#calculate-premiums-received)

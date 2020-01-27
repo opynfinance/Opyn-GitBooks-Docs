@@ -1,4 +1,4 @@
-# Insurance Seller Integrations
+# Insurance Provider Integrations
 
 ## Create and Sell Insurance
 
