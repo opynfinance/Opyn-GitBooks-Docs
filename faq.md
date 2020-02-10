@@ -127,7 +127,7 @@ The admin has the right to:
 
 The admin does NOT have the right to:
 
-* Access any user funds 
+* Access any user funds - Opyn is completely noncustodial
 
 Our goal is to remove the protocol admin and become fully decentralized. 
 
