@@ -18,6 +18,7 @@ Please join the \#dev room in the Opyn community [Discord](https://discord.gg/ug
 * [Twitter](https://twitter.com/opyn_)
 * [Discord](https://discordapp.com/invite/2NFdXaE)
 * [Email](mailto:hello@opyn.co)
+* [Open Zeppelin Audit Report](https://blog.openzeppelin.com/private-report-jan-6/)
 
 ### Integrating for Insurance Buyers Quickstart
 
@@ -41,9 +42,8 @@ Every option supported by the Convexity Protocol is integrated through an oToken
 
 | oToken | Underlying Protected |
 | :--- | :--- |
-| [ocDai](abis-smart-contract-addresses.md) | [cDai](abis-smart-contract-addresses.md) |
-| [ocUSDC](abis-smart-contract-addresses.md) | [cUSDC](abis-smart-contract-addresses.md) |
-| [oDai](abis-smart-contract-addresses.md) | [Dai](abis-smart-contract-addresses.md) |
+| [ocDai](https://etherscan.io/address/0xddac4aed7c8f73032b388efe2c778fc194bc81ed#code) | [cDai](https://etherscan.io/token/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643) |
+| [ocUSDC](https://etherscan.io/address/0x8ed9f862363ffdfd3a07546e618214b6d59f03d4#readContract) | [cUSDC](https://etherscan.io/token/0x39aa39c021dfbae8fac545936693ac917d5e7563) |
 
 ## Example Use Case 1: Insurance on Compound
 
