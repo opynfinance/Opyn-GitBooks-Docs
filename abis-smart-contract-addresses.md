@@ -93,6 +93,17 @@
       <td style="text-align:left"><a href="https://etherscan.io/address/0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac#code">0xb529964F86fbf99a6aA67f72a27e59fA3fa4FEaC</a>
       </td>
     </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x7054e08461e3eCb7718B63540adDB3c3A1746415#code">Oracle</a>
+      </td>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x7054e08461e3eCb7718B63540adDB3c3A1746415&amp;format=raw">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x7054e08461e3eCb7718B63540adDB3c3A1746415#code">0</a>
+        <a
+        href="https://etherscan.io/address/0x7054e08461e3eCb7718B63540adDB3c3A1746415#code">x7054e08461e3eCb7718B63540adDB3c3A1746415</a>
+      </td>
+    </tr>
   </tbody>
 </table>### Rinkeby
 
