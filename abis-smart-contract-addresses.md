@@ -47,15 +47,6 @@
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">Dai</td>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f#code">JSON</a>
-      </td>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f#code">Interface</a>
-      </td>
-      <td style="text-align:left"><a href="https://rinkeby.etherscan.io/address/0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea">0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea</a>
-      </td>
-    </tr>
-    <tr>
       <td style="text-align:left">cDai</td>
       <td style="text-align:left"><a href="https://compound.finance/developers/abi/mainnet/cDAI">JSON</a>
       </td>
