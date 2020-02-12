@@ -47,6 +47,10 @@ Here’s what’s automatically happening in the background:
 
 Opyn is built as a two sided marketplace, so any individuals interested in putting down ETH collateral and earning a premium can provide insurance. These positions are overcollateralized with the minimum collateralization ratio of 160%, meaning that there is at least $1.60 locked up for each $1 of insurance coverage. 
 
+### What is "Max Loss"? 
+
+The "max loss" is the maximum loss you can face on the position that you are covering. The rest is covered by your policy. For example, if you are insuring 1000 DAI and the Max Loss is 20 DAI, then in the case of an adverse event if you max a claim, you will receive $980 of ETH. 
+
 ## Earning ETH Yield 
 
 ### **How can I earn ETH yields?** 
