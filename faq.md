@@ -25,7 +25,7 @@ Opyn provides protection against a number of different risks:
 * Financial risks \(eg. liquidity crises\)
 * Admin key risks \(eg. admin key compromise\)
 
-Opyn currently does not protect against oracle failure and non-transferable ERC20s tokens. We are actively working on increasing the surface of risks we can cover for future iterations of the protocol.
+Opyn protects against oracle manipulation except for Compound's ETH:USD oracle, which is used in the protocol. Opyn currently does not protect against non-transferable ERC20s token. We are actively working on increasing the surface of risks we can cover for future iterations of the protocol.
 
 ### **How do claims work?** 
 
@@ -72,6 +72,10 @@ In the case that there is an adverse event affecting the protocols you are expos
 
 You are required to maintain a minimum collateral ratio of 160%. If you fall below this threshold, you are at risk of liquidation.
 
+### Can I liquidate people? 
+
+Yes, you can check out Opyn's [example liquidator bot here](https://github.com/opynfinance/LiquidatorBot). 
+
 ## Integrating your DApp 
 
 ### Can I provide insurance for my users? 
@@ -96,11 +100,11 @@ oTokens are ERC20 tokens that represent the insurance \(protective put option\) 
 
 ### Is Opyn safe? Has it been audited? Can you cover Opyn yourselves? 
 
-The security of the Opyn protocol is our highest priority. We cannot cover Opyn ourselves. We understand that especially since we ourselves are a smart contract platform, security is paramount. Our team has created a protocol that we believe is safe and dependable, and has been audited by OpenZeppelin. All smart contract code is publicly verifiable. We will also be launching a bug bounty in the coming weeks. You can find the OpenZeppelin audit report here \[LINK\].
+The security of the Opyn protocol is our highest priority. We cannot cover Opyn ourselves. We understand that especially since we ourselves are a smart contract platform, security is paramount. Our team has created a protocol that we believe is safe and dependable, and has been audited by OpenZeppelin. All smart contract code is publicly verifiable. We will also be launching a bug bounty in the coming weeks. You can find the [OpenZeppelin audit report here](https://blog.openzeppelin.com/opyn-contracts-audit/).
 
 ### What if there is a bug in Opyn’s smart contracts? 
 
-We recognize that this is a risk, and we have taken precautions to protect against this risk with rigorous internal testing and external audits \[LINK\].   
+We recognize that this is a risk, and we have taken precautions to protect against this risk with rigorous internal testing and [external audits](https://blog.openzeppelin.com/opyn-contracts-audit/).   
 Even with this risk, you can still gain significant safety from Opyn insurance. With Opyn insurance, you can only lose your Compound deposits in the case that both Opyn and Compound are compromised at the same time. For example, if the probability that Opyn is compromised is 1% and the probability that Compound is compromised is 1%, then with Opyn insurance, your risk of losing your funds drops to 0.01%. 
 
 ### How do the price feeds work? 
