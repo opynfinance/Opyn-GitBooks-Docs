@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Opyn uses options to provide insurance. Every option supported by the Convexity Protocol is integrated through an oToken smart contract which is an [EIP-20](https://eips.ethereum.org/EIPS/eip-20) compliant representation of options issued by the protocol. Options sellers create options by locking up collateral for some period of time and minting oTokens. Each oToken protects a unit of the specified underlying ERC20 asset. The Options seller can sell these oTokens on an exchange to earn [premiums](./#glossary-of-terms). The oToken marketplaces deployed for the purpose of insurance are oDai, ocDai and ocUSDC. 
+Opyn uses options to provide insurance. Every option supported by the Convexity Protocol is integrated through an oToken smart contract which is an [EIP-20](https://eips.ethereum.org/EIPS/eip-20) compliant representation of options issued by the protocol. Options sellers create options by locking up collateral for some period of time and minting oTokens. Each oToken protects a unit of the specified underlying ERC20 asset. The Options seller can sell these oTokens on an exchange to earn [premiums](./#glossary-of-terms). The oToken marketplaces deployed for the purpose of insurance are ocDai and ocUSDC. 
 
 The main functionality offered by this section is as below:
 
@@ -15,7 +15,7 @@ The main functionality offered by this section is as below:
 
 ### Create Options
 
-_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options) section.
+_**The collateral for the ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options) section.
 
 Create is a specific action which opens a vault, adds collateral, and issue oTokens. oTokens can only be issued once a vault exists and has sufficient collateral. Create does all these steps in 1 function call. \([See here for difference between create, mint and issue](protocol-overview/glossary-of-terms.md)\)
 
@@ -97,7 +97,7 @@ await ocDai.methods.createERC20CollateralOption(
 
 ### Add Options
 
-_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-1) section.
+_**The collateral for the ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-1) section.
 
 #### ETH Collateralized Options
 
@@ -185,7 +185,7 @@ await ocDai.methods.addERC20CollateralOption(
 
 ### Create and Sell Options
 
-_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-2) section.
+_**The collateral for the ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-2) section.
 
 Create is a specific action which opens a vault, adds collateral, and issue oTokens. oTokens can only be issued once a vault exists and has sufficient collateral. Create does all these steps in 1 function call. \([See here for difference between create, mint and issue](protocol-overview/glossary-of-terms.md)\)
 
@@ -268,7 +268,7 @@ await ocDai.methods.createAndSellERC20CollateralOption(
 
 ### Add and Sell Options
 
-_**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-3) section.
+_**The collateral for the ocDai and ocUSDC options markets are all ETH**_. If integrating with those markets, look at the [ETH Collateralized Options](otoken.md#eth-collateralized-options-3) section.
 
 #### ETH Collateralized Options
 
@@ -371,7 +371,10 @@ function openVault() returns (uint)
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+
+
 require(ocDai.hasExpired() == false, "Can only open vault before expiry");
+require(ocDai.hasVault(address(this)) == false, "Each owner can only have 1 vault");
 uint256 vaultIndex = ocDai.openVault();
 ```
 {% endtab %}
@@ -379,9 +382,16 @@ uint256 vaultIndex = ocDai.openVault();
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
+const vaultOwnerAddress = 'Set Vault Owner Address';
+
 const hasExpired = await ocDai.methods.hasExpired().call();
-if(!hasExpired) {
-    await ocDai.methods.openVault().send();
+const hasVault = await ocDai.methods.hasVault(vaultOwnerAddress).call();
+
+if(!hasExpired && !hasVault) {
+    await ocDai.methods.openVault().send({
+        from: vaultOwner,
+        gas: 5000000000
+    });
 }
 ```
 {% endtab %}
@@ -393,7 +403,7 @@ The add collateral functions serve two purposes. The first is to add collateral 
 
 The add collateral functions can be called at any point before the oToken's expiry. You can check if a contract has expired by calling `hasExpired()`. 
 
-**The collateral for the oDai, ocDai and ocUSDC options markets are all ETH.** 
+**The collateral for the ocDai and ocUSDC options markets are all ETH.** 
 
 #### Add ETH Collateral
 
@@ -984,15 +994,12 @@ let val, exp = ocDai.methods.strikePrice().call();
 
 ### oToken Exchange Rate
 
-The oTokenExchangeRate is the smallest amount of underlying that 1 oToken protects. A return value of \(1, -14\) corresponds to 1 \* 10^-14. 
+The oTokenExchangeRate is the amount of underlying that the smallest unit of oToken protects. 
 
-To protect $1 worth of Dai, you need 10^14 oDai tokens. 
-
-| oToken | Amount Underlying Protected |
-| :--- | :--- |
-| 1 ocDai | 10 ^- 8 cDai |
-| 1 ocUSDC | 10^-8 cUSDC |
-| 1 oDai | 10^-14 Dai |
+| oToken | Amount Underlying Protected | Smallest Unit of cDai protected |
+| :--- | :--- | :--- |
+| 1 ocDai | 1 cDai | 10^-8 cDai |
+| 1 ocUSDC | 1 cUSDC | 10^-8 cUSDC |
 
 ```javascript
 function oTokenExchangeRate() returns (uint256, int32)
@@ -1120,30 +1127,30 @@ let isExerciseWindow = ocDai.methods.isExerciseWindow().call();
 {% endtab %}
 {% endtabs %}
 
-### Get Vaults by Owner
+### Has Vault
 
-This function gets the indices of the vaults that the account passed in is the owner of. 
+This function return true if the owner already has a vault
 
 ```javascript
-function getVaultsByOwner(address _owner) view returns (uint[] memory)
+function hasVault(address payable owner) public view returns (bool)
 ```
 
-> `_owner` : Find the vaults that this account owns. 
+> `owner` : The function returns true if the address passed in is already the owner of a vault in the given oToken contract.
 >
-> `RETURN` : Indices of the vaults that the account passed in is the owner of
+> `RETURN` : \(Boolean\) True if the owner has a vault.
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-uint[] memory vaultIndices = ocDai.getVaultsByOwner(0xFBA...);
+bool alreadyHasVault = ocDai.hasVault(0xFBA...);
 ```
 {% endtab %}
 
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3BA...);
-let vaultIndices = ocDai.methods.getVaultsByOwner(0xFBA...).call();
+let alreadyHasVault = ocDai.methods.hasVault(0xFBA...).call();
 ```
 {% endtab %}
 {% endtabs %}
