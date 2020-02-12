@@ -82,11 +82,7 @@ Yes! You can allow your users to access Compound deposit insurance directly thro
 
 ### What is the Convexity Protocol? 
 
-The Convexity Protocol is the first generalizable, on-chain options protocol on Ethereum. Opyn provides insurance using the Convexity Protocol. 
-
-### How does the Convexity Protocol work and how do you use it for insurance? 
-
-Check out this blog post \[LINK\] for an overview of the protocol and how we use protective put options to provide insurance. To go more in depth, you can read the whitepaper at [convexity.opyn.co](http://convexity.opyn.co/) and can access the smart contracts here \[LINK\]. 
+The Convexity Protocol is the first generalizable, on-chain options protocol on Ethereum. Opyn provides insurance using the Convexity Protocol's protective put options. You can access the convexity protocol whitepaper at [convexity.opyn.co](http://convexity.opyn.co/) and can access the [smart contracts here](https://opyn.gitbook.io/opyn/abis-smart-contract-addresses). 
 
 ### Can I build on top of the Convexity Protocol? 
 
@@ -100,12 +96,12 @@ oTokens are ERC20 tokens that represent the insurance \(protective put option\) 
 
 ### Is Opyn safe? Has it been audited? Can you cover Opyn yourselves? 
 
-The security of the Opyn protocol is our highest priority. We cannot cover Opyn ourselves. We understand that especially since we ourselves are a smart contract platform, security is paramount. Our team has created a protocol that we believe is safe and dependable, and has been audited by OpenZeppelin. All smart contract code is publicly verifiable. We will also be launching a bug bounty in the coming weeks. You can find the OpenZeppelin audit report here \[LINK\] and can learn more on our security page \[LINK\]. 
+The security of the Opyn protocol is our highest priority. We cannot cover Opyn ourselves. We understand that especially since we ourselves are a smart contract platform, security is paramount. Our team has created a protocol that we believe is safe and dependable, and has been audited by OpenZeppelin. All smart contract code is publicly verifiable. We will also be launching a bug bounty in the coming weeks. You can find the OpenZeppelin audit report here \[LINK\].
 
 ### What if there is a bug in Opyn’s smart contracts? 
 
-We recognize that this is a risk, and we have taken  precautions to protect against this risk with rigorous internal testing and external audits \[LINK\].   
-Even with this risk, you can still gain significant safety from Opyn insurance. With Opyn insurance, you can only lose your Compound deposits in the case that both Opyn and Compound are compromised at the same time. For instance, if the probability that Opyn is compromised is 1% and the probability that Compound is compromised is 1%, then with Opyn insurance, your risk of losing your funds drops to 0.01%. 
+We recognize that this is a risk, and we have taken precautions to protect against this risk with rigorous internal testing and external audits \[LINK\].   
+Even with this risk, you can still gain significant safety from Opyn insurance. With Opyn insurance, you can only lose your Compound deposits in the case that both Opyn and Compound are compromised at the same time. For example, if the probability that Opyn is compromised is 1% and the probability that Compound is compromised is 1%, then with Opyn insurance, your risk of losing your funds drops to 0.01%. 
 
 ### How do the price feeds work? 
 
@@ -113,23 +109,11 @@ Opyn currently uses Compound’s ETH:USDC oracle. We are actively working on inc
 
 ### Does the Convexity Protocol have an administrator? 
 
-There is currently a multi-sig wallet run by the protocol’s creators, which is the protocol admin. 
+There is currently a protocol admin, but our goal is to remove the protocol admin and become fully decentralized. 
 
-The admin has the right to:
+The admin can update option parameters within specific bounds that limit its control \(eg. cannot lower minimum collateralization ratio below 160%\), manage the asset whitelist, and set the name / symbol of tokens. 
 
-* Update option parameters within specific bounds 
-  * Cannot charge more than 10% fees \(right now the protocol charges no fees\) 
-  * Cannot lower minimum collateralization ratio below 160%
-  * Cannot change liquidation incentive \_\_\_\_ 
-  * Cannot change liquidation factor \_\_\_ 
-* Manage asset whitelist 
-* Set the name / symbol of tokens 
-
-The admin does NOT have the right to:
-
-* Access any user funds - Opyn is completely noncustodial
-
-Our goal is to remove the protocol admin and become fully decentralized. 
+The admin CANNOT access any user funds - Opyn is completely noncustodial. 
 
 ### Help! I can’t access Opyn! 
 
