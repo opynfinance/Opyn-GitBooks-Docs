@@ -25,7 +25,7 @@ Opyn provides protection against a number of different risks:
 * Financial risks \(eg. liquidity crises\)
 * Admin key risks \(eg. admin key compromise\)
 
-Opyn protects against oracle manipulation except for Compound's ETH:USD oracle, which is used in the protocol. Opyn currently does not protect against non-transferable ERC20s token. We are actively working on increasing the surface of risks we can cover for future iterations of the protocol.
+Opyn protects against all oracle manipulation with the exception of Compound's ETH:USD oracle, which is used in the protocol. Opyn currently does not protect against non-transferable ERC20s token. We are actively working on increasing the surface of risks we can cover for future iterations of the protocol.
 
 ### **How do claims work?** 
 
