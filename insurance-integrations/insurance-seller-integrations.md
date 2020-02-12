@@ -6,11 +6,12 @@ The [`createAndSellEthCollateralOption(..)`](../otoken.md#eth-collateralized-opt
 
 The amount of underlying that 1 oToken protects can be determined by calling the [`oTokenExchangeRate(..)`](../otoken.md#otoken-exchange-rate)in the OToken smart contract.
 
-| oToken | Amount Underlying Protected |
-| :--- | :--- |
-| 1 ocDai | 10 ^-8 cDai |
-| 1 ocUSDC | 10^-8 cUSDC |
-| 1 oDai | 10^-14 Dai |
+
+
+| oToken | Amount Underlying Protected | Decimals for oToken | Smallest Unit protected |
+| :--- | :--- | :--- | :--- |
+| 1 ocDai | 1 cDai | 8 | 10^-8 cDai |
+| 1 ocUSDC | 1 cUSDC | 8 | 10^-8 cUSDC |
 
 Create oToken allows the Open Vault + Add Collateral + Issue oTokens calls to be made in one step. Issue oTokens mints new oTokens only if a given vault has sufficient collateral. 
 
