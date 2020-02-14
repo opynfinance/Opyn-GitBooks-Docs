@@ -563,12 +563,12 @@ A vault can only be opened before expiry. You can check if a contract has expire
 Each owner can also only own one vault. You can check if the owner already owns a vault by calling the [`hasVault()`](otoken.md#has-vault)`.`
 
 ```javascript
-function openVault() returns (uint)
+function openVault() public returns (bool)
 ```
 
 > `msg.sender`: The account that shall be the owner of the vault
 >
-> `RETURN`: The index of the vault opened
+> `RETURN`: Bool, if a new vault was successfully opened
 
 {% tabs %}
 {% tab title="Solidity" %}
@@ -613,7 +613,7 @@ The add collateral functions can be called at any point before the oToken's expi
 The `addETHCollateral()` function is called if the specified collateral for the oToken contract is ETH. This function call will fail if the collateral type is not ETH. 
 
 ```javascript
-function addETHCollateral(address payable vaultOwner) payable returns (uint256) 
+function addETHCollateral(address payable vaultOwner) public payable returns (uint256) 
 ```
 
 > `vaultIndex` : The address of the vault owner, whose vault the protocol will add collateral to.
@@ -706,23 +706,21 @@ To mint oTokens, the vault that the tokens are being minted from must meet the [
 Once oTokens have been minted, they can be sold on an exchange like Uniswap.
 
 ```javascript
-function issueOTokens (uint256 vaultIndex, uint256 oTokensToIssue, address receiver)
+function issueOTokens (uint256 oTokensToIssue, address receiver) public
 ```
 
-> `vaultIndex`: The index of the vault to issue oTokens from
->
 > `oTokensToIssue`: The amount of oTokens to issue
 >
 > `receiver`: The address that the newly minted oTokens will be sent to
 >
-> `msg.sender` : The account that is the owner of the vault that is issuing the oTokens
+> `msg.sender` : The account that is the owner of the vault that is issuing the oTokens. Only the owner can issue oTokens
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 require(ocDai.hasExpired() == false, "Can only issue oTokens before expiry");
-ocDai.issueOTokens(1, 1000, 0xFB3...);
+ocDai.issueOTokens(1000, 0xFB3...);
 ```
 {% endtab %}
 
@@ -731,7 +729,7 @@ ocDai.issueOTokens(1, 1000, 0xFB3...);
 const ocDai = oToken.at(0x3BA...);
 const hasExpired = await ocDai.methods.hasExpired().call();
 if(!hasExpired) {
-    await ocDai.methods.issueOTokens(1, 1000, 0xFB3...).send();
+    await ocDai.methods.issueOTokens(1000, 0xFB3...).send();
 }
 ```
 {% endtab %}
@@ -744,11 +742,9 @@ The remove collateral function allows a vault owner to remove excess collateral 
 A vault owner can remove collateral before expiry of the oToken contract. The vault needs to remain safe after the collateral has been removed. 
 
 ```javascript
-function removeCollateral(uint256 vaultIndex, uint256 amtToRemove) 
+function removeCollateral(uint256 amtToRemove) 
 ```
 
-> `vaultIndex` : The index of the vault to remove collateral from
->
 > `amtToRemove` : The amount of collateral to remove
 >
 > `msg.sender` : The account of the owner of the vault. The collateral will be sent to this account.
@@ -758,7 +754,7 @@ function removeCollateral(uint256 vaultIndex, uint256 amtToRemove)
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 require(ocDai.hasExpired() == false, "Can only remove collateral before expiry");
-ocDai.removeCollateral(1, 1000000);
+ocDai.removeCollateral(1000000);
 ```
 {% endtab %}
 
@@ -767,7 +763,7 @@ ocDai.removeCollateral(1, 1000000);
 const ocDai = oToken.at(0x3BA...);
 const hasExpired = await ocDai.methods.hasExpired().call();
 if(!hasExpired) {
-    await ocDai.methods.removeCollateral(1, 1000000).send();
+    await ocDai.methods.removeCollateral(1000000).send();
 }
 ```
 {% endtab %}
