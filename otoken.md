@@ -49,7 +49,7 @@ uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
 
 // Assuming you want to be 200% collateralized
 const collateralizationRatio = 200;
-const numOptionsToIssue = maxNumOptions * 160 / collateralizationRatio;
+const numOptions = maxNumOptions * 160 / collateralizationRatio;
 
 // This contract creates and receives 200% collateralized options against 1 ETH as collateral
 ocDai.createETHCollateralOption.value(collateral)(numOptions, address(this));
@@ -125,16 +125,38 @@ ocDai.createERC20CollateralOption(numOptions, collateral, address(this));
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
+const myAccount = 'Set Your Address';
 
+// Specify the amount of ERC20 collateral you want to put down in wei
+const collateral = '1000000000000000000';
+
+// This function tells you the maximum number of options you can safely issue at 160% collateralization. 
+// Note: It is reccomended that you create less than this amount of options. 
+const maxNumOptions = await ocDai.methods.maxOTokensIssuable(collateral).call();
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * 160 / collateralizationRatio;
+
+// Need to first approve the oToken contract to spend the ERC20 tokens
 await collateral.methods.approve(
     ocDai.options.address,
     '1000000000000000000000000000000'
-    ).send();
-
+    )
+    .send();
+    
+    
+// myAccount creates 200% collateralized options against 1 ERC20 as collateral
 await ocDai.methods.createERC20CollateralOption(
-    10, 
-    100000,
-    0xFDA...).send();
+    numOptions, 
+    collateral,
+    myAccount)
+    .send({
+    from: myAccount, 
+    value: 0
+    });
+
+
 ```
 {% endtab %}
 {% endtabs %}
