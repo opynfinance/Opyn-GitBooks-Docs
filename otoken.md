@@ -204,7 +204,7 @@ await ocDai.methods.addETHCollateralOption(
 This function [adds ERC20 collatera](otoken.md#erc20-collateralized-options)[l](otoken.md#erc20-collateralized-options) to an existing vault and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
 
 ```javascript
-function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, uint256 vaultIndex, address receiver)
+function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, address receiver)
 ```
 
 > `amtToCreate` : The number of oTokens to create
@@ -212,9 +212,7 @@ function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, ui
 > `amtCollateral` : The collateral to be added to the existing vault
 >
 > `receiver` : The account to send the newly minted oTokens to
->
-> `vaultIndex` : The index of the vault to add oTokens to
->
+
 > `msg.sender` : The account that is the owner of the vault
 
 {% tabs %}
@@ -222,7 +220,7 @@ function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, ui
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
-ocDai.addERC20CollateralOption(10, 100000, 1, 0xFDA...);
+ocDai.addERC20CollateralOption(10, 100000, 0xFDA...);
 ```
 {% endtab %}
 
@@ -238,7 +236,6 @@ await collateral.methods.approve(
 await ocDai.methods.addERC20CollateralOption(
     10, 
     100000,
-    1,
     0xFDA...
     ).send();
 ```
