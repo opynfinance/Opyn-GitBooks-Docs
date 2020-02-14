@@ -70,7 +70,7 @@ const maxNumOptions = await ocDai.methods.maxOTokensIssuable(collateral).call();
 
 // Assuming you want to be 200% collateralized
 const collateralizationRatio = 200;
-const numOptionsToIssue = maxNumOptions * collateralizationRatio / 160;
+const numOptionsToIssue = maxNumOptions * 160 / collateralizationRatio;
 
 // myAccount creates 200% collateralized options against 1 ETH as collateral
 await ocDai.methods.createETHCollateralOption(
@@ -184,7 +184,7 @@ const maxNumOptions = await ocDai.methods.maxOTokensIssuable(collateral).call();
 
 // Assuming you want to be 200% collateralized
 const collateralizationRatio = 200;
-const numOptionsToIssue = maxNumOptions * collateralizationRatio / 160;
+const numOptionsToIssue = maxNumOptions * 160 /collateralizationRatio ;
 
 // myAccount creates 200% collateralized options against 1 ETH as collateral
 await ocDai.methods.addETHCollateralOption(
