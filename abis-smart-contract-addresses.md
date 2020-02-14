@@ -88,7 +88,8 @@
     <tr>
       <td style="text-align:left"><a href="https://etherscan.io/address/0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac#code">Options Factory</a>
       </td>
-      <td style="text-align:left">JSON</td>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac&amp;format=raw">JSON</a>
+      </td>
       <td style="text-align:left">Interface</td>
       <td style="text-align:left"><a href="https://etherscan.io/address/0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac#code">0xb529964F86fbf99a6aA67f72a27e59fA3fa4FEaC</a>
       </td>
@@ -141,7 +142,7 @@
     <tr>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol">Options Exchange</a>
       </td>
-      <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/OptionsExchange.json">JSON</a>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x5778f2824a114f6115dc74d432685d3336216017&amp;format=raw">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
       <td style="text-align:left"><a href="https://rinkeby.etherscan.io/address/0x40c471C6B31E752F39Fd0232Ad5daE42240eeD67">0x40c471C6B31E752F39Fd0232Ad5daE42240eeD67</a>
@@ -186,12 +187,96 @@
     <tr>
       <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol">Options Factory</a>
       </td>
-      <td style="text-align:left"><a href="https://github.com/aparnakr/OptionsProtocol/blob/buyer-and-seller-docs/ABIs/OptionsFactory.json">JSON</a>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac&amp;format=raw">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
       <td style="text-align:left"><a href="https://rinkeby.etherscan.io/address/0x34Da8b34c82988e7FF8F98CA35963057fC0ec9bb">0x34Da8b34c82988e7FF8F98CA35963057fC0ec9bb</a>
       </td>
     </tr>
   </tbody>
-</table>
+</table>### Kovan
 
+
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Contract</th>
+      <th style="text-align:left">JSON</th>
+      <th style="text-align:left">
+        <p>Solidity</p>
+        <p>Interface</p>
+      </th>
+      <th style="text-align:left">Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Uniswap Exchange</td>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x2157a7894439191e520825fe9399ab8655e0f708&amp;format=raw">JSON</a>
+      </td>
+      <td style="text-align:left"><a href="https://docs.uniswap.io/smart-contract-integration/interface">Interface</a>
+      </td>
+      <td style="text-align:left">(<a href="https://etherscan.io/address/0xc0a47dfe034b400b47bdad5fecda2621de6c4d95#readContract">getExchange from uniswap factory</a>)</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Uniswap Factory</td>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xc0a47dfe034b400b47bdad5fecda2621de6c4d95&amp;format=raw">JSON</a>
+      </td>
+      <td style="text-align:left"><a href="https://docs.uniswap.io/smart-contract-integration/interface">Interface</a>
+      </td>
+      <td style="text-align:left">0xD3E51Ef092B2845f10401a0159B2B96e8B6c3D30</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Options Exchange</td>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x5778f2824a114f6115dc74d432685d3336216017&amp;format=raw">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left">0x133aA105044c00912F5dCF0Ab69501F02073cb25</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">cDai</td>
+      <td style="text-align:left"><a href="https://compound.finance/developers/abi/mainnet/cDAI">JSON</a>
+      </td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e#code">Interface</a>
+      </td>
+      <td style="text-align:left">0xe7bc397DBd069fC7d0109C0636d06888bb50668c</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">cUSDC</td>
+      <td style="text-align:left"><a href="https://compound.finance/developers/abi/mainnet/cUSDC">JSON</a>
+      </td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e#code">Interface</a>
+      </td>
+      <td style="text-align:left">0xcfC9bB230F00bFFDB560fCe2428b4E05F3442E35</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ocDai</td>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xddac4aed7c8f73032b388efe2c778fc194bc81ed&amp;format=raw">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left">0xd344828e67444f0921822e83d83d009B85B04454</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ocUSDC</td>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xddac4aed7c8f73032b388efe2c778fc194bc81ed&amp;format=raw">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left">0x9849bB6DD0BCD7fe828a22ED0aCB229cEC40951b</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Options Factory</td>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac&amp;format=raw">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left">0x7b2d23AB0381caE0F901A84F8a27fcA955BE0335</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Oracle</td>
+      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x7054e08461e3eCb7718B63540adDB3c3A1746415&amp;format=raw">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left">0xE9e6F498F97d3F61fb929ebdA7BD1f8293cf8b69</td>
+    </tr>
+  </tbody>
+</table>
