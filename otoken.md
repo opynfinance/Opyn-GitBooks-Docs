@@ -357,7 +357,9 @@ await ocDai.methods.addAndSellERC20CollateralOption(
 
 The open vault function creates an empty vault and sets the owner of the vault to be the msg.sender. The collateral and the outstanding puts issued of the vault are set to 0. 
 
-A vault can only be opened before expiry. You can check if a contract has expired by calling `hasExpired()`. 
+A vault can only be opened before expiry. You can check if a contract has expired by calling [`hasExpired()`](otoken.md#has-the-contract-expired).  
+
+Each owner can also only own one vault. You can check if the owner already owns a vault by calling the [`hasVault()`](otoken.md#has-vault)`.`
 
 ```javascript
 function openVault() returns (uint)
