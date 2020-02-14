@@ -776,13 +776,11 @@ The burn oTokens functionality allows a vault owner to reduce the amount of insu
 A vault owner can burn oTokens any time before expiry of the oToken contract. You can check if a contract has expired by calling `hasExpired()`. 
 
 ```javascript
-function burnOTokens(uint256 vaultIndex, uint256 amtToBurn)
+function burnOTokens(uint256 amtToBurn)
 ```
 
-> `vaultIndex` : The index of the vault that will be affected by burning oTokens 
->
 > `amtToBurn` : The amount of oTokens to burn
->
+
 > `msg.sender` : The owner of the vault and the account from which oTokens will be burned
 
 {% tabs %}
@@ -796,7 +794,7 @@ oToken ocDai = oToken(0x3BA...);
  */
 ocDai.approve(address(ocDai), 1000000000000000000000000000000);
 require(ocDai.hasExpired() == false, "Can only burn oTokens before expiry");
-ocDai.burnOTokens(1, 100);
+ocDai.burnOTokens(100);
 ```
 {% endtab %}
 
@@ -810,7 +808,7 @@ if(!hasExpired) {
     '1000000000000000000000000000000'
     ).send();
     
-    await ocDai.methods.burnOTokens('1', '1000000').send();
+    await ocDai.methods.burnOTokens('1000000').send();
 }
 ```
 {% endtab %}
@@ -827,10 +825,10 @@ When a liquidation occurs, a liquidator may return some or all of the outstandin
 A liquidator may close up to a certain fixed percentage \([i.e. liquidation factor\)](./#glossary-of-terms) of the outstanding oTokens issued by the [unsafe](./#glossary-of-terms) vault. 
 
 ```javascript
-function liquidate(uint256 vaultIndex, uint256 oTokensToLiquidate)
+function liquidate(address vaultOwner, uint256 oTokensToLiquidate)
 ```
 
-> `vaultIndex` : The index of the vault that is unsafe and is to be liquidated. \(See [`numVaults()`](otoken.md#get-number-of-vaults) to get the total number of vaults in the oToken contract\)
+> `vaultOwner` : The owner of the vault whose vault is unsafe and is to be liquidated. \(See `getVaultOwners()` to get the all the owners of vaults in the oToken contract\)
 >
 > `oTokensToLiqudate` : The amount of oTokens that the liquidator brings back to the oToken contract
 >
@@ -848,7 +846,7 @@ oToken ocDai = oToken(0x3BA...);
  */
 ocDai.approve(address(ocDai), 1000000000000000000000000000000);
 
-uint256 vaultIndex = 1; 
+uint256 vaultIndex = '0xFD..'; 
 require(ocDai.hasExpired() == false, "Can only liquidate before expiry");
 require(ocDai.isUnsafe(vaultIndex), "Vault is safe");
 ocDai.liquidate(vaultIndex, 10);
@@ -859,7 +857,7 @@ ocDai.liquidate(vaultIndex, 10);
 ```javascript
 const ocDai = oToken.at('0x3BA...');
 
-const vaultIndex = '1'; 
+const vaultIndex = '0xFD..'; 
 const hasExpired = await ocDai.methods.hasExpired().call();
 const isUnsafe = await ocDai.methods.isUnsafe(vaultIndex).call();
 
@@ -886,11 +884,13 @@ The amount of underlying tokens to be transferred can be calculated by calling t
 While exercise can be called at anytime during the exercise window, it may be unprofitable to exercise unless there was an actual crash in the price of the underlying asset relative to the price of the strike asset. 
 
 ```javascript
-function exercise(uint256 oTokensToExercise) payable
+function exercise(uint256 oTokensToExercise, address payable[] memory vaultsToExerciseFrom) payable
 ```
 
 > `oTokensToExercise` : The amount of oTokens being exercised. \(See here to get the [oToken balance of the msg.sender](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol#L50)\)
 >
+> `vaultsToExerciseFrom` : The addresses of vault owners to exercise from. Collateral will be taken from the vaults in the order passed in. See `getVaultOwners()` to get the all the owners of vaults in the oToken contract\)
+
 > `msg.sender` : The account from which oTokens and underlying assets will be transferred into the oToken contract. This account will also get paid out the claims made. 
 >
 > `msg.value` : If the underlying protected is ETH, then the msg.value is the amount of ETH transferred. If not, it should be set to 0.
@@ -952,26 +952,24 @@ if(isExerciseWindow) {
 {% endtab %}
 {% endtabs %}
 
-### Claim Collateral
+### Redeem Vault Balance
 
-Once the oToken contract has expired, any vault owner can redeem their share of collateral. The amount of collateral that the owner gets back is determined by the proportion of their collateral in the original unexercised collateral pool. The vault owner is paid the same proportion from the total remaining collateral pool after all the exercise calls have been made. If no exercise calls have been made, they get all of their collateral back. 
+Once the oToken contract has expired, any vault owner can redeem their share of collateral and any underlying if an exercise call was made on their vault. The amount of collateral that the owner gets back is the balance left after any exercise calls made which affected their vault. If no exercise calls were made which affected their vault, they get all their collateral back. 
 
 You can call the `hasExpired()` function to check if the oToken contract has expired. 
 
 ```javascript
-function claimCollateral (uint256 vaultIndex)
+function redeemVaultBalance()
 ```
 
-> `vaultIndex` : The index of the vault to claim collateral from
->
-> `msg.sender` : The account that owns the vault. The collateral claimed from the vault will be sent to this account
+> `msg.sender` : The address that owns the vault. The collateral and underlying balance from the vault will be sent to the owner of this account.
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 require(ocDai.hasExpired() == true, "Can only claim collateral back after the exericse window");
-ocDai.claimCollateral(1);
+ocDai.redeemVaultBalance()
 ```
 {% endtab %}
 
@@ -979,35 +977,30 @@ ocDai.claimCollateral(1);
 ```javascript
 const ocDai = oToken.at('0x3BA...');
 
-const vaultIndex = '1'; 
 const hasExpired = await ocDai.methods.hasExpired().call();
 
 if(hasExpired) {    
-    await ocDai.methods.claimCollateral(vaultIndex).send();
+    await ocDai.methods.redeemVaultBalance().send();
 }
 ```
 {% endtab %}
 {% endtabs %}
 
-### Transfer Vault Ownership
+### Remove Underlying
 
-The transfer ownership function allows the owner of the vault to set someone else to be the owner of the vault. This function can be called at any time. 
+The vault owner function allows the owner of the vault to withdraw underlying from their vault if an exercise call affected their vault. This function can be called at any time. 
 
 ```javascript
-function transferVaultOwnership(uint256 vaultIndex, address payable newOwner)
+function removeUnderlying() public
 ```
 
-> `vaultIndex` : The index of the vault to transfer ownership of
->
-> `newOwner` : The account that will be the next owner of the vault
->
-> `msg.sender` : The current owner of the vault
+> `msg.sender` : The owner of the vault
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-ocDai.transferVaultOwnership(1, 0xFDA...);
+ocDai.removeUnderlying();
 ```
 {% endtab %}
 
@@ -1015,9 +1008,7 @@ ocDai.transferVaultOwnership(1, 0xFDA...);
 ```javascript
 const ocDai = oToken.at('0x3BA...');
 
-const vaultIndex = '1'; 
-const newOwnerAddress = '0xBF4...';
-await ocDai.methods.transferVaultOwnership(vaultIndex, newOwnerAddress).send();
+await ocDai.methods.removeUnderlying().send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -1142,20 +1133,6 @@ await ocDai.methods.transferVaultOwnership(vaultIndex, newOwnerAddress).send();
     </tr>
     <tr>
       <td style="text-align:left">
-        <p><code>TransferVaultOwnership (</code>
-        </p>
-        <p><code>uint256 VaultIndex, </code>
-        </p>
-        <p><code>address oldOwner, </code>
-        </p>
-        <p><code>address payable newOwner)</code>
-        </p>
-      </td>
-      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#transfer-vault-ownership">Transfer Vault Ownership</a>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
         <p><code>RemoveCollateral (</code>
         </p>
         <p><code>uint256 vaultIndex, </code>
@@ -1169,9 +1146,7 @@ await ocDai.methods.transferVaultOwnership(vaultIndex, newOwnerAddress).send();
       </td>
     </tr>
   </tbody>
-</table>## Error Table
-
-## Read Only Functions 
+</table>## Read Only Functions 
 
 ### Strike Price 
 
