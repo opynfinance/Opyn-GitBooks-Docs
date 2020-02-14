@@ -139,5 +139,18 @@
       <td style="text-align:left">Number</td>
       <td style="text-align:left">value * 10 ^ exponent.</td>
     </tr>
+    <tr>
+      <td style="text-align:left">Mint</td>
+      <td style="text-align:left">The ERC20 function which generates new oTokens</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Issue oTokens</td>
+      <td style="text-align:left">The function that checks if a vault has sufficient collateral to mint
+        oTokens. If so, it calls the mint function.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Create</td>
+      <td style="text-align:left">Create = Open Vault + Add collateral + Issue oTokens.</td>
+    </tr>
   </tbody>
 </table>

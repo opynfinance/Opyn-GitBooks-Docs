@@ -49,7 +49,7 @@ uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
 
 // Assuming you want to be 200% collateralized
 const collateralizationRatio = 200;
-const numOptionsToIssue = maxNumOptions * collateralizationRatio / 160;
+const numOptions = maxNumOptions * 160 / collateralizationRatio;
 
 // This contract creates and receives 200% collateralized options against 1 ETH as collateral
 ocDai.createETHCollateralOption.value(collateral)(numOptions, address(this));
@@ -77,8 +77,9 @@ await ocDai.methods.createETHCollateralOption(
     numOptionsToIssue, 
     myAccount)
     .send({
-    from: myAccount, 
-    value: collateral
+        from: myAccount, 
+        value: collateral,
+        gasPrice: 7000000000
     });
 ```
 {% endtab %}
@@ -104,27 +105,63 @@ function createERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral,
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-const myAccount = 'Set Your Address';
 
+// Specify the amount of collateral you want to put down in smallest decimal units (wei)
+uint256 collateral = 1000000000000000000;
 
+// This function tells you the maximum number of options you can safely issue at the minimum collateralization ratio (currently 160%)/ 
+// Note: It is reccomended that you create less than this amount of options. 
+uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * collateralizationRatio / 160;
+
+// This contract creates and receives 200% collateralized options against 1 ERC20 as collateral
 ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
-ocDai.createERC20CollateralOption(10, 100000, 0xFDA...);
+ocDai.createERC20CollateralOption(numOptions, collateral, address(this));
 ```
 {% endtab %}
 
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
+const myAccount = 'Set Your Address';
 
+// Specify the amount of ERC20 collateral you want to put down in wei
+const collateral = '1000000000000000000';
+
+// This function tells you the maximum number of options you can safely issue at 160% collateralization. 
+// Note: It is reccomended that you create less than this amount of options. 
+const maxNumOptions = await ocDai.methods.maxOTokensIssuable(collateral).call();
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * 160 / collateralizationRatio;
+
+// Need to first approve the oToken contract to spend the ERC20 tokens
 await collateral.methods.approve(
     ocDai.options.address,
     '1000000000000000000000000000000'
-    ).send();
-
+    )
+     .send({
+        from: myAccount, 
+        gasPrice: 7000000000
+    });
+    
+    
+// myAccount creates 200% collateralized options against 1 ERC20 as collateral
 await ocDai.methods.createERC20CollateralOption(
-    10, 
-    100000,
-    0xFDA...).send();
+    numOptions, 
+    collateral,
+    myAccount)
+    .send({
+        from: myAccount, 
+        value: 0,
+        gasPrice: 7000000000
+    });
+
+
 ```
 {% endtab %}
 {% endtabs %}
@@ -192,7 +229,8 @@ await ocDai.methods.addETHCollateralOption(
     myAccount)
     .send({
     from: myAccount, 
-    value: collateral
+    value: collateral,
+    gasPrice: 7000000000
     });
 
 ```
@@ -204,7 +242,7 @@ await ocDai.methods.addETHCollateralOption(
 This function [adds ERC20 collatera](otoken.md#erc20-collateralized-options)[l](otoken.md#erc20-collateralized-options) to an existing vault and [issues oTokens ](otoken.md#issue-otokens)from the vault. 
 
 ```javascript
-function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, uint256 vaultIndex, address receiver)
+function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, address receiver)
 ```
 
 > `amtToCreate` : The number of oTokens to create
@@ -212,35 +250,68 @@ function addERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral, ui
 > `amtCollateral` : The collateral to be added to the existing vault
 >
 > `receiver` : The account to send the newly minted oTokens to
->
-> `vaultIndex` : The index of the vault to add oTokens to
->
+
 > `msg.sender` : The account that is the owner of the vault
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+
+// Specify the amount of collateral you want to put down in smallest decimal units (wei)
+uint256 collateral = 1000000000000000000;
+
+// This function tells you the maximum number of options you can safely issue at the minimum collateralization ratio (currently 160%)/ 
+// Note: It is reccomended that you create less than this amount of options. 
+uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * collateralizationRatio / 160;
+
+// This contract creates and receives 200% collateralized options against 1 ERC20 as collateral
 ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
-ocDai.addERC20CollateralOption(10, 100000, 1, 0xFDA...);
+ocDai.addERC20CollateralOption(numOptions, collateral, address(this));
 ```
 {% endtab %}
 
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
+const myAccount = 'Set Your Address';
 
+// Specify the amount of ERC20 collateral you want to put down in wei
+const collateral = '1000000000000000000';
+
+// This function tells you the maximum number of options you can safely issue at 160% collateralization. 
+// Note: It is reccomended that you create less than this amount of options. 
+const maxNumOptions = await ocDai.methods.maxOTokensIssuable(collateral).call();
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * 160 / collateralizationRatio;
+
+// Need to first approve the oToken contract to spend the ERC20 tokens
 await collateral.methods.approve(
     ocDai.options.address,
     '1000000000000000000000000000000'
-    ).send();
-
+    )
+    .send({
+        from: myAccount, 
+        gasPrice: 7000000000
+    });
+    
+    
+// myAccount creates 200% collateralized options against 1 ERC20 as collateral
 await ocDai.methods.addERC20CollateralOption(
-    10, 
-    100000,
-    1,
-    0xFDA...
-    ).send();
+    numOptions, 
+    collateral,
+    myAccount)
+    .send({
+        from: myAccount, 
+        value: 0,
+        gasPrice: 7000000000
+    });
 ```
 {% endtab %}
 {% endtabs %}
@@ -271,17 +342,48 @@ function createAndSellETHCollateralOption(uint256 amtToCreate, address payable r
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-ocDai.createAndSellETHCollateralOption.value(100000)(10, 0xFDA...);
+
+// Specify the amount of ETH collateral you want to put down in wei
+uint256 collateral = 1000000000000000000;
+
+// This function tells you the maximum number of options you can safely issue at the minimum collateralization ratio (currently 160%)/ 
+// Note: It is reccomended that you create less than this amount of options. 
+uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * 160 / collateralizationRatio;
+
+// This contract creates and receives 200% collateralized options against 1 ETH as collateral
+ocDai.createAndSellETHCollateralOption.value(collateral)(numOptions, address(this));
 ```
 {% endtab %}
 
 {% tab title="Web3" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
+const myAccount = 'Set Your Address';
+
+// Specify the amount of ETH collateral you want to put down in wei
+const collateral = '1000000000000000000';
+
+// This function tells you the maximum number of options you can safely issue at 160% collateralization. 
+// Note: It is reccomended that you create less than this amount of options. 
+const maxNumOptions = await ocDai.methods.maxOTokensIssuable(collateral).call();
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptionsToIssue = maxNumOptions * 160 / collateralizationRatio;
+
+// myAccount creates 200% collateralized options against 1 ETH as collateral
 await ocDai.methods.createAndSellETHCollateralOption(
-    10, 
-    0xFDA...
-    ).send({from: myAccount, value: 100000});
+    numOptionsToIssue, 
+    myAccount)
+    .send({
+    from: myAccount, 
+    value: collateral,
+    gasPrice: 7000000000
+    });
 ```
 {% endtab %}
 {% endtabs %}
@@ -306,24 +408,61 @@ function createAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtColl
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+
+// Specify the amount of collateral you want to put down in smallest decimal units (wei)
+uint256 collateral = 1000000000000000000;
+
+// This function tells you the maximum number of options you can safely issue at the minimum collateralization ratio (currently 160%)/ 
+// Note: It is reccomended that you create less than this amount of options. 
+uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * collateralizationRatio / 160;
+
+// This contract creates and receives 200% collateralized options against 1 ERC20 as collateral
 ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
-ocDai.createAndSellERC20CollateralOption(10, 1000000, 0xFDA...);
+ocDai.createAndSellERC20CollateralOption(numOptions, collateral, address(this));
 ```
 {% endtab %}
 
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
+const myAccount = 'Set Your Address';
 
+// Specify the amount of ERC20 collateral you want to put down in wei
+const collateral = '1000000000000000000';
+
+// This function tells you the maximum number of options you can safely issue at 160% collateralization. 
+// Note: It is reccomended that you create less than this amount of options. 
+const maxNumOptions = await ocDai.methods.maxOTokensIssuable(collateral).call();
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * 160 / collateralizationRatio;
+
+// Need to first approve the oToken contract to spend the ERC20 tokens
 await collateral.methods.approve(
     ocDai.options.address,
     '1000000000000000000000000000000'
-    ).send();
+    )
+     .send({
+        from: myAccount, 
+        gasPrice: 7000000000
+    });
+    
+    
+// myAccount creates 200% collateralized options against 1 ERC20 as collateral
 await ocDai.methods.createAndSellERC20CollateralOption(
-    10, 
-    100000,
-    0xFDA...
-).send();
+    numOptions, 
+    collateral,
+    myAccount)
+    .send({
+        from: myAccount, 
+        value: 0,
+        gasPrice: 7000000000
+    });
 ```
 {% endtab %}
 {% endtabs %}
@@ -424,12 +563,12 @@ A vault can only be opened before expiry. You can check if a contract has expire
 Each owner can also only own one vault. You can check if the owner already owns a vault by calling the [`hasVault()`](otoken.md#has-vault)`.`
 
 ```javascript
-function openVault() returns (uint)
+function openVault() public returns (bool)
 ```
 
 > `msg.sender`: The account that shall be the owner of the vault
 >
-> `RETURN`: The index of the vault opened
+> `RETURN`: Bool, if a new vault was successfully opened
 
 {% tabs %}
 {% tab title="Solidity" %}
@@ -454,7 +593,7 @@ const hasVault = await ocDai.methods.hasVault(myAccount).call();
 if(!hasExpired && !hasVault) {
     await ocDai.methods.openVault().send({
         from: myAccount,
-        gas: 5000000000
+        gasPrice: 7000000000
     });
 }
 ```
@@ -474,10 +613,10 @@ The add collateral functions can be called at any point before the oToken's expi
 The `addETHCollateral()` function is called if the specified collateral for the oToken contract is ETH. This function call will fail if the collateral type is not ETH. 
 
 ```javascript
-function addETHCollateral(uint256 vaultIndex) payable returns (uint256) 
+function addETHCollateral(address payable vaultOwner) public payable returns (uint256) 
 ```
 
-> `vaultIndex` : The index of the vault to add collateral to
+> `vaultIndex` : The address of the vault owner, whose vault the protocol will add collateral to.
 >
 > `msg.sender` : The account from which ETH collateral will be transferred into the oToken contract
 >
@@ -487,17 +626,25 @@ function addETHCollateral(uint256 vaultIndex) payable returns (uint256)
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+address payable myVault = 'Enter the vault address';
 require(ocDai.hasExpired() == false, "Can only add collateral before expiry");
-uint256 vaultCollateralBalance = ocDai.addETHCollateral.value(1000000)(1);
+uint256 vaultCollateralBalance = ocDai.addETHCollateral.value(1000000)(myVault);
 ```
 {% endtab %}
 
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
+const myVault = 'Enter the vault address';
+
 const hasExpired = await ocDai.methods.hasExpired().call();
 if(!hasExpired) {
-    await ocDai.methods.addETHCollateral(1).send({from: myAccount, value:1000000});
+    await ocDai.methods.addETHCollateral(myVault)
+    .send({
+        from: myAccount, 
+        value:1000000,
+        gasPrice: 7000000000
+        });
 }
 ```
 {% endtab %}
@@ -511,8 +658,8 @@ The `addERC20Collateral()` function is called if the specified collateral for th
 function addERC20Collateral(uint256 vaultIndex, uint256 amt) returns (uint256)
 ```
 
-> `vaultIndex` : The index of the vault to add collateral to
->
+> `vaultIndex` : The address of the vault owner, whose vault the protocol will add collateral to.
+
 > `amt` : The amount of collateral tokens to add
 >
 > `msg.sender` : The account from which the ERC20 collateral asset will be transferred into the oToken contract
@@ -559,23 +706,21 @@ To mint oTokens, the vault that the tokens are being minted from must meet the [
 Once oTokens have been minted, they can be sold on an exchange like Uniswap.
 
 ```javascript
-function issueOTokens (uint256 vaultIndex, uint256 oTokensToIssue, address receiver)
+function issueOTokens (uint256 oTokensToIssue, address receiver) public
 ```
 
-> `vaultIndex`: The index of the vault to issue oTokens from
->
 > `oTokensToIssue`: The amount of oTokens to issue
 >
 > `receiver`: The address that the newly minted oTokens will be sent to
 >
-> `msg.sender` : The account that is the owner of the vault that is issuing the oTokens
+> `msg.sender` : The account that is the owner of the vault that is issuing the oTokens. Only the owner can issue oTokens
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 require(ocDai.hasExpired() == false, "Can only issue oTokens before expiry");
-ocDai.issueOTokens(1, 1000, 0xFB3...);
+ocDai.issueOTokens(1000, 0xFB3...);
 ```
 {% endtab %}
 
@@ -584,7 +729,7 @@ ocDai.issueOTokens(1, 1000, 0xFB3...);
 const ocDai = oToken.at(0x3BA...);
 const hasExpired = await ocDai.methods.hasExpired().call();
 if(!hasExpired) {
-    await ocDai.methods.issueOTokens(1, 1000, 0xFB3...).send();
+    await ocDai.methods.issueOTokens(1000, 0xFB3...).send();
 }
 ```
 {% endtab %}
@@ -597,11 +742,9 @@ The remove collateral function allows a vault owner to remove excess collateral 
 A vault owner can remove collateral before expiry of the oToken contract. The vault needs to remain safe after the collateral has been removed. 
 
 ```javascript
-function removeCollateral(uint256 vaultIndex, uint256 amtToRemove) 
+function removeCollateral(uint256 amtToRemove) 
 ```
 
-> `vaultIndex` : The index of the vault to remove collateral from
->
 > `amtToRemove` : The amount of collateral to remove
 >
 > `msg.sender` : The account of the owner of the vault. The collateral will be sent to this account.
@@ -611,7 +754,7 @@ function removeCollateral(uint256 vaultIndex, uint256 amtToRemove)
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 require(ocDai.hasExpired() == false, "Can only remove collateral before expiry");
-ocDai.removeCollateral(1, 1000000);
+ocDai.removeCollateral(1000000);
 ```
 {% endtab %}
 
@@ -620,7 +763,7 @@ ocDai.removeCollateral(1, 1000000);
 const ocDai = oToken.at(0x3BA...);
 const hasExpired = await ocDai.methods.hasExpired().call();
 if(!hasExpired) {
-    await ocDai.methods.removeCollateral(1, 1000000).send();
+    await ocDai.methods.removeCollateral(1000000).send();
 }
 ```
 {% endtab %}
@@ -633,13 +776,11 @@ The burn oTokens functionality allows a vault owner to reduce the amount of insu
 A vault owner can burn oTokens any time before expiry of the oToken contract. You can check if a contract has expired by calling `hasExpired()`. 
 
 ```javascript
-function burnOTokens(uint256 vaultIndex, uint256 amtToBurn)
+function burnOTokens(uint256 amtToBurn)
 ```
 
-> `vaultIndex` : The index of the vault that will be affected by burning oTokens 
->
 > `amtToBurn` : The amount of oTokens to burn
->
+
 > `msg.sender` : The owner of the vault and the account from which oTokens will be burned
 
 {% tabs %}
@@ -653,7 +794,7 @@ oToken ocDai = oToken(0x3BA...);
  */
 ocDai.approve(address(ocDai), 1000000000000000000000000000000);
 require(ocDai.hasExpired() == false, "Can only burn oTokens before expiry");
-ocDai.burnOTokens(1, 100);
+ocDai.burnOTokens(100);
 ```
 {% endtab %}
 
@@ -667,7 +808,7 @@ if(!hasExpired) {
     '1000000000000000000000000000000'
     ).send();
     
-    await ocDai.methods.burnOTokens('1', '1000000').send();
+    await ocDai.methods.burnOTokens('1000000').send();
 }
 ```
 {% endtab %}
@@ -684,10 +825,10 @@ When a liquidation occurs, a liquidator may return some or all of the outstandin
 A liquidator may close up to a certain fixed percentage \([i.e. liquidation factor\)](./#glossary-of-terms) of the outstanding oTokens issued by the [unsafe](./#glossary-of-terms) vault. 
 
 ```javascript
-function liquidate(uint256 vaultIndex, uint256 oTokensToLiquidate)
+function liquidate(address vaultOwner, uint256 oTokensToLiquidate)
 ```
 
-> `vaultIndex` : The index of the vault that is unsafe and is to be liquidated. \(See [`numVaults()`](otoken.md#get-number-of-vaults) to get the total number of vaults in the oToken contract\)
+> `vaultOwner` : The owner of the vault whose vault is unsafe and is to be liquidated. \(See `getVaultOwners()` to get the all the owners of vaults in the oToken contract\)
 >
 > `oTokensToLiqudate` : The amount of oTokens that the liquidator brings back to the oToken contract
 >
@@ -705,7 +846,7 @@ oToken ocDai = oToken(0x3BA...);
  */
 ocDai.approve(address(ocDai), 1000000000000000000000000000000);
 
-uint256 vaultIndex = 1; 
+uint256 vaultIndex = '0xFD..'; 
 require(ocDai.hasExpired() == false, "Can only liquidate before expiry");
 require(ocDai.isUnsafe(vaultIndex), "Vault is safe");
 ocDai.liquidate(vaultIndex, 10);
@@ -716,7 +857,7 @@ ocDai.liquidate(vaultIndex, 10);
 ```javascript
 const ocDai = oToken.at('0x3BA...');
 
-const vaultIndex = '1'; 
+const vaultIndex = '0xFD..'; 
 const hasExpired = await ocDai.methods.hasExpired().call();
 const isUnsafe = await ocDai.methods.isUnsafe(vaultIndex).call();
 
@@ -738,16 +879,18 @@ During the [exercise window](./#glossary-of-terms), any oToken holders can trans
 
 To determine if it is the exercise window, call [`isExerciseWindow()`](otoken.md#is-it-the-exercise-window). The [exercise](./#glossary-of-terms) function can only be called during the exercise window. 
 
-The amount of underlying tokens to be transferred can be calculated by calling the [`underlyingToTransfer(..)`](otoken.md#underlying-to-transfer-calculations) function. Users first need to [`approve(..)`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol) the oToken contract to spend their underlying and oTokens before they can call `exercise(..)` on a vault. This is because the exercise function transfers in the ERC20 oTokens and underlying tokens into the oToken contract \([Sec 5.1 Physical Settlement](https://drive.google.com/file/d/1YsrGBUpZoPvFLtcwkEYkxNhogWCU772D/view)\). 
+The amount of underlying tokens to be transferred can be calculated by calling the [`underlyingRequiredToExercise(..)`](otoken.md#underlying-required-to-exercise) function. Users first need to [`approve(..)`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol) the oToken contract to spend their underlying and oTokens before they can call `exercise(..)` on a vault. This is because the exercise function transfers in the ERC20 oTokens and underlying tokens into the oToken contract \([Sec 5.1 Physical Settlement](https://drive.google.com/file/d/1YsrGBUpZoPvFLtcwkEYkxNhogWCU772D/view)\). 
 
 While exercise can be called at anytime during the exercise window, it may be unprofitable to exercise unless there was an actual crash in the price of the underlying asset relative to the price of the strike asset. 
 
 ```javascript
-function exercise(uint256 oTokensToExercise) payable
+function exercise(uint256 oTokensToExercise, address payable[] memory vaultsToExerciseFrom) payable
 ```
 
 > `oTokensToExercise` : The amount of oTokens being exercised. \(See here to get the [oToken balance of the msg.sender](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol#L50)\)
 >
+> `vaultsToExerciseFrom` : The addresses of vault owners to exercise from. Collateral will be taken from the vaults in the order passed in. See `getVaultOwners()` to get the all the owners of vaults in the oToken contract\)
+
 > `msg.sender` : The account from which oTokens and underlying assets will be transferred into the oToken contract. This account will also get paid out the claims made. 
 >
 > `msg.value` : If the underlying protected is ETH, then the msg.value is the amount of ETH transferred. If not, it should be set to 0.
@@ -770,7 +913,7 @@ require(ocDai.isExerciseWindow() == true, "Can only exercise during the exericse
 uint256 amtToExercise = 1000;
 
 // need to have sufficient underlying to make a claim
-uint256 underlyingToTransfer = ocDai.underlyingToTransfer(amtToExercise);
+uint256 underlyingToTransfer = ocDai.underlyingRequiredToExercise(amtToExercise);
 require(cDai.balanceOf(address(this) >= underlyingToTransfer, "Insufficient underlying to exercise");
 
 ocDai.exercise(amtToExercise);
@@ -799,7 +942,7 @@ if(isExerciseWindow) {
     const amtToExercise = '1000';
     
     // need to have sufficient underlying to make a claim
-    const underlyingToTransfer = await ocDai.methods.underlyingToTransfer(amtToExercise).call();
+    const underlyingToTransfer = await ocDai.methods.underlyingRequiredToExercise(amtToExercise).call();
     
     if ((await cDai.methods.balanceOf(myAccount).call()) >= underlyingToTransfer) {
         await ocDai.methods.exercise(amtToExercise).send();
@@ -809,26 +952,24 @@ if(isExerciseWindow) {
 {% endtab %}
 {% endtabs %}
 
-### Claim Collateral
+### Redeem Vault Balance
 
-Once the oToken contract has expired, any vault owner can redeem their share of collateral. The amount of collateral that the owner gets back is determined by the proportion of their collateral in the original unexercised collateral pool. The vault owner is paid the same proportion from the total remaining collateral pool after all the exercise calls have been made. If no exercise calls have been made, they get all of their collateral back. 
+Once the oToken contract has expired, any vault owner can redeem their share of collateral and any underlying if an exercise call was made on their vault. The amount of collateral that the owner gets back is the balance left after any exercise calls made which affected their vault. If no exercise calls were made which affected their vault, they get all their collateral back. 
 
 You can call the `hasExpired()` function to check if the oToken contract has expired. 
 
 ```javascript
-function claimCollateral (uint256 vaultIndex)
+function redeemVaultBalance()
 ```
 
-> `vaultIndex` : The index of the vault to claim collateral from
->
-> `msg.sender` : The account that owns the vault. The collateral claimed from the vault will be sent to this account
+> `msg.sender` : The address that owns the vault. The collateral and underlying balance from the vault will be sent to the owner of this account.
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
 require(ocDai.hasExpired() == true, "Can only claim collateral back after the exericse window");
-ocDai.claimCollateral(1);
+ocDai.redeemVaultBalance()
 ```
 {% endtab %}
 
@@ -836,35 +977,30 @@ ocDai.claimCollateral(1);
 ```javascript
 const ocDai = oToken.at('0x3BA...');
 
-const vaultIndex = '1'; 
 const hasExpired = await ocDai.methods.hasExpired().call();
 
 if(hasExpired) {    
-    await ocDai.methods.claimCollateral(vaultIndex).send();
+    await ocDai.methods.redeemVaultBalance().send();
 }
 ```
 {% endtab %}
 {% endtabs %}
 
-### Transfer Vault Ownership
+### Remove Underlying
 
-The transfer ownership function allows the owner of the vault to set someone else to be the owner of the vault. This function can be called at any time. 
+The vault owner function allows the owner of the vault to withdraw underlying from their vault if an exercise call affected their vault. This function can be called at any time. 
 
 ```javascript
-function transferVaultOwnership(uint256 vaultIndex, address payable newOwner)
+function removeUnderlying() public
 ```
 
-> `vaultIndex` : The index of the vault to transfer ownership of
->
-> `newOwner` : The account that will be the next owner of the vault
->
-> `msg.sender` : The current owner of the vault
+> `msg.sender` : The owner of the vault. Only the vault owner can call this function.
 
 {% tabs %}
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-ocDai.transferVaultOwnership(1, 0xFDA...);
+ocDai.removeUnderlying();
 ```
 {% endtab %}
 
@@ -872,9 +1008,7 @@ ocDai.transferVaultOwnership(1, 0xFDA...);
 ```javascript
 const ocDai = oToken.at('0x3BA...');
 
-const vaultIndex = '1'; 
-const newOwnerAddress = '0xBF4...';
-await ocDai.methods.transferVaultOwnership(vaultIndex, newOwnerAddress).send();
+await ocDai.methods.removeUnderlying().send();
 ```
 {% endtab %}
 {% endtabs %}
@@ -999,20 +1133,6 @@ await ocDai.methods.transferVaultOwnership(vaultIndex, newOwnerAddress).send();
     </tr>
     <tr>
       <td style="text-align:left">
-        <p><code>TransferVaultOwnership (</code>
-        </p>
-        <p><code>uint256 VaultIndex, </code>
-        </p>
-        <p><code>address oldOwner, </code>
-        </p>
-        <p><code>address payable newOwner)</code>
-        </p>
-      </td>
-      <td style="text-align:left">Emitted upon a successful <a href="otoken.md#transfer-vault-ownership">Transfer Vault Ownership</a>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
         <p><code>RemoveCollateral (</code>
         </p>
         <p><code>uint256 vaultIndex, </code>
@@ -1026,9 +1146,7 @@ await ocDai.methods.transferVaultOwnership(vaultIndex, newOwnerAddress).send();
       </td>
     </tr>
   </tbody>
-</table>## Error Table
-
-## Read Only Functions 
+</table>## Read Only Functions 
 
 ### Strike Price 
 
@@ -1113,12 +1231,12 @@ let expiryTime = ocDai.methods.expiry().call();
 {% endtab %}
 {% endtabs %}
 
-### Underlying To Transfer Calculations
+### Underlying Required to Exercise
 
 This function calculates the amount of underlying tokens to be transferred based on how many oTokens are being exercised. 
 
 ```javascript
-function underlyingToTransfer(uint256 oTokensToExercise) view returns (uint256)
+function  underlyingRequiredToExercise(uint256 oTokensToExercise) view returns (uint256)
 ```
 
 > `RETURN` : The number of underlying tokens to transfer
@@ -1127,14 +1245,14 @@ function underlyingToTransfer(uint256 oTokensToExercise) view returns (uint256)
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-expiryTimestamp = ocDai.underlyingToTransfer(10);
+expiryTimestamp = ocDai.underlyingRequiredToExercise(10);
 ```
 {% endtab %}
 
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3BA...);
-let underlyingToTransfer = ocDai.methods.underlyingToTransfer(10).call();
+let underlyingToTransfer = ocDai.methods. underlyingRequiredToExercise(10).call();
 ```
 {% endtab %}
 {% endtabs %}
@@ -1275,7 +1393,7 @@ let isUnsafe = ocDai.methods.isUnsafe(1).call();
 {% endtab %}
 {% endtabs %}
 
-## Get Number of Vaults 
+### Get Number of Vaults 
 
 This function returns the number of vaults in the oToken contract.
 
@@ -1303,5 +1421,53 @@ let totalVaults = ocDai.methods.numVaults().call();
 {% endtab %}
 {% endtabs %}
 
+### Maximum number of oTokens issuable
 
+This function returns the maximum number of oTokens that can safely be issued at the given minimum collateralization ratio. We recommend issuing less than this amount, since a slight change in price can make the vault unsafe. 
+
+```javascript
+function maxOTokensIssuable(uint256 collateralAmt) public view returns (uint256)
+```
+
+> `CollateralAmt`The amount of collateral \(in wei\) that is to be supplied.
+
+> `RETURN` : The maximum number of oTokens that can safely be issued at the given minimum collateralization ratio \(160%\).
+
+
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+
+// Specify the amount of ETH collateral you want to put down in wei
+uint256 collateral = 1000000000000000000;
+
+// This function tells you the maximum number of options you can safely issue at the minimum collateralization ratio (currently 160%)/ 
+// Note: It is reccomended that you create less than this amount of options. 
+uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * 160 / collateralizationRatio;
+```
+{% endtab %}
+
+{% tab title="Web3 1.0" %}
+```javascript
+const ocDai = oToken.at(0x3FDB...);
+
+// Specify the amount of ETH collateral you want to put down in wei
+const collateral = '1000000000000000000';
+
+// This function tells you the maximum number of options you can safely issue at 160% collateralization. 
+// Note: It is reccomended that you create less than this amount of options. 
+const maxNumOptions = await ocDai.methods.maxOTokensIssuable(collateral).call();
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptionsToIssue = maxNumOptions * 160 / collateralizationRatio;
+```
+{% endtab %}
+{% endtabs %}
 
