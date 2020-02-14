@@ -593,7 +593,7 @@ const hasVault = await ocDai.methods.hasVault(myAccount).call();
 if(!hasExpired && !hasVault) {
     await ocDai.methods.openVault().send({
         from: myAccount,
-        gas: 5000000000
+        gasPrice: 7000000000
     });
 }
 ```
@@ -613,10 +613,10 @@ The add collateral functions can be called at any point before the oToken's expi
 The `addETHCollateral()` function is called if the specified collateral for the oToken contract is ETH. This function call will fail if the collateral type is not ETH. 
 
 ```javascript
-function addETHCollateral(uint256 vaultIndex) payable returns (uint256) 
+function addETHCollateral(address payable vaultOwner) payable returns (uint256) 
 ```
 
-> `vaultIndex` : The index of the vault to add collateral to
+> `vaultIndex` : The address of the vault owner, whose vault the protocol will add collateral to.
 >
 > `msg.sender` : The account from which ETH collateral will be transferred into the oToken contract
 >
@@ -626,17 +626,25 @@ function addETHCollateral(uint256 vaultIndex) payable returns (uint256)
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+address payable myVault = 'Enter the vault address';
 require(ocDai.hasExpired() == false, "Can only add collateral before expiry");
-uint256 vaultCollateralBalance = ocDai.addETHCollateral.value(1000000)(1);
+uint256 vaultCollateralBalance = ocDai.addETHCollateral.value(1000000)(myVault);
 ```
 {% endtab %}
 
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
+const myVault = 'Enter the vault address';
+
 const hasExpired = await ocDai.methods.hasExpired().call();
 if(!hasExpired) {
-    await ocDai.methods.addETHCollateral(1).send({from: myAccount, value:1000000});
+    await ocDai.methods.addETHCollateral(myVault)
+    .send({
+        from: myAccount, 
+        value:1000000,
+        gasPrice: 7000000000
+        });
 }
 ```
 {% endtab %}
@@ -650,8 +658,8 @@ The `addERC20Collateral()` function is called if the specified collateral for th
 function addERC20Collateral(uint256 vaultIndex, uint256 amt) returns (uint256)
 ```
 
-> `vaultIndex` : The index of the vault to add collateral to
->
+> `vaultIndex` : The address of the vault owner, whose vault the protocol will add collateral to.
+
 > `amt` : The amount of collateral tokens to add
 >
 > `msg.sender` : The account from which the ERC20 collateral asset will be transferred into the oToken contract
