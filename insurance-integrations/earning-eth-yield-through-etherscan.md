@@ -16,7 +16,7 @@
    1. Fill out the payableAmount in ETH \(**not wei**, this is an Etherscan quirk\). 
    2. Fill out the numOptions with the value that you calculated based on your desired collateralization ratio.
    3. Fill out the address that you want to send the newly created options to in the receiver field.
-8. And that is all! hit confirm and you have created the options. You can now either [sell them on uniswap](https://uniswap.exchange/) OR [add them to the uniswap ocDai pool.](https://uniswap.exchange/add-liquidity)
+8. And that is all! hit confirm and you have created the options. You can now either [sell them on uniswap](https://uniswap.exchange/) OR [add them to the uniswap ocDai pool.](https://uniswap.exchange/add-liquidity) \(You will need to search for the token with the address below\)
    1. The ocDai address is here: [https://etherscan.io/token/0xddac4aed7c8f73032b388efe2c778fc194bc81ed](https://etherscan.io/token/0xddac4aed7c8f73032b388efe2c778fc194bc81ed)
 
 ## Earn ETH Yield by selling ocUSDC options
@@ -35,6 +35,6 @@
    1. Fill out the payableAmount in ETH \(**not wei**, this is an Etherscan quirk\). 
    2. Fill out the numOptions with the value that you calculated based on your desired collateralization ratio.
    3. Fill out the address that you want to send the newly created options to in the receiver field.
-8. And that is all! hit confirm and you have created the options. You can now either [sell them on uniswap](https://uniswap.exchange/) OR [add them to the uniswap ocUSDC pool](https://uniswap.exchange/add-liquidity). 
+8. And that is all! hit confirm and you have created the options. You can now either [sell them on uniswap](https://uniswap.exchange/) OR [add them to the uniswap ocUSDC pool](https://uniswap.exchange/add-liquidity). \(You will need to search for the token with the address below\)
    1. The ocUSDC address is here:[https://etherscan.io/address/0x8ed9f862363ffdfd3a07546e618214b6d59f03d4](https://etherscan.io/address/0x8ed9f862363ffdfd3a07546e618214b6d59f03d4)
 
