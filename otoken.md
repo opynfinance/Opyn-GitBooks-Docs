@@ -1393,7 +1393,7 @@ let isUnsafe = ocDai.methods.isUnsafe(1).call();
 {% endtab %}
 {% endtabs %}
 
-## Get Number of Vaults 
+### Get Number of Vaults 
 
 This function returns the number of vaults in the oToken contract.
 
@@ -1421,5 +1421,31 @@ let totalVaults = ocDai.methods.numVaults().call();
 {% endtab %}
 {% endtabs %}
 
+### Maximum number of oTokens issuable
 
+This function returns the maximum number of oTokens that can safely be issued at the given minimum collateralization ratio. We recommend issuing less than this amount, since a slight change in price can make the vault unsafe. 
+
+```javascript
+function maxOTokensIssuable(uint256 collateralAmt) public view returns (uint256)
+```
+
+> `CollateralAmt`The amount of collateral \(in wei\) that is to be supplied.
+
+> `RETURN` : The total number of vaults that exist in the oToken contract
+
+
+
+{% tabs %}
+{% tab title="Solidity" %}
+```javascript
+oToken ocDai = oToken(0x3BA...);
+unit256 safeMaxOTokensIssuable = ocDai.maxOTokensIssuable();
+
+//The current min collaterlaization ratio is 160%. We reccomend setting a higher collateralization ratio. 
+uint256 collateralizationRatio = 'Enter your desired collateralization ratio';
+uint256 numOTokensToIssue = safeMaxOTokensIssuable * 160 / collateralizationRatio;
+
+```
+{% endtab %}
+{% endtabs %}
 
