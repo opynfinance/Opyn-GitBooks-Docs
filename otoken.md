@@ -384,14 +384,14 @@ uint256 vaultIndex = ocDai.openVault();
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
-const vaultOwnerAddress = 'Set Vault Owner Address';
+const myAccount = 'Set Your Address';
 
 const hasExpired = await ocDai.methods.hasExpired().call();
-const hasVault = await ocDai.methods.hasVault(vaultOwnerAddress).call();
+const hasVault = await ocDai.methods.hasVault(myAccount).call();
 
 if(!hasExpired && !hasVault) {
     await ocDai.methods.openVault().send({
-        from: vaultOwnerAddress,
+        from: myAccount,
         gas: 5000000000
     });
 }
