@@ -1431,7 +1431,7 @@ function maxOTokensIssuable(uint256 collateralAmt) public view returns (uint256)
 
 > `CollateralAmt`The amount of collateral \(in wei\) that is to be supplied.
 
-> `RETURN` : The total number of vaults that exist in the oToken contract
+> `RETURN` : The maximum number of oTokens that can safely be issued at the given minimum collateralization ratio \(160%\).
 
 
 
