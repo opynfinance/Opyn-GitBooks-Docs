@@ -994,7 +994,7 @@ The vault owner function allows the owner of the vault to withdraw underlying fr
 function removeUnderlying() public
 ```
 
-> `msg.sender` : The owner of the vault
+> `msg.sender` : The owner of the vault. Only the vault owner can call this function.
 
 {% tabs %}
 {% tab title="Solidity" %}
