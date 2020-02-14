@@ -16,8 +16,9 @@
    1. Fill out the payableAmount in ETH \(**not wei this time**, this is an Etherscan quirk\). 
    2. Fill out the numOptions with the value that you calculated based on your desired collateralization ratio in step 4. 
    3. Fill out the address that you want to send the newly created options to in the receiver field. This is most likely your wallet address. 
-8. Hit write and then confirm the transaction through your wallet. You have created the options! You can now either [sell them on uniswap](https://uniswap.exchange/) OR [add them to the uniswap ocDai pool.](https://uniswap.exchange/add-liquidity) \(You will need to search for the oToken with the address below\)
-   1. The ocDai address is here: [https://etherscan.io/token/0xddac4aed7c8f73032b388efe2c778fc194bc81ed](https://etherscan.io/token/0xddac4aed7c8f73032b388efe2c778fc194bc81ed)
+8. Hit write and then confirm the transaction through your wallet. You have created the options! You can now either
+   1.  [sell them on uniswap](https://uniswap.exchange/swap/0xddac4aed7c8f73032b388efe2c778fc194bc81ed) OR 
+   2. [add them to the uniswap ocDai pool.](https://uniswap.exchange/add-liquidity) \(You will need to search for the oToken with the address below\). The ocDai address is here: [0xddac4aed7c8f73032b388efe2c778fc194bc81ed](https://etherscan.io/token/0xddac4aed7c8f73032b388efe2c778fc194bc81ed). 
 
 ## Earn ETH Yield by selling ocUSDC options through Etherscan
 
@@ -38,6 +39,7 @@
    1. Fill out the payableAmount in ETH \(**not wei this time**, this is an Etherscan quirk\). 
    2. Fill out the numOptions with the value that you calculated based on your desired collateralization ratio in step 4. 
    3. Fill out the address that you want to send the newly created options to in the receiver field. This is most likely your wallet address. 
-8. Hit write and then confirm the transaction through your wallet. You have created the options! You can now either [sell them on uniswap](https://uniswap.exchange/) OR  [add them to the uniswap ocUSDC pool](https://uniswap.exchange/add-liquidity). \(You will need to search for the oToken with the address below\)
-   1. The ocUSDC address is here:[https://etherscan.io/address/0x8ed9f862363ffdfd3a07546e618214b6d59f03d4](https://etherscan.io/address/0x8ed9f862363ffdfd3a07546e618214b6d59f03d4)
+8. Hit write and then confirm the transaction through your wallet. You have created the options! You can now either
+   1. [Sell them on uniswap](https://uniswap.exchange/swap/0x8ed9f862363ffdfd3a07546e618214b6d59f03d4) OR 
+   2. [Add them to the uniswap ocUSDC pool](https://uniswap.exchange/add-liquidity). \(You will need to search for the oToken with the address below\)The ocUSDC address is here: [0x8ed9f862363ffdfd3a07546e618214b6d59f03d4](https://etherscan.io/address/0x8ed9f862363ffdfd3a07546e618214b6d59f03d4)
 
