@@ -391,7 +391,7 @@ const hasVault = await ocDai.methods.hasVault(vaultOwnerAddress).call();
 
 if(!hasExpired && !hasVault) {
     await ocDai.methods.openVault().send({
-        from: vaultOwner,
+        from: vaultOwnerAddress,
         gas: 5000000000
     });
 }
