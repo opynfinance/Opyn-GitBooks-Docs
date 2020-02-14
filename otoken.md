@@ -49,7 +49,7 @@ uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
 
 // Assuming you want to be 200% collateralized
 const collateralizationRatio = 200;
-const numOptionsToIssue = maxNumOptions * collateralizationRatio / 160;
+const numOptionsToIssue = maxNumOptions * 160 / collateralizationRatio;
 
 // This contract creates and receives 200% collateralized options against 1 ETH as collateral
 ocDai.createETHCollateralOption.value(collateral)(numOptions, address(this));
@@ -104,11 +104,21 @@ function createERC20CollateralOption(uint256 amtToCreate, uint256 amtCollateral,
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
-const myAccount = 'Set Your Address';
 
+// Specify the amount of collateral you want to put down in smallest decimal units (wei)
+uint256 collateral = 1000000000000000000;
 
+// This function tells you the maximum number of options you can safely issue at the minimum collateralization ratio (currently 160%)/ 
+// Note: It is reccomended that you create less than this amount of options. 
+uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * collateralizationRatio / 160;
+
+// This contract creates and receives 200% collateralized options against 1 ERC20 as collateral
 ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
-ocDai.createERC20CollateralOption(10, 100000, 0xFDA...);
+ocDai.createERC20CollateralOption(numOptions, collateral, address(this));
 ```
 {% endtab %}
 
