@@ -1453,20 +1453,18 @@ uint256 numOTokensToIssue = safeMaxOTokensIssuable * 160 / collateralizationRati
 
 {% tab title="Web3 1.0" %}
 ```javascript
-const ocDai = oToken.at(0x3BA...);
+const ocDai = oToken.at(0x3FDB...);
 
 // Specify the amount of ETH collateral you want to put down in wei
-uint256 collateral = 1000000000000000000;
+const collateral = '1000000000000000000';
 
-// This function tells you the maximum number of options you can safely issue at the minimum collateralization ratio (currently 160%)/ 
+// This function tells you the maximum number of options you can safely issue at 160% collateralization. 
 // Note: It is reccomended that you create less than this amount of options. 
-uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
+const maxNumOptions = await ocDai.methods.maxOTokensIssuable(collateral).call();
 
 // Assuming you want to be 200% collateralized
 const collateralizationRatio = 200;
-const numOptions = maxNumOptions * 160 / collateralizationRatio;
-
-let safeMaxOTokensIssuable = ocDai.methods.maxOTokensIssuable().call();
+const numOptionsToIssue = maxNumOptions * 160 / collateralizationRatio;
 ```
 {% endtab %}
 {% endtabs %}
