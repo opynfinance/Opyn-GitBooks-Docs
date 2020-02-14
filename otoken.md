@@ -77,8 +77,9 @@ await ocDai.methods.createETHCollateralOption(
     numOptionsToIssue, 
     myAccount)
     .send({
-    from: myAccount, 
-    value: collateral
+        from: myAccount, 
+        value: collateral,
+        gasPrice: 7000000000
     });
 ```
 {% endtab %}
@@ -143,7 +144,10 @@ await collateral.methods.approve(
     ocDai.options.address,
     '1000000000000000000000000000000'
     )
-    .send();
+     .send({
+        from: myAccount, 
+        gasPrice: 7000000000
+    });
     
     
 // myAccount creates 200% collateralized options against 1 ERC20 as collateral
@@ -152,8 +156,9 @@ await ocDai.methods.createERC20CollateralOption(
     collateral,
     myAccount)
     .send({
-    from: myAccount, 
-    value: 0
+        from: myAccount, 
+        value: 0,
+        gasPrice: 7000000000
     });
 
 
@@ -224,7 +229,8 @@ await ocDai.methods.addETHCollateralOption(
     myAccount)
     .send({
     from: myAccount, 
-    value: collateral
+    value: collateral,
+    gasPrice: 7000000000
     });
 
 ```
@@ -290,7 +296,10 @@ await collateral.methods.approve(
     ocDai.options.address,
     '1000000000000000000000000000000'
     )
-    .send();
+    .send({
+        from: myAccount, 
+        gasPrice: 7000000000
+    });
     
     
 // myAccount creates 200% collateralized options against 1 ERC20 as collateral
@@ -299,8 +308,9 @@ await ocDai.methods.addERC20CollateralOption(
     collateral,
     myAccount)
     .send({
-    from: myAccount, 
-    value: 0
+        from: myAccount, 
+        value: 0,
+        gasPrice: 7000000000
     });
 ```
 {% endtab %}
