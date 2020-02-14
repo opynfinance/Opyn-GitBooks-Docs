@@ -381,7 +381,8 @@ await ocDai.methods.createAndSellETHCollateralOption(
     myAccount)
     .send({
     from: myAccount, 
-    value: collateral
+    value: collateral,
+    gasPrice: 7000000000
     });
 ```
 {% endtab %}
@@ -407,24 +408,61 @@ function createAndSellERC20CollateralOption(uint256 amtToCreate, uint256 amtColl
 {% tab title="Solidity" %}
 ```javascript
 oToken ocDai = oToken(0x3BA...);
+
+// Specify the amount of collateral you want to put down in smallest decimal units (wei)
+uint256 collateral = 1000000000000000000;
+
+// This function tells you the maximum number of options you can safely issue at the minimum collateralization ratio (currently 160%)/ 
+// Note: It is reccomended that you create less than this amount of options. 
+uint256 maxNumOptions = ocDai.maxOTokensIssuable(collateral);
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * collateralizationRatio / 160;
+
+// This contract creates and receives 200% collateralized options against 1 ERC20 as collateral
 ERC20Collateral.approve(address(ocDai), 1000000000000000000000000000000);
-ocDai.createAndSellERC20CollateralOption(10, 1000000, 0xFDA...);
+ocDai.createAndSellERC20CollateralOption(numOptions, collateral, address(this));
 ```
 {% endtab %}
 
 {% tab title="Web3 1.0" %}
 ```javascript
 const ocDai = oToken.at(0x3FDB...);
+const myAccount = 'Set Your Address';
 
+// Specify the amount of ERC20 collateral you want to put down in wei
+const collateral = '1000000000000000000';
+
+// This function tells you the maximum number of options you can safely issue at 160% collateralization. 
+// Note: It is reccomended that you create less than this amount of options. 
+const maxNumOptions = await ocDai.methods.maxOTokensIssuable(collateral).call();
+
+// Assuming you want to be 200% collateralized
+const collateralizationRatio = 200;
+const numOptions = maxNumOptions * 160 / collateralizationRatio;
+
+// Need to first approve the oToken contract to spend the ERC20 tokens
 await collateral.methods.approve(
     ocDai.options.address,
     '1000000000000000000000000000000'
-    ).send();
+    )
+     .send({
+        from: myAccount, 
+        gasPrice: 7000000000
+    });
+    
+    
+// myAccount creates 200% collateralized options against 1 ERC20 as collateral
 await ocDai.methods.createAndSellERC20CollateralOption(
-    10, 
-    100000,
-    0xFDA...
-).send();
+    numOptions, 
+    collateral,
+    myAccount)
+    .send({
+        from: myAccount, 
+        value: 0,
+        gasPrice: 7000000000
+    });
 ```
 {% endtab %}
 {% endtabs %}
