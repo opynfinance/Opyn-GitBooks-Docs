@@ -8,6 +8,7 @@
 * [Insurance Integrations](insurance-integrations/README.md)
   * [Insurance Buyer Integrations](insurance-integrations/insurance-buyer-integrations.md)
   * [Insurance Provider Integrations](insurance-integrations/insurance-seller-integrations.md)
+  * [Earning ETH Yield through Etherscan](insurance-integrations/earning-eth-yield-through-etherscan.md)
 * [OToken: Create + Manage Options in existing markets](otoken.md)
 * [OptionsExchange: Buy and Sell Options](optionsexchange-buy-and-sell-otokens.md)
 * [OptionsFactory: Bootstrap new Options Markets](options-factory.md)
