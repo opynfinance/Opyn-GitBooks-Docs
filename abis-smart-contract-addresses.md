@@ -54,7 +54,7 @@
       </td>
       <td style="text-align:left"><a href="https://etherscan.io/address/0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e#code">Interface</a>
       </td>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643">0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643</a>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x98cc3bd6af1880fcfda17ac477b2f612980e5e33">0x98CC3BD6Af1880fcfDa17ac477B2F612980e5e33</a>
       </td>
     </tr>
     <tr>
