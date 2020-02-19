@@ -73,7 +73,7 @@
       <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xddac4aed7c8f73032b388efe2c778fc194bc81ed&amp;format=raw">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0xddac4aed7c8f73032b388efe2c778fc194bc81ed#readContract">0xddaC4AED7c8F73032b388EFe2c778FC194BC81ed</a>
+      <td style="text-align:left"><a href="https://etherscan.io/token/0x98cc3bd6af1880fcfda17ac477b2f612980e5e33">0x98cc3bd6af1880fcfda17ac477b2f612980e5e33</a>
       </td>
     </tr>
     <tr>
