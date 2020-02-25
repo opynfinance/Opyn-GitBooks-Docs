@@ -119,7 +119,7 @@ Opyn currently uses Compound’s ETH:USD oracle. We are actively working on incr
 
 There is currently a protocol admin, but our goal is to remove the protocol admin and become fully decentralized. 
 
-The admin can update option parameters within specific bounds that limit its control \(eg. cannot lower minimum collateralization ratio below 160%\), manage the asset whitelist, and set the name / symbol of tokens. 
+The admin can update option parameters within specific bounds that limit its control \(eg. cannot lower minimum collateralization ratio below 100%\), manage the asset whitelist, and set the name / symbol of tokens. 
 
 The admin CANNOT access any user funds - Opyn is completely noncustodial. 
 
