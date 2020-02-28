@@ -136,10 +136,6 @@ Specifically, the original strike price for the first ocDAI contract was $0.985 
 
 If you purchased insurance on the old ocDAI contract you do not need to take any action. You are still protected. 
 
-Old ocDAI contract: [https://etherscan.io/address/0xddac4aed7c8f73032b388efe2c778fc194bc81ed](https://etherscan.io/address/0xddac4aed7c8f73032b388efe2c778fc194bc81ed) 
-
-New ocDAI contract: [https://etherscan.io/address/0x98cc3bd6af1880fcfda17ac477b2f612980e5e33](https://etherscan.io/address/0x98cc3bd6af1880fcfda17ac477b2f612980e5e33)
-
 ## Security 
 
 ### Is Opyn safe? Has it been audited? Can you cover Opyn yourselves? 
