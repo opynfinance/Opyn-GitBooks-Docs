@@ -25,7 +25,7 @@ Opyn provides protection against a number of different risks:
 * Financial risks \(eg. liquidity crises\)
 * Admin risks \(eg. admin key compromise, governance vulnerabilities\)
 
-Opyn protects against all oracle manipulation with the exception of Compound's ETH:USD oracle, which is used in the protocol. Opyn currently does not protect against non-transferable ERC20s token. We are actively working on increasing the surface of risks we can cover for future iterations of the protocol.
+Opyn protects against all oracle manipulation with the exception of Compound's ETH:USD oracle, which is used in the protocol. Opyn currently does not protect against non-transferable ERC20 tokens. We are actively working on increasing the surface of risks we can cover for future iterations of the protocol.
 
 ### **How do claims work?** 
 
@@ -55,13 +55,15 @@ The "max loss" is the maximum loss you can face on the position that you are cov
 
 ### **How can I earn ETH premiums?** 
 
-You can earn ETH premiums by providing insurance. In the background, you are supplying ETH as collateral and then minting and selling oTokens \(insurance tokens\). 
+You can earn ETH premiums by providing insurance. In the background, you are supplying ETH as collateral and then minting oTokens \(insurance tokens\). Then you have have two possibilities to earn money on their ETH. They can either sell oTokens to insurance buyers on Uniswap and earn premiums or add oTokens to the Uniswap Pool and earn transaction fees from other users' trading activity.
 
-You can currently supply ETH and provide insurance using [Opyn’s APIs](https://opyn.gitbook.io/opyn/). An interface for this process is coming soon.
+![](.gitbook/assets/initial-flow-infographic.png)
 
-### **Why are their different rates I can choose from?** 
+### **What does the return profile look like?** 
 
-Each rate corresponds to a different set of risks. Generally higher yields imply higher risks.
+[**Being a Liquidity Provider on Uniswap**](https://uniswap.exchange/add-liquidity?token=0x98cc3bd6af1880fcfda17ac477b2f612980e5e33)**:** As an LP on Uniswap you earn transaction fees from individuals buying and selling on the Opyn platform through Uniswap and have the opportunity to make a large, but variable, return as a result as long as you remain above 1.6x collateralized \(otherwise you are at risk of liquidation\). Being a Uniswap LP also allows you to remove your funds at any time. [This article explains a bit more about being a Uniswap LP](https://blog.zerion.io/returns-of-holding-vs-defi-ing-c6f050e89c8e).
+
+[**Selling oTokens on Uniswap**](https://uniswap.exchange/swap?inputCurrency=0x98cc3bd6af1880fcfda17ac477b2f612980e5e33)**:** Selling oTokens to insurance buyers on Uniswap allows you to earn premiums on your ETH that far outshine anything you can get currently in DeFi \([currently 0.01% on Compound](https://compound.finance/markets), [0.05% on dYdX](https://trade.dydx.exchange/balances)\), and you will get the entirety of it back as long as you remain above 1.6x collateralized \(otherwise you are at risk of liquidation\) and there isn’t some disaster event \(eg. technical risk like a hack, financial risk like DAI breaking its peg or a run on Compound\). Here you’re taking a similar risk to depositing ETH on Compound, where you earn 0.01% and are exposed to Compound risk. With Opyn, you are exposed to Compound risk and Opyn risk, but earn a significantly higher premium on ETH.
 
 ### **What are the risks with earning ETH premiums by providing insurance?** 
 
@@ -80,11 +82,29 @@ You are required to maintain a minimum collateral ratio of 160%. If you fall bel
 
 Yes, you can check out Opyn's [example liquidator bot here](https://github.com/opynfinance/LiquidatorBot). 
 
+### **What if I want to close my position before the expiry date?**
+
+You can close your position at any time by buying back the oTokens you had sold on Uniswap and returning them to your vault, which would allow you to redeem your ETH collateral. One note is that the price of oTokens could have increased or decreased in the time since you first purchased them.
+
+![](.gitbook/assets/unwinding-vault-twitter.png)
+
+### **What happens in the case of an adverse event?**
+
+In the case of an adverse event, insurance buyers can make a claim by sending their oTokens and protected asset \(eg. cDAI\) to the protocol. Insurance providers then pay out insurance buyers in ETH and receive these oTokens and protected asset \(eg. cDAI\).
+
+![](.gitbook/assets/paying-out-in-hack-twitter.png)
+
 ## Integrating your DApp 
 
 ### Can I provide insurance for my users? 
 
 Yes! You can allow your users to access Compound deposit insurance directly through your DApp by integrating with the protocol. You can explore the [documentation here](https://opyn.gitbook.io/opyn/insurance-integrations/insurance-buyer-integrations) and chat with us on [Discord](https://discord.gg/2NFdXaE) :\) 
+
+### Can I create my own insurance market? 
+
+Absolutely! The Opyn Convexity protocol is an open protocol that allows anyone to create insurance markets and interfaces on top. We encourage the community to bootstrap markets and interfaces. You can get started with bootstrapping your own marketplace [here](https://opyn.gitbook.io/opyn/options-factory) and chat with us on [Discord](https://discord.gg/2NFdXaE) :\)   
+  
+As an example, the [iearn.finance](https://iearn.finance/cover) team created a market for [y.curve.fi](https://y.curve.fi/) \(oCRV\) and they host that interface as well. 
 
 ## Under the hood 
 
@@ -99,6 +119,27 @@ Yes! We are excited to see the all the different applications people will explor
 ### What are oTokens? 
 
 oTokens are ERC20 tokens that represent the insurance \(protective put option\) that you have bought or sold. Each oToken corresponds to one unit of the insured asset. Eg. 1 oUSDC protects 1 USDC on Compound 
+
+### Which oTokens are currently available? 
+
+| Name | Underlying Asset | Collateral Asset | Strike Price | Expiry  |
+| :--- | :--- | :--- | :--- | :--- |
+| [ocDAI ](https://etherscan.io/token/0x98cc3bd6af1880fcfda17ac477b2f612980e5e33) | [cDAI](https://etherscan.io/token/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643) | ETH | $0.01859 | 02/10/2021 |
+| [ocDAI \(old\)](https://etherscan.io/token/0xddac4aed7c8f73032b388efe2c778fc194bc81ed) | [cDAI](https://etherscan.io/token/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643) | ETH | $0.02 | 02/10/2021 |
+| [ocUSDC](https://etherscan.io/token/0x8ed9f862363ffdfd3a07546e618214b6d59f03d4) | [cUSDC](https://etherscan.io/token/0x39aa39c021dfbae8fac545936693ac917d5e7563) | ETH | $0.0208 | 02/10/2021 |
+| [oCRV](https://etherscan.io/token/0x4ba8c6ce0e855c051e65dfc37883360efaf7c82b) | [CRV](https://etherscan.io/token/0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8) | ETH | $0.92 | 03/20/2020 |
+
+### Why are there two ocDAI contracts currently?
+
+We initially launched with ocDAI and ocUSDC. However, the parameters of ocDAI contract we initially launched with resulted in market prices for insurance of around 10%+, which is too expensive to fulfill the needs of insurance buyers. To mitigate this, we launched an ocDAI contract with adjusted parameters, which has led to rates for insurance of around 2-4% for ocDAI. 
+
+Specifically, the original strike price for the first ocDAI contract was $0.985 in terms of DAI \($0.02 in terms of cDAI\), however DAI often fluctuates to $0.985 without there being an adverse event, making these contracts prohibitively expensive for insurance buyers. The strike price for the second ocDAI contract is $0.92 \($0.01859 in terms of cDAI\) which gives insurance buyers comprehensive coverage against adverse events with Maker and Compound at a reasonable premium. 
+
+If you purchased insurance on the old ocDAI contract you do not need to take any action. You are still protected. 
+
+Old ocDAI contract: [https://etherscan.io/address/0xddac4aed7c8f73032b388efe2c778fc194bc81ed](https://etherscan.io/address/0xddac4aed7c8f73032b388efe2c778fc194bc81ed) 
+
+New ocDAI contract: [https://etherscan.io/address/0x98cc3bd6af1880fcfda17ac477b2f612980e5e33](https://etherscan.io/address/0x98cc3bd6af1880fcfda17ac477b2f612980e5e33)
 
 ## Security 
 
