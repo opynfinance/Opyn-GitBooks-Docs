@@ -51,11 +51,11 @@ Opyn is built as a two sided marketplace, so any individuals interested in putti
 
 The "max loss" is the maximum loss you can face on the position that you are covering. The rest is covered by your policy. For example, if you are insuring 1000 DAI and the Max Loss is 20 DAI, then in the case of an adverse event if you max a claim, you will receive $980 of ETH. 
 
-## Earning ETH Yield 
+## Earning ETH Premiums by Providing Insurance 
 
-### **How can I earn ETH yields?** 
+### **How can I earn ETH premiums?** 
 
-You can earn ETH yield by providing insurance. In the background, you are supplying ETH as collateral and then minting and selling oTokens \(insurance tokens\). 
+You can earn ETH premiums by providing insurance. In the background, you are supplying ETH as collateral and then minting and selling oTokens \(insurance tokens\). 
 
 You can currently supply ETH and provide insurance using [Opyn’s APIs](https://opyn.gitbook.io/opyn/). An interface for this process is coming soon.
 
@@ -63,7 +63,7 @@ You can currently supply ETH and provide insurance using [Opyn’s APIs](https:/
 
 Each rate corresponds to a different set of risks. Generally higher yields imply higher risks.
 
-### **What are the risks with earning ETH yield by providing insurance?** 
+### **What are the risks with earning ETH premiums by providing insurance?** 
 
 Initially you can choose to earn a yield for providing insurance for the following: 
 
@@ -108,7 +108,8 @@ The security of the Opyn protocol is our highest priority. We cannot cover Opyn 
 
 ### What if there is a bug in Opyn’s smart contracts? 
 
-We recognize that this is a risk, and we have taken precautions to protect against this risk with rigorous internal testing and [external audits](https://blog.openzeppelin.com/opyn-contracts-audit/).   
+We recognize that this is a risk, and we have taken precautions to protect against this risk with rigorous internal testing and [external audits](https://blog.openzeppelin.com/opyn-contracts-audit/). 
+
 Even with this risk, you can still gain significant safety from Opyn insurance. With Opyn insurance, you can only lose your Compound deposits in the case that both Opyn and Compound are compromised at the same time. For example, if the probability that Opyn is compromised is 1% and the probability that Compound is compromised is 1%, then with Opyn insurance, your risk of losing your funds drops to 0.01%. 
 
 ### How do the price feeds work? 
