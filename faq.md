@@ -2,7 +2,6 @@
 
 Opyn is building the insurance layer for DeFi. This is the first platform protecting users in DeFi against both technical and financial risks, starting with Compound deposit insurance. The platform is a two-sided marketplace designed using put options on the Convexity Protocol \(convexity.opyn.co\). Opyn also allows ETH holders to earn meaningful premiums on their ETH holdings by providing insurance.
 
-  
 If you have any additional questions not covered below, or want to learn more, join the [Opyn Discord](https://discord.gg/2NFdXaE) or email us at [hello@opyn.co](mailto:hello@opyn.co).
 
 ## Buying Insurance

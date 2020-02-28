@@ -68,7 +68,7 @@
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://etherscan.io/token/0x98cc3bd6af1880fcfda17ac477b2f612980e5e33">ocDai</a>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xddac4aed7c8f73032b388efe2c778fc194bc81ed#readContract">ocDai</a>
       </td>
       <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xddac4aed7c8f73032b388efe2c778fc194bc81ed&amp;format=raw">JSON</a>
       </td>
