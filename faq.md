@@ -117,7 +117,7 @@ Yes! We are excited to see the all the different applications people will explor
 
 ### What are oTokens? 
 
-oTokens are ERC20 tokens that represent the insurance \(protective put option\) that you have bought or sold. Each oToken corresponds to one unit of the insured asset. Eg. 1 oUSDC protects 1 cUSDC
+oTokens are ERC20 tokens that represent the insurance \(protective put option\) that you have bought or sold. Each oToken corresponds to one unit of the insured asset. Eg. 1 ocUSDC protects 1 cUSDC
 
 ### Which oTokens are currently available? 
 
