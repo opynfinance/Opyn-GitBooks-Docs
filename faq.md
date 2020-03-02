@@ -44,7 +44,7 @@ Here’s what’s automatically happening in the background:
 
 ### **Who is providing insurance?**  
 
-Opyn is built as a two sided marketplace, so any individuals interested in putting down ETH collateral and earning a premium can provide insurance. These positions are overcollateralized with the minimum collateralization ratio of 160%, meaning that there is at least $1.60 locked up for each $1 of insurance coverage. 
+Opyn is built as a two sided marketplace, so any individuals interested in putting down ETH collateral and earning a premium can provide insurance. These positions are overcollateralized with the minimum collateralization ratio of 140%, meaning that there is at least $1.40 locked up for each $1 of insurance coverage. 
 
 ### What is "Max Loss"? 
 
@@ -60,9 +60,9 @@ You can earn ETH premiums by providing insurance. In the background, you are sup
 
 ### **What does the return profile look like?** 
 
-[**Being a Liquidity Provider on Uniswap**](https://uniswap.exchange/add-liquidity?token=0x98cc3bd6af1880fcfda17ac477b2f612980e5e33)**:** As an LP on Uniswap you earn transaction fees from individuals buying and selling on the Opyn platform through Uniswap and have the opportunity to make a large, but variable, return as a result as long as you remain above 1.6x collateralized \(otherwise you are at risk of liquidation\). Being a Uniswap LP also allows you to remove your funds at any time. [This article explains a bit more about being a Uniswap LP](https://blog.zerion.io/returns-of-holding-vs-defi-ing-c6f050e89c8e).
+[**Being a Liquidity Provider on Uniswap**](https://uniswap.exchange/add-liquidity?token=0x98cc3bd6af1880fcfda17ac477b2f612980e5e33)**:** As an LP on Uniswap you earn transaction fees from individuals buying and selling on the Opyn platform through Uniswap and have the opportunity to make a large, but variable, return as a result as long as you remain above 1.4x collateralized \(otherwise you are at risk of liquidation\). Being a Uniswap LP also allows you to remove your funds at any time. [This article explains a bit more about being a Uniswap LP](https://blog.zerion.io/returns-of-holding-vs-defi-ing-c6f050e89c8e).
 
-[**Selling oTokens on Uniswap**](https://uniswap.exchange/swap?inputCurrency=0x98cc3bd6af1880fcfda17ac477b2f612980e5e33)**:** Selling oTokens to insurance buyers on Uniswap allows you to earn premiums on your ETH that far outshine anything you can get currently in DeFi \([currently 0.01% on Compound](https://compound.finance/markets), [0.05% on dYdX](https://trade.dydx.exchange/balances)\), and you will get the entirety of it back as long as you remain above 1.6x collateralized \(otherwise you are at risk of liquidation\) and there isn’t some disaster event \(eg. technical risk like a hack, financial risk like DAI breaking its peg or a run on Compound\). Here you’re taking a similar risk to depositing ETH on Compound, where you earn 0.01% and are exposed to Compound risk. With Opyn, you are exposed to Compound risk and Opyn risk, but earn a significantly higher premium on ETH.
+[**Selling oTokens on Uniswap**](https://uniswap.exchange/swap?inputCurrency=0x98cc3bd6af1880fcfda17ac477b2f612980e5e33)**:** Selling oTokens to insurance buyers on Uniswap allows you to earn premiums on your ETH that far outshine anything you can get currently in DeFi \([currently 0.01% on Compound](https://compound.finance/markets), [0.05% on dYdX](https://trade.dydx.exchange/balances)\), and you will get the entirety of it back as long as you remain above 1.4x collateralized \(otherwise you are at risk of liquidation\) and there isn’t some disaster event \(eg. technical risk like a hack, financial risk like DAI breaking its peg or a run on Compound\). Here you’re taking a similar risk to depositing ETH on Compound, where you earn 0.01% and are exposed to Compound risk. With Opyn, you are exposed to Compound risk and Opyn risk, but earn a significantly higher premium on ETH.
 
 ### **What are the risks with earning ETH premiums by providing insurance?** 
 
@@ -75,7 +75,7 @@ In the case that there is an adverse event affecting the protocols you are expos
 
 ### **When could I get liquidated?** 
 
-You are required to maintain a minimum collateral ratio of 160%. If you fall below this threshold, you are at risk of liquidation.
+You are required to maintain a minimum collateral ratio of 140%. If you fall below this threshold, you are at risk of liquidation.
 
 ### Can I liquidate people? 
 
