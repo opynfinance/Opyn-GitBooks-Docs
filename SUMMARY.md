@@ -12,5 +12,6 @@
 * [OToken: Create + Manage Options in existing markets](otoken.md)
 * [OptionsExchange: Buy and Sell Options](optionsexchange-buy-and-sell-otokens.md)
 * [OptionsFactory: Bootstrap new Options Markets](options-factory.md)
+* [Making a Claim through Etherscan](making-a-claim-through-etherscan.md)
 * [FAQ](faq.md)
 
