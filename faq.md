@@ -155,7 +155,7 @@ Even with this risk, you can still gain significant safety from Opyn insurance. 
 
 ### How do the price feeds work? 
 
-Opyn currently uses Compound’s ETH:USD oracle for ETH collateralized markets. We are actively working on increasing the protocol’s oracle resilience. 
+Opyn currently uses Compound’s ETH:USD oracle for ETH collateralized markets. USDC collateralized markets do not use any oracles. 
 
 ### Does the Convexity Protocol have an administrator? 
 
