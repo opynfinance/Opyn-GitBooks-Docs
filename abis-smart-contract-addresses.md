@@ -68,7 +68,7 @@
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0xddac4aed7c8f73032b388efe2c778fc194bc81ed#readContract">ocDai</a>
+      <td style="text-align:left"><a href="https://etherscan.io/token/0x98cc3bd6af1880fcfda17ac477b2f612980e5e33">ocDai</a>
       </td>
       <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xddac4aed7c8f73032b388efe2c778fc194bc81ed&amp;format=raw">JSON</a>
       </td>
@@ -83,6 +83,15 @@
       </td>
       <td style="text-align:left">Interface</td>
       <td style="text-align:left"><a href="https://etherscan.io/address/0x8ed9f862363ffdfd3a07546e618214b6d59f03d4#code">0x8ED9f862363fFdFD3a07546e618214b6D59F03d4</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x48ab8a7d3bf2eb942e153e4275ae1a8988238dc7">oETH</a>
+      </td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x48ab8a7d3bf2eb942e153e4275ae1a8988238dc7">0x48AB8A7d3Bf2EB942e153e4275Ae1a8988238dC7</a>
       </td>
     </tr>
     <tr>
