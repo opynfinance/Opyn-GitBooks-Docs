@@ -132,6 +132,9 @@ oTokens are ERC20 tokens that represent the insurance \(protective put option\) 
 | [ocDAI \(old\)](https://etherscan.io/token/0xddac4aed7c8f73032b388efe2c778fc194bc81ed) | [cDAI](https://etherscan.io/token/0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643) | ETH | $0.02 | 02/10/2021 |
 | [ocUSDC](https://etherscan.io/token/0x8ed9f862363ffdfd3a07546e618214b6d59f03d4) | [cUSDC](https://etherscan.io/token/0x39aa39c021dfbae8fac545936693ac917d5e7563) | ETH | $0.0208 | 02/10/2021 |
 | [oCRV](https://etherscan.io/token/0x4ba8c6ce0e855c051e65dfc37883360efaf7c82b) | [CRV](https://etherscan.io/token/0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8) | ETH | $0.92 | 03/29/2020 |
+| [oETH $100 04/03/20](https://etherscan.io/address/0x48ab8a7d3bf2eb942e153e4275ae1a8988238dc7) | ETH | USDC | $100 | 04/03/2020 |
+| [oETH $100 04/24/20](https://etherscan.io/address/0x6c79f10543c7886c6946b8a996f824e474bac8f2) | ETH | USDC | $100 | 04/24/2020 |
+| [oETH $150 04/24/20](https://etherscan.io/address/0xaefc7b368f7b536c9e5e3f342bf534931ce58584) | ETH | USDC | $150 | 04/24/2020 |
 
 ### Why are there two ocDAI contracts currently?
 
