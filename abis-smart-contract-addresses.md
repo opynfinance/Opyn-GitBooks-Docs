@@ -104,13 +104,22 @@
         </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac#code">Options Factory</a>
-      </td>
-      <td style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac&amp;format=raw">JSON</a>
-      </td>
-      <td style="text-align:left">Interface</td>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac#code">0xb529964F86fbf99a6aA67f72a27e59fA3fa4FEaC</a>
-      </td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac#code">Options Factory</a> (old)</td>
+      <td
+      style="text-align:left"><a href="http://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac&amp;format=raw">JSON</a>
+        </td>
+        <td style="text-align:left">Interface</td>
+        <td style="text-align:left"><a href="https://etherscan.io/address/0xb529964f86fbf99a6aa67f72a27e59fa3fa4feac#code">0xb529964F86fbf99a6aA67f72a27e59fA3fa4FEaC</a>
+        </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xcc5d905b9c2c8c9329eb4e25dc086369d6c7777c">Options Factory </a>(current)</td>
+      <td
+      style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0xcc5d905b9c2c8c9329eb4e25dc086369d6c7777c">JSON</a>
+        </td>
+        <td style="text-align:left">Interface</td>
+        <td style="text-align:left"><a href="https://etherscan.io/address/0xcc5d905b9c2c8c9329eb4e25dc086369d6c7777c">0xcC5d905b9c2c8C9329Eb4e25dc086369D6C7777C</a>
+        </td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://etherscan.io/address/0x7054e08461e3eCb7718B63540adDB3c3A1746415#code">Oracle</a>
