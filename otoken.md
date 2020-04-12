@@ -828,7 +828,7 @@ A liquidator may close up to a certain fixed percentage \([i.e. liquidation fact
 function liquidate(address vaultOwner, uint256 oTokensToLiquidate)
 ```
 
-> `vaultOwner` : The owner of the vault whose vault is unsafe and is to be liquidated. \(See `getVaultOwners()` to get the all the owners of vaults in the oToken contract\)
+> `vaultOwner` : The owner of the vault whose vault is unsafe and is to be liquidated. \(To get the all the owners of vaults in the oToken contract, check out Opyn's subgraph for the events\)
 >
 > `oTokensToLiqudate` : The amount of oTokens that the liquidator brings back to the oToken contract
 >
@@ -889,7 +889,7 @@ function exercise(uint256 oTokensToExercise, address payable[] memory vaultsToEx
 
 > `oTokensToExercise` : The amount of oTokens being exercised. \(See here to get the [oToken balance of the msg.sender](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol#L50)\)
 >
-> `vaultsToExerciseFrom` : The addresses of vault owners to exercise from. Collateral will be taken from the vaults in the order passed in. See `getVaultOwners()` to get the all the owners of vaults in the oToken contract\)
+> `vaultsToExerciseFrom` : The addresses of vault owners to exercise from. Collateral will be taken from the vaults in the order passed in. See  Opyn's subgraph to get the all the owners of vaults in the oToken contract\)
 
 > `msg.sender` : The account from which oTokens and underlying assets will be transferred into the oToken contract. This account will also get paid out the claims made. 
 >
