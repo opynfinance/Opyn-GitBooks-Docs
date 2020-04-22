@@ -86,8 +86,8 @@
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x48ab8a7d3bf2eb942e153e4275ae1a8988238dc7">oETH</a> $100,
-        04/03/20</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x48ab8a7d3bf2eb942e153e4275ae1a8988238dc7">oETH</a> Put
+        $100, 04/03/20</td>
       <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
@@ -95,8 +95,8 @@
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x6c79f10543c7886c6946b8a996f824e474bac8f2">oETH</a> $100,
-        04/24/20</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x6c79f10543c7886c6946b8a996f824e474bac8f2">oETH</a> Put
+        $100, 04/24/20</td>
       <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
@@ -104,8 +104,8 @@
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0xaefc7b368f7b536c9e5e3f342bf534931ce58584">oETH</a> $150,
-        04/24/20</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xaefc7b368f7b536c9e5e3f342bf534931ce58584">oETH</a> Put
+        $150, 04/24/20</td>
       <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
@@ -113,12 +113,30 @@
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x461cd647add2159e85ad57141cb5371566fceed3#writeContract">oETH</a> $160,
-        5/1/20</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x461cd647add2159e85ad57141cb5371566fceed3#writeContract">oETH</a> Put
+        $160, 5/1/20</td>
       <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
       <td style="text-align:left"><a href="https://etherscan.io/address/0x461cd647add2159e85ad57141cb5371566fceed3#writeContract">0x461Cd647aDd2159E85aD57141cB5371566fCeeD3</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xecf6f2fd8d2a8e17397066348d449566d5407174">oETH</a> Put
+        $150, 5/29/20</td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xecf6f2fd8d2a8e17397066348d449566d5407174">0xECf6F2fD8D2A8E17397066348d449566d5407174</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xbcae1db14f1b366cd4611c75aab2031492b136e9">oETH</a> Call
+        $250, 5/29/20</td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xbcae1db14f1b366cd4611c75aab2031492b136e9">0xbcAE1dB14f1b366cd4611C75Aab2031492b136e9</a>
       </td>
     </tr>
     <tr>
