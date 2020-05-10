@@ -14,4 +14,5 @@
 * [OptionsFactory: Bootstrap new Options Markets](options-factory.md)
 * [Making a Claim \(Exercising\) through Etherscan](making-a-claim-through-etherscan.md)
 * [FAQ](faq.md)
+* [Security](security.md)
 
