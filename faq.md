@@ -148,7 +148,7 @@ If you purchased insurance on the old ocDAI contract you do not need to take any
 
 ### Is Opyn safe? Has it been audited? Can you cover Opyn yourselves? 
 
-The security of the Opyn protocol is our highest priority. We cannot cover Opyn ourselves. We understand that especially since we ourselves are a smart contract platform, security is paramount. Our team has created a protocol that we believe is safe and dependable, and has been audited by OpenZeppelin. All smart contract code is publicly verifiable. We will also be launching a bug bounty in the coming weeks. You can find the [OpenZeppelin audit report here](https://blog.openzeppelin.com/opyn-contracts-audit/).
+The security of the Opyn protocol is our highest priority. We cannot cover Opyn ourselves. We understand that especially since we ourselves are a smart contract platform, security is paramount. Our team has created a protocol that we believe is safe and dependable, and has been audited by OpenZeppelin. All smart contract code is publicly verifiable. You can find our [bug bounty here ](https://opyn.gitbook.io/opyn/security)and you can find the [OpenZeppelin audit report here](https://blog.openzeppelin.com/opyn-contracts-audit/).
 
 ### What if there is a bug in Opyn’s smart contracts? 
 
