@@ -38,7 +38,7 @@ Severity of bugs will be assessed under the [CVSS Risk Rating](https://www.first
 
 #### Disclosures
 
-Any vulnerability or bug discovered must be reported only to the following email: security@opyn.co must not be disclosed publicly, must not be disclosed to any other person, entity or email address prior to disclosure to the security@opyn.co email, and must not be disclosed in any way other than to the security@opyn.co email. In addition, disclosure to security@opyn.co must be made promptly following discovery of the vulnerability. Please include as much information about the vulnerability as possible, including:
+Any vulnerability or bug discovered must be reported only to the following email: security@opyn.co, must not be disclosed publicly, must not be disclosed to any other person, entity or email address prior to disclosure to the security@opyn.co email, and must not be disclosed in any way other than to the security@opyn.co email. In addition, disclosure to security@opyn.co must be made promptly following discovery of the vulnerability. Please include as much information about the vulnerability as possible, including:
 
 * The conditions on which reproducing the bug is contingent.
 * The steps needed to reproduce the bug or, preferably, a proof of concept.
