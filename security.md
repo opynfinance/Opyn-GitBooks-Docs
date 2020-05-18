@@ -10,7 +10,7 @@ Opyn's smart contracts have undergone rigorous internal testing and a smart cont
 
 ## Bug Bounty Program
 
-Security is one of our highest priorities, and while Opyn's smart contracts have been rigorously tested and audited, there may still be undiscovered vulnerabilities with this new technology. We really value the community's input in helping us discover vulnerabilities responsibly disclosing them. 
+Security is one of our highest priorities, and while Opyn's smart contracts have been rigorously tested and audited, there may still be undiscovered vulnerabilities with this new technology. We really value the community's input in helping us discover vulnerabilities and responsibly disclosing them. 
 
 #### Scope
 
