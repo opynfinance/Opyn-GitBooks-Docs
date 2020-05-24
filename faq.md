@@ -147,7 +147,7 @@ In the case of an adverse event, protection buyers can make a claim by sending t
 
 ### Can I build on top of the Convexity Protocol?
 
-‌Yes! We are excited to see the all the different applications people will explore with on-chain options. You can find the [documentation here](https://opyn.gitbook.io/opyn/) and chat with us on [Discord](https://discord.gg/2NFdXaE) :\)‌
+‌Yes! [Here's a list of some ideas](https://medium.com/opyn/buidling-with-options-otokens-in-defi-cfd7539c6eef). We are excited to see the all the different applications people will explore with on-chain options. You can find the [documentation here](https://opyn.gitbook.io/opyn/) and chat with us on [Discord](https://discord.gg/2NFdXaE) :\)‌
 
 ### What are oTokens?
 
