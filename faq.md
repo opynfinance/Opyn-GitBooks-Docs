@@ -1,8 +1,7 @@
 # FAQ
 
 Opyn is a decentralized insurance platform built on Ethereum that allows users to protect themselves from the unique risks they face in DeFi. Opyn is built using Convexity Protocol \([convexity.opyn.co](http://convexity.opyn.co/)\), a generalizable options protocol that allows DeFi users to create put and call options. Anyone can buy options \(oTokens\) to protect themselves against DeFi risks. Users can also deposit collateral in a vault to mint and sell oTokens, earning premiums for protecting others.  
-
-
+  
 Opyn currently allows users to insure Compound deposits and hedging user's ETH downside with protective put options on ETH. Opyn's smart contracts have been audited by [OpenZeppelin](https://blog.openzeppelin.com/opyn-contracts-audit/).‌ If you have any additional questions not covered below, or want to learn more, join the [Opyn Discord](https://discord.gg/2NFdXaE) or email us at [hello@opyn.co](mailto:hello@opyn.co).‌
 
 ## Buying Protection 
