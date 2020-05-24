@@ -122,7 +122,6 @@ In the case of an adverse event, protection buyers can make a claim by sending t
 * Protection buyer exercises by sending ETH and oETH to the protocol 
 * Protection seller gives up USDC collateral and receives protection buyer’s ETH
 
-  
 **For Compound protection** 
 
 * Protection buyer claims by sending cDAI or cUSDC and ocDAI or ocUSDC to the protocol 
