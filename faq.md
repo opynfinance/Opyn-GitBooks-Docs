@@ -101,6 +101,7 @@ In the case that there is an adverse event affecting the protocols you are expos
 ### **When could I get liquidated?**
 
 For providing Compound protection you are required to maintain a minimum collateral ratio of 140%. If you fall below this threshold, you are at risk of liquidation.  
+  
 For providing ETH protection you are not at risk of liquidation since you are collateralizing in USDC. ‌
 
 ### Can I liquidate people?
