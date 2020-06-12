@@ -93,7 +93,7 @@ When you sell ETH put options, you immediately earn a premium. If ETH hits the s
 
 ### **What does the return profile look like for selling ETH call options?**‌ <a id="what-does-the-return-profile-look-like-for-selling-eth-put-options"></a>
 
-When you sell ETH call options, you immediately earn a premium. If ETH hits the strike price, you may be exercised on in which case you give up your ETH collateral to option buyers and receive the option buyers’ USDC in return. If ETH does not hit the strike price, then upon expiry you can remove your USDC collateral, keeping all of your collateral in addition to the premium you earned. You can also close out your position by buying back and burning the amount of oETHc you sold.
+When you sell ETH call options, you immediately earn a premium. If ETH hits the strike price, you may be exercised on in which case you give up your ETH collateral to option buyers and receive the option buyers’ USDC in return. If ETH does not hit the strike price, then upon expiry you can remove your ETH collateral, keeping all of your collateral in addition to the premium you earned. You can also close out your position by buying back and burning the amount of oETHc you sold.
 
 ### **What does the return profile look like for selling Compound protection?**‌
 
