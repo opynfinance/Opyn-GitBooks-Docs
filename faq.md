@@ -77,10 +77,10 @@ Compound protection is collateralized with ETH, and these positions are overcoll
 ### **How can I earn premiums?**
 
 **ETH Put Options**  
-You can earn premiums by selling protective put options on ETH. You are putting down USDC collateral and then minting oTokens \(options\). You can then sell your oTokens on Uniswap and immediately earn a premium. ‌
+You can earn premiums by selling protective put options on ETH. You are putting down USDC collateral and then minting oTokens \(options\). You can then sell your oTokens on Uniswap and immediately earn a premium. ‌You receive the premium in ETH.
 
 **ETH Call Options**  
-You can earn premiums by selling call options on ETH. You are putting down ETH collateral and then minting oTokens \(options\). You can then sell your oTokens on Uniswap and immediately earn a premium. ‌
+You can earn premiums by selling call options on ETH. You are putting down ETH collateral and then minting oTokens \(options\). You can then sell your oTokens on Uniswap and immediately earn a premium. You receive the premium in ETH.
 
 **Compound Protection**  
 You can earn ETH premiums by providing protection. In the background, you are supplying ETH as collateral and then minting oTokens \(insurance tokens\). Then you have have two possibilities to earn money on their ETH. They can either sell oTokens to protection buyers on Uniswap and earn premiums or add oTokens to the Uniswap Pool and earn transaction fees from other users' trading activity.
