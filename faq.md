@@ -9,6 +9,7 @@ Opyn currently allows users to insure Compound deposits, hedging ETH downside wi
 ### **What protection do you currently offer?**
 
 * ‌ETH downside and upside protection allowing you to protect yourself against ETH price movements, flash crashes, and volatility 
+* COMP downside protection allowing you to protect yourself against COMP price movements, flash crashes, and volatility
 * Protection for USDC and DAI deposits on Compound 
 
 ### **How is protection priced?**
@@ -20,11 +21,15 @@ Currently, oTokens are bought and sold using [Uniswap](https://uniswap.exchange/
 **ETH Protection** 
 
 * Opyn’s ETH downside protection \(put options\) gives you the right to sell your ETH for the strike price at anytime, thus mitigating your downside. You can also sell your oTokens in the case of falling ETH price. [This blog](https://medium.com/@aparnalocked/all-about-the-op-sh-yn-part-1-bf26dfea13ee) dives into further detail.
-* Opyn's ETH upside protection \(call options\) gives you the right to buy ETH for the strike price at anytime. You can also sell your oTokens in the case of rising ETH price. This blog \[TODO\] dives into further detail on hedging with upside protection. 
+* Opyn's ETH upside protection \(call options\) gives you the right to buy ETH for the strike price at anytime. You can also sell your oTokens in the case of rising ETH price. [This blog ](https://medium.com/opyn/hedging-with-calls-6a1a8f77eb66)dives into further detail on hedging with upside protection. 
 
-**Compound Protection**
+**COMP Protection**
 
-* Opyn’s Compound insurance provides protection against a number of different risks:
+* Opyn’s COMP downside protection \(put options\) gives you the right to sell your COMP for the strike price at anytime, thus mitigating your downside. You can also sell your oTokens in the case of falling COMP price. [This blog](https://medium.com/@aparnalocked/all-about-the-op-sh-yn-part-1-bf26dfea13ee) dives into further detail.
+
+**Compound Deposit Protection**
+
+* Opyn’s Compound protection protects against a number of different risks:
 
   * Technical risks \(eg. smart contracts hacks\)
   * Financial risks \(eg. liquidity crises\)
@@ -66,7 +71,9 @@ ETH downside protection \(put options\) are collateralized with USDC, and each o
 
 ETH upside protection \(calls options\) are collateralized with ETH, and each option is fully collateralized.
 
-Compound protection is collateralized with ETH, and these positions are overcollateralized with the minimum collateralization ratio of 140%, meaning that there is at least $1.40 locked up for each $1 of insurance coverage.‌
+COMP downside protection \(put options\) are collateralized with USDC, and each option is fully collateralized.
+
+Compound deposit protection is collateralized with ETH, and these positions are overcollateralized with the minimum collateralization ratio of 140%, meaning that there is at least $1.40 locked up for each $1 of insurance coverage.‌
 
 ### What is "Max Loss" for Compound protection?
 
@@ -82,7 +89,10 @@ You can earn premiums by selling protective put options on ETH. You are putting 
 **ETH Call Options**  
 You can earn premiums by selling call options on ETH. You are putting down ETH collateral and then minting oTokens \(options\). You can then sell your oTokens on Uniswap and immediately earn a premium. You receive the premium in ETH.
 
-**Compound Protection**  
+**COMP Put Options**   
+You can earn premiums by selling protective put options on COMP. You are putting down USDC collateral and then minting oTokens \(options\). You can then sell your oTokens on Uniswap and immediately earn a premium. ‌You receive the premium in ETH.
+
+**Compound Deposit Protection**  
 You can earn ETH premiums by providing protection. In the background, you are supplying ETH as collateral and then minting oTokens \(insurance tokens\). Then you have have two possibilities to earn money on their ETH. They can either sell oTokens to protection buyers on Uniswap and earn premiums or add oTokens to the Uniswap Pool and earn transaction fees from other users' trading activity.
 
 ![](https://gblobscdn.gitbook.com/assets%2F-Lt35Xmux_Lnb0dHwjOb%2F-M18JPszFVTJNDfh_34e%2F-M18Jho1TyECIHTwryUM%2FInitial%20Flow%20Infographic.png?alt=media&token=296669d6-c04c-4bd5-8dd4-2b520f7d714f)
@@ -95,7 +105,11 @@ When you sell ETH put options, you immediately earn a premium. If ETH hits the s
 
 When you sell ETH call options, you immediately earn a premium. If ETH hits the strike price, you may be exercised on in which case you give up your ETH collateral to option buyers and receive the option buyers’ USDC in return. If ETH does not hit the strike price, then upon expiry you can remove your ETH collateral, keeping all of your collateral in addition to the premium you earned. You can also close out your position by buying back and burning the amount of oETHc you sold.
 
-### **What does the return profile look like for selling Compound protection?**‌
+### **What does the return profile look like for selling COMP put options?‌**
+
+When you sell COMP put options, you immediately earn a premium. If COMP hits the strike price, you may be exercised on in which case you give up your USDC collateral to option buyers and receive the option buyers’ COMP in return. If COMP does not hit the strike price, then upon expiry you can remove your USDC collateral, keeping all of your collateral in addition to the premium you earned. You can also close out your position by buying back and burning the amount of oCOMP you sold.
+
+### **What does the return profile look like for selling Compound deposit protection?**‌
 
 [**Selling oTokens on Uniswap**](https://uniswap.exchange/swap?inputCurrency=0x98cc3bd6af1880fcfda17ac477b2f612980e5e33)**:** Selling oTokens to protection buyers on Uniswap allows you to earn premiums on your ETH that far outshine anything you can get currently in DeFi \([currently](https://compound.finance/markets) [0.01% on Compound](https://compound.finance/markets), [0.05% on dYdX](https://trade.dydx.exchange/balances)\), and you will get the entirety of it back as long as you remain above 1.4x collateralized for Compound positions \(otherwise you are at risk of liquidation\) and there isn’t some disaster event \(eg. technical risk like a hack, financial risk like DAI breaking its peg or a run on Compound\). Here you’re taking a similar risk to depositing ETH on Compound, where you earn 0.01% and are exposed to Compound risk. With Opyn, you are exposed to Compound risk and Opyn risk, but earn a significantly higher premium on ETH.‌
 
@@ -119,7 +133,7 @@ In the case that there is an adverse event affecting the protocols you are expos
 
 For providing Compound protection you are required to maintain a minimum collateral ratio of 140%. If you fall below this threshold, you are at risk of liquidation.  
   
-For providing ETH downside protection \(put options\) you are not at risk of liquidation since you are collateralizing in USDC. ‌For providing ETH upside protection \(call options\) you are not at risk of liquidation since you are collateralizing with the exact amount of ETH a buyer expects upon exercise.
+For providing ETH and COMP downside protection \(put options\) you are not at risk of liquidation since you are collateralizing in USDC. ‌For providing ETH upside protection \(call options\) you are not at risk of liquidation since you are collateralizing with the exact amount of ETH a buyer expects upon exercise.
 
 ### Can I liquidate people?
 
@@ -127,7 +141,7 @@ For providing ETH downside protection \(put options\) you are not at risk of liq
 
 ### **What if I want to close my position before the expiry date?**
 
-You can close your position at any time by buying back the oTokens you had sold on Uniswap and returning them to your vault, which would allow you to redeem your collateral \(ETH for providing Compound protection or selling ETH calls, USDC for selling ETH puts\). One note is that the price of oTokens could have increased or decreased in the time since you first purchased them. ‌
+You can close your position at any time by buying back the oTokens you had sold on Uniswap and returning them to your vault, which would allow you to redeem your collateral \(ETH for providing Compound protection or selling ETH calls, USDC for selling ETH or COMP puts\). One note is that the price of oTokens could have increased or decreased in the time since you first purchased them. ‌
 
 ![](https://paper-attachments.dropbox.com/s_5034B4C62D9D3BC72EFD16F592EDFDCF70907B0703EE1E0E5187016183963F55_1590355976158_Unwinding+Vault+-+Twitter+2.png)
 
@@ -144,6 +158,11 @@ In the case of an adverse event, protection buyers can make a claim by sending t
 
 * Protection buyer exercises by sending USDC and oETHc to the protocol 
 * Protection seller gives up ETH collateral and receives protection buyer’s USDC
+
+**For COMP put options**
+
+* Protection buyer exercises by sending COMP and oCOMPp to the protocol 
+* Protection seller gives up USDC collateral and receives protection buyer’s ETH
 
 **For Compound protection** 
 
@@ -210,9 +229,9 @@ Specifically, the original strike price for the first ocDAI contract was $0.985 
 
 ### How do the price feeds work?
 
-‌Opyn currently uses Compound’s ETH:USD oracle for ETH collateralized markets \(Compound protection\).   
+‌Opyn currently uses Compound’s ETH:USD oracle for Compound deposit protection.   
   
-USDC collateralized markets \(ETH put options\) do not use any oracles.‌
+ETH and COMP put options \(USDC collateralized\), and ETH calls options \(ETH collateralized\) are 100% collateralized and do not require any oracle. 
 
 ### Does the Convexity Protocol have an administrator?
 
