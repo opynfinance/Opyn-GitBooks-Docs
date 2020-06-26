@@ -60,8 +60,8 @@ If there is an issue with your Compound deposit, you can make a claim at any tim
 
 1. Send
 
-    ****a. ****You are sending your USDC/DAI on Compound, which is no longer worth it’s full value due to the hack / financial crisis, to the protocol  
-    b. You are sending your insurance tokens back to the protocol
+    ****a. ****You are sending your cUSDC / cDAI on Compound, which is no longer worth it’s full value due to the hack / financial crisis, to the protocol  
+    b. You are sending your insurance tokens \(ocUSDC / ocDAI\) back to the protocol
 
 2. Receive a. You immediately receive your protection payout in ETH
 
