@@ -47,12 +47,12 @@ Currently, oTokens are bought and sold using [Uniswap](https://uniswap.exchange/
 **ETH Downside Protection \(Put Options\)**
 
 * If ETH is below the strike price you purchased your protection at you can exercise at anytime to receive that strike price amount per USDC. For example if you purchased a put option with a strike price of $150, if ETH is below $150, exercise to receive 150 USDC per ETH. You could also choose to sell your oETHp instead of exercising. [This blog](https://medium.com/@aparnalocked/all-about-the-op-sh-yn-part-1-bf26dfea13ee) dives into further detail about selling vs. exercising. 
-* There is no auto-exercise. You must come and exercise yourself. You can currently exercise from [opyn.co](http://opyn.co/), [opynmonitor.xyz](https://opynmonitor.xyz/#/myvaults/), or [etherscan](https://opyn.gitbook.io/opyn/making-a-claim-through-etherscan). 
+* There is no auto-exercise. You must come and exercise yourself up until expiry. You can currently exercise from [opyn.co](http://opyn.co/), [opynmonitor.xyz](https://opynmonitor.xyz/#/myvaults/), or [etherscan](https://opyn.gitbook.io/opyn/making-a-claim-through-etherscan). You cannot exercise after expiry.
 
 **ETH Upside Protection \(Call Options\)**
 
 * If ETH is above the strike price you purchased your protection at you can exercise at anytime to buy ETH at that strike price. For example if you purchased a call option with a strike price of $150, if ETH is above $150, exercise to receive 1 ETH per 150 USDC. You could also choose to sell your oETHc instead of exercising. 
-* There is no auto-exercise. You must come and exercise yourself. You can currently exercise from [opyn.co](http://opyn.co/), [opynmonitor.xyz](https://opynmonitor.xyz/#/myvaults/), or [etherscan](https://opyn.gitbook.io/opyn/making-a-claim-through-etherscan). 
+* There is no auto-exercise. You must come and exercise yourself up until expiry. You can currently exercise from [opyn.co](http://opyn.co/), [opynmonitor.xyz](https://opynmonitor.xyz/#/myvaults/), or [etherscan](https://opyn.gitbook.io/opyn/making-a-claim-through-etherscan). You cannot exercise after expiry.
 
 **Compound** 
 
