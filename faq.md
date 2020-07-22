@@ -181,7 +181,7 @@ In the case of an adverse event, protection buyers can make a claim by sending t
 
 ### Can I create my own oTokens?
 
-‌Absolutely! The Opyn Convexity protocol is an open protocol that allows anyone to create oTokens and interfaces on top. We encourage the community to bootstrap markets and interfaces. You can get started with bootstrapping your own marketplace [here](https://opyn.gitbook.io/opyn/options-factory) and chat with us on [Discord](https://discord.gg/2NFdXaE) :\) As an example, the [iearn.finance](https://iearn.finance/cover) team created a market for [y.curve.fi](https://y.curve.fi/) \(oCRV\) and they host that interface as well.‌
+‌Absolutely! The Opyn Convexity protocol is an open protocol that allows anyone to create oTokens and interfaces on top. We encourage the community to bootstrap markets and interfaces. You can get started with bootstrapping your own marketplace [here](https://opyn.gitbook.io/opyn/options-factory) and chat with us on [Discord](https://discord.gg/2NFdXaE) :\) 
 
 ## Under the hood
 
