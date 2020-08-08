@@ -10,7 +10,7 @@ Opyn's smart contracts have undergone rigorous internal testing and a smart cont
 
 ## Bug Bounty Program
 
-Security is one of our highest priorities, and while Opyn's smart contracts have been rigorously tested and audited, there may still be undiscovered vulnerabilities with this new technology. We really value the community's input in helping us discover vulnerabilities responsibly disclosing them. 
+Security is one of our highest priorities, and while Opyn's smart contracts have been rigorously tested and audited, there may still be undiscovered vulnerabilities with this new technology. We really value the community's input in helping us discover vulnerabilities and responsibly disclosing them. 
 
 #### Scope
 
@@ -31,14 +31,14 @@ Submissions should be based off this commit hash: [https://github.com/opynfinanc
 
 Severity of bugs will be assessed under the [CVSS Risk Rating](https://www.first.org/cvss/calculator/3.0) scale, as follows:
 
-* Critical \(9.0-10.0\): Up to $40,000
-* High \(7.0-8.9\): Up to $10,000
+* Critical \(9.0-10.0\): Up to $60,000
+* High \(7.0-8.9\): Up to $15,000
 * Medium \(4.0-6.9\): Up to $5,000
 * Low \(0.1-3.9\): Up to $1,000
 
 #### Disclosures
 
-Any vulnerability or bug discovered must be reported only to the following email: security@opyn.co must not be disclosed publicly, must not be disclosed to any other person, entity or email address prior to disclosure to the security@opyn.co email, and must not be disclosed in any way other than to the security@opyn.co email. In addition, disclosure to security@opyn.co must be made promptly following discovery of the vulnerability. Please include as much information about the vulnerability as possible, including:
+Any vulnerability or bug discovered must be reported only to the following email: security@opyn.co, must not be disclosed publicly, must not be disclosed to any other person, entity or email address prior to disclosure to the security@opyn.co email, and must not be disclosed in any way other than to the security@opyn.co email. In addition, disclosure to security@opyn.co must be made promptly following discovery of the vulnerability. Please include as much information about the vulnerability as possible, including:
 
 * The conditions on which reproducing the bug is contingent.
 * The steps needed to reproduce the bug or, preferably, a proof of concept.
