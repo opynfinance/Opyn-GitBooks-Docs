@@ -244,9 +244,15 @@ Specifically, the original strike price for the first ocDAI contract was $0.985 
 
 ‌The security of the Opyn protocol is our highest priority. We understand that especially since we ourselves are a smart contract platform, security is paramount. Our team has created a protocol that we believe is safe and dependable, and has been audited by OpenZeppelin. All smart contract code is publicly verifiable. You can find the [OpenZeppelin audit report here](https://blog.openzeppelin.com/opyn-contracts-audit/) and you can find our [bug bounty here](https://opyn.gitbook.io/opyn/security). 
 
-### What if there is a bug in Opyn’s smart contracts?
+We encourage our users to be mindful of risk and only use funds they can afford to lose. Options are complex instruments that when understood correctly can be powerful hedges. Smart contracts are still new and experimental technology. We want to remind our users to be optimistic about innovation while remaining cautious about where they put their money.
 
-‌We recognize that this is a risk, and we have taken precautions to protect against this risk with rigorous internal testing and [external audits](https://blog.openzeppelin.com/opyn-contracts-audit/).‌ Even with this risk, you can still gain significant safety from Opyn protection. With Opyn protection, you can only lose your Compound deposits in the case that both Opyn and Compound are compromised at the same time. For example, if the probability that Opyn is compromised is 1% and the probability that Compound is compromised is 1%, then with Opyn insurance, your risk of losing your funds drops to 0.01%.‌
+### What has Opyn done following the Aug 4 exploit?
+
+‌On Aug 4, 2020 an attacker discovered and exploited a vulnerability in Opyn's ETH put option contracts. The attacker stole 371,260 USDC while the team was able to recover 572,165.13 USDC of at risk funds working with whitehat samczsun. All affected users were made whole. 
+
+Following the exploit, we have rehauled our security practices, setting up a transaction monitoring program, revisiting internal testing practices, putting pause functionality in the contracts, increasing the size and scope of the bug bounty, going through full audits for every piece of code released, increasing our emphasis on test driven development, and making security a cornerstone of Opyn.
+
+You can find the [full post-mortem here](https://medium.com/opyn/opyn-eth-put-exploit-post-mortem-1a009e3347a8). 
 
 ### How do the price feeds work?
 

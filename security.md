@@ -1,6 +1,8 @@
 # Security
 
-The security of the Opyn protocol is our highest priority. Our team has created a protocol that we believe is safe and dependable, and has been audited by OpenZeppelin. All smart contract code is publicly verifiable and we have a bug bounty for undiscovered vulnerabilities. Options are complex instruments that when understood correctly can be powerful hedges. We want to remind our users to be optimistic about innovation while remaining cautious about where they put their money.
+The security of the Opyn protocol is our highest priority. Our team has created a protocol that we believe is safe and dependable, and has been audited by OpenZeppelin. All smart contract code is publicly verifiable and we have a bug bounty for undiscovered vulnerabilities. 
+
+We encourage our users to be mindful of risk and only use funds they can afford to lose. Options are complex instruments that when understood correctly can be powerful hedges. Smart contracts are still new and experimental technology. We want to remind our users to be optimistic about innovation while remaining cautious about where they put their money. 
 
 ## Audits
 
@@ -54,5 +56,7 @@ Anyone who reports a unique, previously-unreported vulnerability that results in
   * Spamming
 * Exploiting the vulnerability in any way, including through making it public or by obtaining a profit \(other than a reward under this Program\).
 * Duplicate vulnerabilities: Only the first reporter will be rewarded \(in compliance with the disclosure requirements above.\)
-* Findings already known as part of a formal audit or are marked on the repo as issues.  
+* Findings already known as part of a formal audit or are marked on the repo as issues. 
+
+## Please see the [FAQ](https://opyn.gitbook.io/opyn/faq#security) for commonly asked security questions 
 
