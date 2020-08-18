@@ -58,5 +58,5 @@ Anyone who reports a unique, previously-unreported vulnerability that results in
 * Duplicate vulnerabilities: Only the first reporter will be rewarded \(in compliance with the disclosure requirements above.\)
 * Findings already known as part of a formal audit or are marked on the repo as issues. 
 
-## Please see the [FAQ](https://opyn.gitbook.io/opyn/faq#security) for commonly asked security questions 
+## Please see the [FAQ](https://opyn.gitbook.io/opyn/faq#security) for commonly asked security questions
 
