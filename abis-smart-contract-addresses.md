@@ -484,8 +484,8 @@
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://etherscan.io/address/0x6181cc7d990bb518fb9a9427994b5c74fa6c9b54">oUNIc</a> Put
-        $2.5 10/18/20</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x6181cc7d990bb518fb9a9427994b5c74fa6c9b54">oUNIc</a> Call
+        $10 10/18/20</td>
       <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
       </td>
       <td style="text-align:left">Interface</td>
