@@ -739,6 +739,15 @@
       </td>
     </tr>
     <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x0376ae94db1bad7774eb2ba646ff61715b4b5d82">oWETHp</a> Put
+        $460 12/4/20</td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x0376ae94db1bad7774eb2ba646ff61715b4b5d82">0x0376ae94db1bad7774eb2ba646ff61715b4b5d82</a>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left"><a href="https://etherscan.io/address/0xc6b11850241c5127eab73af4b6c68bc267cbbff4">oWETHp</a> Put
         $360 12/25/20</td>
       <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
@@ -754,6 +763,42 @@
       </td>
       <td style="text-align:left">Interface</td>
       <td style="text-align:left"><a href="https://etherscan.io/address/0xbc1e2390d693ad617142500e3b7094606433c234">0xbc1e2390d693ad617142500e3b7094606433c234</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xb759e6731df19abd72e0456184890f87dcb6c518">oETHc</a> Call
+        $500 12/25/20</td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xb759e6731df19abd72e0456184890f87dcb6c518">0xb759e6731df19abd72e0456184890f87dcb6c518</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x7eb6dd0cc2df2eae901f76a151ca82bb7be10d68">oETHc</a> Call
+        $640 12/25/20</td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x7eb6dd0cc2df2eae901f76a151ca82bb7be10d68">0x7eb6dd0cc2df2eae901f76a151ca82bb7be10d68</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x9e22b1c5804f7ac179b77de79a32e458a0ecb651">oUNIp</a> Put
+        $3.5 12/25/20</td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x9e22b1c5804f7ac179b77de79a32e458a0ecb651">0x9e22b1c5804f7ac179b77de79a32e458a0ecb651</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xa8e65d1a3df5c0852f05cd1894b6196457e17c9c">oUNIc</a> Call
+        $4 12/25/20</td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xa8e65d1a3df5c0852f05cd1894b6196457e17c9c">0xa8e65d1a3df5c0852f05cd1894b6196457e17c9c</a>
       </td>
     </tr>
     <tr>
