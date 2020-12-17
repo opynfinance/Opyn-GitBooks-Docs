@@ -874,6 +874,15 @@
       </td>
     </tr>
     <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x95d52139a62df9abdc9db3996a810c1d319ecd23">oETHc</a> Call
+        $1000 1/1/21</td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0x95d52139a62df9abdc9db3996a810c1d319ecd23">0x95d52139a62df9abdc9db3996a810c1d319ecd23</a>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left"><a href="https://etherscan.io/address/0x76e73543a14de519575d5efea050f9958b0b484f">oWETHp</a> Put
         $500 1/1/21</td>
       <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a> 
@@ -907,6 +916,24 @@
       </td>
       <td style="text-align:left">Interface</td>
       <td style="text-align:left"><a href="https://etherscan.io/address/0xddac24d12dd07e4e2b772cfc64e3eb47e79c74a3">0xddac24d12dd07e4e2b772cfc64e3eb47e79c74a3</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xc4ff62bc115843d15a3bd33efcbf245cb52640e8">oWBTCp</a> Put
+        $20000 1/15/21</td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xc4ff62bc115843d15a3bd33efcbf245cb52640e8">0xc4ff62bc115843d15a3bd33efcbf245cb52640e8</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xa19e70501f141aaa002fe701299dab88829b3197">oWBTCc</a> Call
+        $25000 1/15/21</td>
+      <td style="text-align:left"><a href="https://api.etherscan.io/api?module=contract&amp;action=getabi&amp;address=0x87fe8eba753076a943bd2a5f6c3556188064797e">JSON</a>
+      </td>
+      <td style="text-align:left">Interface</td>
+      <td style="text-align:left"><a href="https://etherscan.io/address/0xa19e70501f141aaa002fe701299dab88829b3197">0xa19e70501f141aaa002fe701299dab88829b3197</a>
       </td>
     </tr>
     <tr>
