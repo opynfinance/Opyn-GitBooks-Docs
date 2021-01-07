@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Getting Started](README.md)
+* [Opyn V2 Docs](https://opyn.gitbook.io/opyn/)
 * [Dev Environment](dev-environment.md)
 * [ABIs / Smart Contract Addresses](abis-smart-contract-addresses.md)
 * [Protocol Overview](protocol-overview/README.md)
