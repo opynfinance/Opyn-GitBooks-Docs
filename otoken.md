@@ -1146,7 +1146,9 @@ await ocDai.methods.removeUnderlying().send();
       </td>
     </tr>
   </tbody>
-</table>## Read Only Functions 
+</table>
+
+## Read Only Functions 
 
 ### Strike Price 
 
