@@ -14,6 +14,6 @@
 * [OptionsExchange: Buy and Sell Options](optionsexchange-buy-and-sell-otokens.md)
 * [OptionsFactory: Bootstrap new Options Markets](options-factory.md)
 * [Making a Claim \(Exercising\) through Etherscan](making-a-claim-through-etherscan.md)
-* [FAQ](faq.md)
+* [Opyn V1 FAQ](faq.md)
 * [Security](security.md)
 
