@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Getting Started](README.md)
-* [Opyn V2 Docs](https://opyn.gitbook.io/opyn/)
+* [Opyn V1 FAQ](faq.md)
 * [Dev Environment](dev-environment.md)
 * [ABIs / Smart Contract Addresses](abis-smart-contract-addresses.md)
 * [Protocol Overview](protocol-overview/README.md)
@@ -14,6 +14,6 @@
 * [OptionsExchange: Buy and Sell Options](optionsexchange-buy-and-sell-otokens.md)
 * [OptionsFactory: Bootstrap new Options Markets](options-factory.md)
 * [Making a Claim \(Exercising\) through Etherscan](making-a-claim-through-etherscan.md)
-* [Opyn V1 FAQ](faq.md)
 * [Security](security.md)
+* [Opyn V2 Docs](https://opyn.gitbook.io/opyn/)
 
