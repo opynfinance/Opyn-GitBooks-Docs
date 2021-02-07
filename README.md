@@ -60,7 +60,7 @@ If there is no disaster, it is strictly worse for _Afraid_ to give up his cDai \
 
 Consider the case of a Dai holder, _Afraid_, who wants insurance on his $1 worth of Dai. He fears Dai losing its peg or getting hacked. The insurance buyer, _Afraid,_ pays the insurance provider, _Brave_,  0.02 ETH premium ahead of time to get access to oDai tokens. In return, _Brave_, locks up 1 ETH of collateral on the insurance platform for 1 year. 
 
-The oDai token protects _Afraid_ from Jan 1 2020 to Jan 1 2021 against any technical or financial risks that Compound's cDai faces. The oDai token gives _Afraid_ the right but not the obligation to sell his Dai for $0.9 worth of collateral at any time during the next 1 year. 
+The oDai token protects _Afraid_ from Jan 1 2020 to Jan 1 2021 against any technical or financial risks that Compound's Dai faces. The oDai token gives _Afraid_ the right but not the obligation to sell his Dai for $0.9 worth of collateral at any time during the next 1 year. 
 
 In the case of a disaster _Afraid_ can turn in his oDai and his Dai and in exchange take out $0.9 worth of collateral locked in the Convexity Protocol by all the insurance providers. There is no need for claim assessors to determine if a disaster happened because if the price of Dai ever falls below $0.9, _Afraid_ can immediately[ exercise](protocol-overview/glossary-of-terms.md) his right to sell his Dai for $0.9. 
 
